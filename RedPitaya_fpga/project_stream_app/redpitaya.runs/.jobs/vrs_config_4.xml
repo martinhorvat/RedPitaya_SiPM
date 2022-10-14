@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="system_rp_counter_0_0_synth_1" LaunchDir="/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.runs/system_rp_counter_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_xadc_0_synth_1" LaunchDir="/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.runs/system_xadc_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_rst_gen2_0_synth_1" LaunchDir="/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.runs/system_rst_gen2_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_rst_gen_0_synth_1" LaunchDir="/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.runs/system_rst_gen_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_rp_oscilloscope_0_synth_1" LaunchDir="/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.runs/system_rp_oscilloscope_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_rp_dac_0_synth_1" LaunchDir="/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.runs/system_rp_dac_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_rp_concat_0_synth_1" LaunchDir="/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.runs/system_rp_concat_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_processing_system7_0_0_synth_1" LaunchDir="/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.runs/system_processing_system7_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_clk_gen_0_synth_1" LaunchDir="/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.runs/system_clk_gen_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_xbar_2_synth_1" LaunchDir="/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.runs/system_xbar_2_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_xbar_0_synth_1" LaunchDir="/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.runs/system_xbar_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_auto_pc_5_synth_1" LaunchDir="/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.runs/system_auto_pc_5_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_auto_pc_3_synth_1" LaunchDir="/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.runs/system_auto_pc_3_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_auto_cc_1_synth_1" LaunchDir="/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.runs/system_auto_cc_1_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_auto_pc_4_synth_1" LaunchDir="/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.runs/system_auto_pc_4_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="system_auto_cc_0_synth_1" LaunchDir="/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.runs/system_auto_cc_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="system_auto_cc_1_synth_1"/>
+	</Run>
+	<Run Id="system_auto_cc_2_synth_1" LaunchDir="/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.runs/system_auto_cc_2_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="system_auto_cc_1_synth_1"/>
+	</Run>
+	<Run Id="system_rp_expansion_to_in_0_0_synth_1" LaunchDir="/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.runs/system_rp_expansion_to_in_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="synth_1" LaunchDir="/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
+		<Parent Id="system_rp_counter_0_0_synth_1"/>
+		<Parent Id="system_xadc_0_synth_1"/>
+		<Parent Id="system_rst_gen2_0_synth_1"/>
+		<Parent Id="system_rst_gen_0_synth_1"/>
+		<Parent Id="system_rp_oscilloscope_0_synth_1"/>
+		<Parent Id="system_rp_dac_0_synth_1"/>
+		<Parent Id="system_rp_concat_0_synth_1"/>
+		<Parent Id="system_processing_system7_0_0_synth_1"/>
+		<Parent Id="system_clk_gen_0_synth_1"/>
+		<Parent Id="system_xbar_2_synth_1"/>
+		<Parent Id="system_xbar_0_synth_1"/>
+		<Parent Id="system_auto_pc_5_synth_1"/>
+		<Parent Id="system_auto_pc_3_synth_1"/>
+		<Parent Id="system_auto_cc_1_synth_1"/>
+		<Parent Id="system_auto_pc_4_synth_1"/>
+		<Parent Id="system_auto_cc_0_synth_1"/>
+		<Parent Id="system_auto_cc_2_synth_1"/>
+		<Parent Id="system_rp_expansion_to_in_0_0_synth_1"/>
+	</Run>
+	<Parameters>
+		<Parameter Name="runs.monitorLSFJobs" Val="true" Type="bool"/>
+		<Parameter Name="runs.enableClusterConf" Val="true" Type="bool"/>
+	</Parameters>
+</Runs>
+

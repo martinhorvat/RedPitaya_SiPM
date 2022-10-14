@@ -1,0 +1,2 @@
+reg_ctrl.vhd,vhdl,xil_defaultlib,../../../../redpitaya.srcs/sources_1/ip/reg_ctrl/sim/reg_ctrl.vhd,
+glbl.v,Verilog,xil_defaultlib,glbl.v

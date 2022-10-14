@@ -1,0 +1,907 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
+| Date         : Tue Oct 11 15:59:20 2022
+| Host         : pinceta-MS-7B98 running 64-bit Ubuntu 20.04.5 LTS
+| Command      : report_methodology -file red_pitaya_top_methodology_drc_routed.rpt -pb red_pitaya_top_methodology_drc_routed.pb -rpx red_pitaya_top_methodology_drc_routed.rpx
+| Design       : red_pitaya_top
+| Device       : xc7z010clg400-1
+| Speed File   : -1
+| Design State : Fully Routed
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max violations: <unlimited>
+             Violations found: 143
++-----------+------------------+------------------------------------------------------+------------+
+| Rule      | Severity         | Description                                          | Violations |
++-----------+------------------+------------------------------------------------------+------------+
+| TIMING-2  | Critical Warning | Invalid primary clock source pin                     | 1          |
+| TIMING-4  | Critical Warning | Invalid primary clock redefinition on a clock tree   | 4          |
+| TIMING-6  | Critical Warning | No common primary clock between related clocks       | 1          |
+| TIMING-7  | Critical Warning | No common node between related clocks                | 1          |
+| TIMING-27 | Critical Warning | Invalid primary clock on hierarchical pin            | 3          |
+| LUTAR-1   | Warning          | LUT drives async reset alert                         | 5          |
+| PDRC-190  | Warning          | Suboptimally placed synchronized register chain      | 5          |
+| TIMING-9  | Warning          | Unknown CDC Logic                                    | 1          |
+| TIMING-10 | Warning          | Missing property on synchronizer                     | 1          |
+| TIMING-16 | Warning          | Large setup violation                                | 3          |
+| TIMING-18 | Warning          | Missing input or output delay                        | 60         |
+| TIMING-24 | Warning          | Overridden Max delay datapath only                   | 8          |
+| TIMING-28 | Warning          | Auto-derived clock referenced by a timing constraint | 13         |
+| ULMTCS-1  | Warning          | Control Sets use limits recommend reduction          | 1          |
+| XDCC-5    | Warning          | User Non-Timing constraint/property overwritten      | 4          |
+| XDCH-2    | Warning          | Same min and max delay values on IO port             | 32         |
++-----------+------------------+------------------------------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+TIMING-2#1 Critical Warning
+Invalid primary clock source pin  
+A primary clock m_axi_dac1_aclk is created on an inappropriate pin system_wrapper_i/rp_dac/inst/m_axi_dac1_aclk. It is recommended to create a primary clock only on a proper clock source (input port or primitive output pin with no timing arc)
+Related violations: <none>
+
+TIMING-4#1 Critical Warning
+Invalid primary clock redefinition on a clock tree  
+Invalid clock redefinition on a clock tree. The primary clock clk is defined downstream of clock clk_125_system_clk_gen_0 and overrides its insertion delay and/or waveform definition
+Related violations: <none>
+
+TIMING-4#2 Critical Warning
+Invalid primary clock redefinition on a clock tree  
+Invalid clock redefinition on a clock tree. The primary clock m_axi_dac1_aclk is defined downstream of clock clk_200_system_clk_gen_0 and overrides its insertion delay and/or waveform definition
+Related violations: <none>
+
+TIMING-4#3 Critical Warning
+Invalid primary clock redefinition on a clock tree  
+Invalid clock redefinition on a clock tree. The primary clock s_axi_reg_aclk is defined downstream of clock clk_125_system_clk_gen_0 and overrides its insertion delay and/or waveform definition
+Related violations: <none>
+
+TIMING-4#4 Critical Warning
+Invalid primary clock redefinition on a clock tree  
+Invalid clock redefinition on a clock tree. The primary clock system_wrapper_i/clk_gen/inst/clk_in1 is defined downstream of clock adc_clk and overrides its insertion delay and/or waveform definition
+Related violations: <none>
+
+TIMING-6#1 Critical Warning
+No common primary clock between related clocks  
+The clocks clk_200_system_clk_gen_0 and clk are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_200_system_clk_gen_0] -to [get_clocks clk]
+Related violations: <none>
+
+TIMING-7#1 Critical Warning
+No common node between related clocks  
+The clocks clk_200_system_clk_gen_0 and clk are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_200_system_clk_gen_0] -to [get_clocks clk]
+Related violations: <none>
+
+TIMING-27#1 Critical Warning
+Invalid primary clock on hierarchical pin  
+A primary clock clk is created on an inappropriate internal pin system_wrapper_i/rp_dac/inst/clk. It is not recommended to create a primary clock on a hierarchical pin when its driver pin has a fanout connected to multiple clock pins
+Related violations: <none>
+
+TIMING-27#2 Critical Warning
+Invalid primary clock on hierarchical pin  
+A primary clock s_axi_reg_aclk is created on an inappropriate internal pin system_wrapper_i/rp_dac/inst/s_axi_reg_aclk. It is not recommended to create a primary clock on a hierarchical pin when its driver pin has a fanout connected to multiple clock pins
+Related violations: <none>
+
+TIMING-27#3 Critical Warning
+Invalid primary clock on hierarchical pin  
+A primary clock system_wrapper_i/clk_gen/inst/clk_in1 is created on an inappropriate internal pin system_wrapper_i/clk_gen/inst/clk_in1. It is not recommended to create a primary clock on a hierarchical pin when its driver pin has a fanout connected to multiple clock pins
+Related violations: <none>
+
+LUTAR-1#1 Warning
+LUT drives async reset alert  
+LUT cell system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/gc0.count_d1[4]_i_2, with 2 or more inputs, drives asynchronous preset/clear pin(s) system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_d1_reg[0]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_d1_reg[1]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_d1_reg[2]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_d1_reg[3]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_d1_reg[4]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_reg[1]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_reg[2]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_reg[3]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_reg[4]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_reg[0]/PRE,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/gpregsm1.curr_fwft_state_reg[0]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/gpregsm1.curr_fwft_state_reg[1]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/gpregsm1.user_valid_reg/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/aempty_fwft_fb_i_reg/PRE,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/aempty_fwft_i_reg/PRE (the first 15 of 32 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+LUTAR-1#2 Warning
+LUT drives async reset alert  
+LUT cell system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/gc0.count_d1[4]_i_2, with 2 or more inputs, drives asynchronous preset/clear pin(s) system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_full_fb_i_reg/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_full_i_reg/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_reg[0]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_reg[1]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_reg[2]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_reg[3]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_reg[4]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_reg[1]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_reg[2]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_reg[3]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_reg[4]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_reg[0]/PRE,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_d1_reg[0]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_d1_reg[1]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_d1_reg[2]/CLR (the first 15 of 32 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+LUTAR-1#3 Warning
+LUT drives async reset alert  
+LUT cell system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/gc0.count_d1[4]_i_2, with 2 or more inputs, drives asynchronous preset/clear pin(s) system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_full_fb_i_reg/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_full_i_reg/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_reg[0]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_reg[1]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_reg[2]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_reg[3]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_reg[4]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_reg[1]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_reg[2]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_reg[3]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_reg[4]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_reg[0]/PRE,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_d1_reg[0]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_d1_reg[1]/CLR,
+system_wrapper_i/axi_interconnect_0/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_d1_reg[2]/CLR (the first 15 of 32 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+LUTAR-1#4 Warning
+LUT drives async reset alert  
+LUT cell system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/gc0.count_d1[4]_i_2, with 2 or more inputs, drives asynchronous preset/clear pin(s) system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_full_fb_i_reg/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_full_i_reg/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_reg[0]/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_reg[1]/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_reg[2]/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_reg[3]/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_reg[4]/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_reg[1]/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_reg[2]/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_reg[3]/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_reg[4]/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_reg[0]/PRE,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_d1_reg[0]/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_d1_reg[1]/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_d1_reg[2]/CLR (the first 15 of 32 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+LUTAR-1#5 Warning
+LUT drives async reset alert  
+LUT cell system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/gc0.count_d1[4]_i_2, with 2 or more inputs, drives asynchronous preset/clear pin(s) system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_full_fb_i_reg/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_full_i_reg/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_reg[0]/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_reg[1]/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_reg[2]/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_reg[3]/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_reg[4]/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_reg[1]/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_reg[2]/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_reg[3]/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_reg[4]/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/gcc0.gc0.count_reg[0]/PRE,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_d1_reg[0]/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_d1_reg[1]/CLR,
+system_wrapper_i/axi_interconnect_1/s00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/rpntr/gc0.count_d1_reg[2]/CLR (the first 15 of 32 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+PDRC-190#1 Warning
+Suboptimally placed synchronized register chain  
+The FDRE cell system_wrapper_i/rp_counter_0/inst/U_cnt/U_dma_s2mm/U_fifo_axi_data/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d2_reg in site SLICE_X11Y17 is part of a synchronized register chain that is suboptimally placed as the load FDSE cell system_wrapper_i/rp_counter_0/inst/U_cnt/U_dma_s2mm/U_fifo_axi_data/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d3_reg is not placed in the same (SLICE) site.
+Related violations: <none>
+
+PDRC-190#2 Warning
+Suboptimally placed synchronized register chain  
+The FDRE cell system_wrapper_i/rp_dac/inst/U_dac1/U_dma_mm2s/U_fifo_axi_data/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d2_reg in site SLICE_X16Y62 is part of a synchronized register chain that is suboptimally placed as the load FDSE cell system_wrapper_i/rp_dac/inst/U_dac1/U_dma_mm2s/U_fifo_axi_data/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d3_reg is not placed in the same (SLICE) site.
+Related violations: <none>
+
+PDRC-190#3 Warning
+Suboptimally placed synchronized register chain  
+The FDRE cell system_wrapper_i/rp_dac/inst/U_dac2/U_dma_mm2s/U_fifo_axi_data/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d2_reg in site SLICE_X38Y59 is part of a synchronized register chain that is suboptimally placed as the load FDSE cell system_wrapper_i/rp_dac/inst/U_dac2/U_dma_mm2s/U_fifo_axi_data/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d3_reg is not placed in the same (SLICE) site.
+Related violations: <none>
+
+PDRC-190#4 Warning
+Suboptimally placed synchronized register chain  
+The FDRE cell system_wrapper_i/rp_oscilloscope/inst/U_osc1/U_dma_s2mm/U_fifo_axi_data/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d2_reg in site SLICE_X27Y9 is part of a synchronized register chain that is suboptimally placed as the load FDSE cell system_wrapper_i/rp_oscilloscope/inst/U_osc1/U_dma_s2mm/U_fifo_axi_data/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d3_reg is not placed in the same (SLICE) site.
+Related violations: <none>
+
+PDRC-190#5 Warning
+Suboptimally placed synchronized register chain  
+The FDRE cell system_wrapper_i/rp_oscilloscope/inst/U_osc2/U_dma_s2mm/U_fifo_axi_data/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d2_reg in site SLICE_X17Y1 is part of a synchronized register chain that is suboptimally placed as the load FDSE cell system_wrapper_i/rp_oscilloscope/inst/U_osc2/U_dma_s2mm/U_fifo_axi_data/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d3_reg is not placed in the same (SLICE) site.
+Related violations: <none>
+
+TIMING-9#1 Warning
+Unknown CDC Logic  
+One or more asynchronous Clock Domain Crossing has been detected between 2 clock domains through a set_false_path or a set_clock_groups or set_max_delay -datapath_only constraint but no double-registers logic synchronizer has been found on the side of the capture clock. It is recommended to run report_cdc for a complete and detailed CDC coverage. Please consider using XPM_CDC to avoid Critical severities
+Related violations: <none>
+
+TIMING-10#1 Warning
+Missing property on synchronizer  
+One or more logic synchronizer has been detected between 2 clock domains but the synchronizer does not have the property ASYNC_REG defined on one or both registers. It is recommended to run report_cdc for a complete and detailed CDC coverage
+Related violations: <none>
+
+TIMING-16#1 Warning
+Large setup violation  
+There is a large setup violation of -1.169 ns between system_wrapper_i/processing_system7_0/inst/PS7_i/SAXIHP2ACLK (clocked by clk_200_system_clk_gen_0) and system_wrapper_i/rp_dac/inst/reg_rd_data_reg[14]/D (clocked by clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#2 Warning
+Large setup violation  
+There is a large setup violation of -1.248 ns between system_wrapper_i/processing_system7_0/inst/PS7_i/SAXIHP2ACLK (clocked by clk_200_system_clk_gen_0) and system_wrapper_i/rp_dac/inst/reg_rd_data_reg[17]/D (clocked by clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#3 Warning
+Large setup violation  
+There is a large setup violation of -1.587 ns between system_wrapper_i/processing_system7_0/inst/PS7_i/SAXIHP2ACLK (clocked by clk_200_system_clk_gen_0) and system_wrapper_i/rp_dac/inst/reg_rd_data_reg[12]/D (clocked by clk). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-18#1 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[0][10] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#2 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[0][11] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#3 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[0][12] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#4 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[0][13] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#5 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[0][14] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#6 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[0][15] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#7 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[0][2] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#8 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[0][3] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#9 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[0][4] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#10 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[0][5] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#11 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[0][6] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#12 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[0][7] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#13 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[0][8] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#14 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[0][9] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#15 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[1][10] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#16 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[1][11] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#17 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[1][12] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#18 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[1][13] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#19 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[1][14] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#20 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[1][15] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#21 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[1][2] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#22 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[1][3] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#23 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[1][4] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#24 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[1][5] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#25 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[1][6] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#26 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[1][7] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#27 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[1][8] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#28 Warning
+Missing input or output delay  
+An input delay is missing on adc_dat_i[1][9] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#29 Warning
+Missing input or output delay  
+An input delay is missing on daisy_n_i[0] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#30 Warning
+Missing input or output delay  
+An input delay is missing on daisy_n_i[1] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#31 Warning
+Missing input or output delay  
+An input delay is missing on daisy_p_i[0] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#32 Warning
+Missing input or output delay  
+An input delay is missing on daisy_p_i[1] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#33 Warning
+Missing input or output delay  
+An input delay is missing on led_o[0] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#34 Warning
+Missing input or output delay  
+An input delay is missing on led_o[1] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#35 Warning
+Missing input or output delay  
+An input delay is missing on led_o[2] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#36 Warning
+Missing input or output delay  
+An input delay is missing on led_o[3] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#37 Warning
+Missing input or output delay  
+An input delay is missing on led_o[4] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#38 Warning
+Missing input or output delay  
+An input delay is missing on led_o[5] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#39 Warning
+Missing input or output delay  
+An input delay is missing on led_o[6] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#40 Warning
+Missing input or output delay  
+An input delay is missing on led_o[7] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#41 Warning
+Missing input or output delay  
+An output delay is missing on dac_dat_o[0] relative to clock(s) adc_clk
+Related violations: <none>
+
+TIMING-18#42 Warning
+Missing input or output delay  
+An output delay is missing on dac_dat_o[10] relative to clock(s) adc_clk
+Related violations: <none>
+
+TIMING-18#43 Warning
+Missing input or output delay  
+An output delay is missing on dac_dat_o[11] relative to clock(s) adc_clk
+Related violations: <none>
+
+TIMING-18#44 Warning
+Missing input or output delay  
+An output delay is missing on dac_dat_o[12] relative to clock(s) adc_clk
+Related violations: <none>
+
+TIMING-18#45 Warning
+Missing input or output delay  
+An output delay is missing on dac_dat_o[13] relative to clock(s) adc_clk
+Related violations: <none>
+
+TIMING-18#46 Warning
+Missing input or output delay  
+An output delay is missing on dac_dat_o[1] relative to clock(s) adc_clk
+Related violations: <none>
+
+TIMING-18#47 Warning
+Missing input or output delay  
+An output delay is missing on dac_dat_o[2] relative to clock(s) adc_clk
+Related violations: <none>
+
+TIMING-18#48 Warning
+Missing input or output delay  
+An output delay is missing on dac_dat_o[3] relative to clock(s) adc_clk
+Related violations: <none>
+
+TIMING-18#49 Warning
+Missing input or output delay  
+An output delay is missing on dac_dat_o[4] relative to clock(s) adc_clk
+Related violations: <none>
+
+TIMING-18#50 Warning
+Missing input or output delay  
+An output delay is missing on dac_dat_o[5] relative to clock(s) adc_clk
+Related violations: <none>
+
+TIMING-18#51 Warning
+Missing input or output delay  
+An output delay is missing on dac_dat_o[6] relative to clock(s) adc_clk
+Related violations: <none>
+
+TIMING-18#52 Warning
+Missing input or output delay  
+An output delay is missing on dac_dat_o[7] relative to clock(s) adc_clk
+Related violations: <none>
+
+TIMING-18#53 Warning
+Missing input or output delay  
+An output delay is missing on dac_dat_o[8] relative to clock(s) adc_clk
+Related violations: <none>
+
+TIMING-18#54 Warning
+Missing input or output delay  
+An output delay is missing on dac_dat_o[9] relative to clock(s) adc_clk
+Related violations: <none>
+
+TIMING-18#55 Warning
+Missing input or output delay  
+An output delay is missing on dac_rst_o relative to clock(s) adc_clk
+Related violations: <none>
+
+TIMING-18#56 Warning
+Missing input or output delay  
+An output delay is missing on dac_sel_o relative to clock(s) adc_clk
+Related violations: <none>
+
+TIMING-18#57 Warning
+Missing input or output delay  
+An output delay is missing on daisy_n_o[0] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#58 Warning
+Missing input or output delay  
+An output delay is missing on daisy_n_o[1] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#59 Warning
+Missing input or output delay  
+An output delay is missing on daisy_p_o[0] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-18#60 Warning
+Missing input or output delay  
+An output delay is missing on daisy_p_o[1] relative to clock(s) system_wrapper_i/clk_gen/inst/clk_in1
+Related violations: <none>
+
+TIMING-24#1 Warning
+Overridden Max delay datapath only  
+An asynchronous set_clock_groups or a set_false path (see constraint position 18 in the Timing Constraints window in Vivado IDE) between clocks clk and m_axi_dac1_aclk overrides a set_max_delay -datapath_only (position 61). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
+Related violations: <none>
+
+TIMING-24#2 Warning
+Overridden Max delay datapath only  
+An asynchronous set_clock_groups or a set_false path (see constraint position 18 in the Timing Constraints window in Vivado IDE) between clocks clk and m_axi_dac1_aclk overrides a set_max_delay -datapath_only (position 65). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
+Related violations: <none>
+
+TIMING-24#3 Warning
+Overridden Max delay datapath only  
+An asynchronous set_clock_groups or a set_false path (see constraint position 18 in the Timing Constraints window in Vivado IDE) between clocks m_axi_dac1_aclk and clk overrides a set_max_delay -datapath_only (position 63). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
+Related violations: <none>
+
+TIMING-24#4 Warning
+Overridden Max delay datapath only  
+An asynchronous set_clock_groups or a set_false path (see constraint position 18 in the Timing Constraints window in Vivado IDE) between clocks m_axi_dac1_aclk and clk overrides a set_max_delay -datapath_only (position 67). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
+Related violations: <none>
+
+TIMING-24#5 Warning
+Overridden Max delay datapath only  
+An asynchronous set_clock_groups or a set_false path (see constraint position 25 in the Timing Constraints window in Vivado IDE) between clocks clk and m_axi_dac1_aclk overrides a set_max_delay -datapath_only (position 61). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
+Related violations: <none>
+
+TIMING-24#6 Warning
+Overridden Max delay datapath only  
+An asynchronous set_clock_groups or a set_false path (see constraint position 25 in the Timing Constraints window in Vivado IDE) between clocks clk and m_axi_dac1_aclk overrides a set_max_delay -datapath_only (position 65). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
+Related violations: <none>
+
+TIMING-24#7 Warning
+Overridden Max delay datapath only  
+An asynchronous set_clock_groups or a set_false path (see constraint position 25 in the Timing Constraints window in Vivado IDE) between clocks m_axi_dac1_aclk and clk overrides a set_max_delay -datapath_only (position 63). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
+Related violations: <none>
+
+TIMING-24#8 Warning
+Overridden Max delay datapath only  
+An asynchronous set_clock_groups or a set_false path (see constraint position 25 in the Timing Constraints window in Vivado IDE) between clocks m_axi_dac1_aclk and clk overrides a set_max_delay -datapath_only (position 67). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
+Related violations: <none>
+
+TIMING-28#1 Warning
+Auto-derived clock referenced by a timing constraint  
+The auto-derived clock clk_125_system_clk_gen_0 is referenced by name inside timing constraint (see constraint position 16 in the Timing Constraint window in Vivado IDE). It is recommended to reference an auto-derived clock by the pin name attached to the clock: get_clocks -of_objects [get_pins system_wrapper_i/clk_gen/inst/mmcm_adv_inst/CLKOUT0]
+Related violations: <none>
+
+TIMING-28#2 Warning
+Auto-derived clock referenced by a timing constraint  
+The auto-derived clock clk_125_system_clk_gen_0 is referenced by name inside timing constraint (see constraint position 20 in the Timing Constraint window in Vivado IDE). It is recommended to reference an auto-derived clock by the pin name attached to the clock: get_clocks -of_objects [get_pins system_wrapper_i/clk_gen/inst/mmcm_adv_inst/CLKOUT0]
+Related violations: <none>
+
+TIMING-28#3 Warning
+Auto-derived clock referenced by a timing constraint  
+The auto-derived clock clk_125_system_clk_gen_0 is referenced by name inside timing constraint (see constraint position 21 in the Timing Constraint window in Vivado IDE). It is recommended to reference an auto-derived clock by the pin name attached to the clock: get_clocks -of_objects [get_pins system_wrapper_i/clk_gen/inst/mmcm_adv_inst/CLKOUT0]
+Related violations: <none>
+
+TIMING-28#4 Warning
+Auto-derived clock referenced by a timing constraint  
+The auto-derived clock clk_125_system_clk_gen_0 is referenced by name inside timing constraint (see constraint position 22 in the Timing Constraint window in Vivado IDE). It is recommended to reference an auto-derived clock by the pin name attached to the clock: get_clocks -of_objects [get_pins system_wrapper_i/clk_gen/inst/mmcm_adv_inst/CLKOUT0]
+Related violations: <none>
+
+TIMING-28#5 Warning
+Auto-derived clock referenced by a timing constraint  
+The auto-derived clock clk_125_system_clk_gen_0 is referenced by name inside timing constraint (see constraint position 26 in the Timing Constraint window in Vivado IDE). It is recommended to reference an auto-derived clock by the pin name attached to the clock: get_clocks -of_objects [get_pins system_wrapper_i/clk_gen/inst/mmcm_adv_inst/CLKOUT0]
+Related violations: <none>
+
+TIMING-28#6 Warning
+Auto-derived clock referenced by a timing constraint  
+The auto-derived clock clk_125_system_clk_gen_0 is referenced by name inside timing constraint (see constraint position 30 in the Timing Constraint window in Vivado IDE). It is recommended to reference an auto-derived clock by the pin name attached to the clock: get_clocks -of_objects [get_pins system_wrapper_i/clk_gen/inst/mmcm_adv_inst/CLKOUT0]
+Related violations: <none>
+
+TIMING-28#7 Warning
+Auto-derived clock referenced by a timing constraint  
+The auto-derived clock clk_200_system_clk_gen_0 is referenced by name inside timing constraint (see constraint position 23 in the Timing Constraint window in Vivado IDE). It is recommended to reference an auto-derived clock by the pin name attached to the clock: get_clocks -of_objects [get_pins system_wrapper_i/clk_gen/inst/mmcm_adv_inst/CLKOUT1]
+Related violations: <none>
+
+TIMING-28#8 Warning
+Auto-derived clock referenced by a timing constraint  
+The auto-derived clock clk_200_system_clk_gen_0 is referenced by name inside timing constraint (see constraint position 27 in the Timing Constraint window in Vivado IDE). It is recommended to reference an auto-derived clock by the pin name attached to the clock: get_clocks -of_objects [get_pins system_wrapper_i/clk_gen/inst/mmcm_adv_inst/CLKOUT1]
+Related violations: <none>
+
+TIMING-28#9 Warning
+Auto-derived clock referenced by a timing constraint  
+The auto-derived clock clk_62_5_system_clk_gen_0 is referenced by name inside timing constraint (see constraint position 17 in the Timing Constraint window in Vivado IDE). It is recommended to reference an auto-derived clock by the pin name attached to the clock: get_clocks -of_objects [get_pins system_wrapper_i/clk_gen/inst/mmcm_adv_inst/CLKOUT3]
+Related violations: <none>
+
+TIMING-28#10 Warning
+Auto-derived clock referenced by a timing constraint  
+The auto-derived clock clk_62_5_system_clk_gen_0 is referenced by name inside timing constraint (see constraint position 24 in the Timing Constraint window in Vivado IDE). It is recommended to reference an auto-derived clock by the pin name attached to the clock: get_clocks -of_objects [get_pins system_wrapper_i/clk_gen/inst/mmcm_adv_inst/CLKOUT3]
+Related violations: <none>
+
+TIMING-28#11 Warning
+Auto-derived clock referenced by a timing constraint  
+The auto-derived clock clk_62_5_system_clk_gen_0 is referenced by name inside timing constraint (see constraint position 28 in the Timing Constraint window in Vivado IDE). It is recommended to reference an auto-derived clock by the pin name attached to the clock: get_clocks -of_objects [get_pins system_wrapper_i/clk_gen/inst/mmcm_adv_inst/CLKOUT3]
+Related violations: <none>
+
+TIMING-28#12 Warning
+Auto-derived clock referenced by a timing constraint  
+The auto-derived clock clk_62_5_system_clk_gen_0 is referenced by name inside timing constraint (see constraint position 31 in the Timing Constraint window in Vivado IDE). It is recommended to reference an auto-derived clock by the pin name attached to the clock: get_clocks -of_objects [get_pins system_wrapper_i/clk_gen/inst/mmcm_adv_inst/CLKOUT3]
+Related violations: <none>
+
+TIMING-28#13 Warning
+Auto-derived clock referenced by a timing constraint  
+The auto-derived clock pll_dac_clk_1x is referenced by name inside timing constraint (see constraint position 29 in the Timing Constraint window in Vivado IDE). It is recommended to reference an auto-derived clock by the pin name attached to the clock: get_clocks -of_objects [get_pins pll/pll/CLKOUT1]
+Related violations: <none>
+
+ULMTCS-1#1 Warning
+Control Sets use limits recommend reduction  
+This design uses 346 control sets (vs. available limit of 4400, determined by 1 control set per CLB). This exceeds the control set use guideline of 7.5 percent. This is at a level where reduction is RECOMMENDED (see UG949). Use report_control_sets to get more details.
+Related violations: <none>
+
+XDCC-5#1 Warning
+User Non-Timing constraint/property overwritten  
+A new XDC property IOSTANDARD on dac_pwm_o[0] overrides a previous user property.
+New Source: /home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 111)
+Previous Source: /home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 100)
+Related violations: <none>
+
+XDCC-5#2 Warning
+User Non-Timing constraint/property overwritten  
+A new XDC property IOSTANDARD on dac_pwm_o[1] overrides a previous user property.
+New Source: /home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 111)
+Previous Source: /home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 100)
+Related violations: <none>
+
+XDCC-5#3 Warning
+User Non-Timing constraint/property overwritten  
+A new XDC property IOSTANDARD on dac_pwm_o[2] overrides a previous user property.
+New Source: /home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 111)
+Previous Source: /home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 100)
+Related violations: <none>
+
+XDCC-5#4 Warning
+User Non-Timing constraint/property overwritten  
+A new XDC property IOSTANDARD on dac_pwm_o[3] overrides a previous user property.
+New Source: /home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 111)
+Previous Source: /home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 100)
+Related violations: <none>
+
+XDCH-2#1 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[0][0]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#2 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[0][10]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#3 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[0][11]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#4 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[0][12]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#5 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[0][13]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#6 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[0][14]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#7 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[0][15]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#8 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[0][1]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#9 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[0][2]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#10 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[0][3]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#11 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[0][4]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#12 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[0][5]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#13 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[0][6]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#14 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[0][7]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#15 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[0][8]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#16 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[0][9]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#17 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[1][0]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#18 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[1][10]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#19 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[1][11]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#20 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[1][12]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#21 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[1][13]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#22 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[1][14]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#23 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[1][15]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#24 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[1][1]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#25 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[1][2]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#26 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[1][3]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#27 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[1][4]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#28 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[1][5]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#29 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[1][6]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#30 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[1][7]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#31 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[1][8]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+XDCH-2#32 Warning
+Same min and max delay values on IO port  
+The same input delay of 3.400 ns has been defined on port 'adc_dat_i[1][9]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 3.400 [get_ports {adc_dat_i[*][*]}]
+/home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc (Line: 202)
+Related violations: <none>
+
+

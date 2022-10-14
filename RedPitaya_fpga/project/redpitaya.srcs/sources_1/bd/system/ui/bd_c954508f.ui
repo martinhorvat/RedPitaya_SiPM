@@ -1,0 +1,46 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.947322",
+   "Default View_TopLeft":"496,417",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:9.0 TLS
+#  -string -flagsOSRD
+preplace port DDR -pg 1 -lvl 6 -x 1160 -y 510 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 6 -x 1160 -y 530 -defaultsOSRD
+preplace port adc_clk -pg 1 -lvl 0 -x -780 -y 250 -defaultsOSRD
+preplace port clk_out -pg 1 -lvl 6 -x 1160 -y 590 -defaultsOSRD
+preplace port succ -pg 1 -lvl 6 -x 1160 -y 80 -defaultsOSRD
+preplace port trig -pg 1 -lvl 6 -x 1160 -y 340 -defaultsOSRD
+preplace portBus adc_data_ch1 -pg 1 -lvl 0 -x -780 -y 140 -defaultsOSRD
+preplace portBus adc_data_ch2 -pg 1 -lvl 0 -x -780 -y 160 -defaultsOSRD
+preplace portBus gpio_n -pg 1 -lvl 0 -x -780 -y 190 -defaultsOSRD -left
+preplace portBus gpio_p -pg 1 -lvl 0 -x -780 -y 210 -defaultsOSRD -left
+preplace portBus dac_dat_a -pg 1 -lvl 6 -x 1160 -y 430 -defaultsOSRD
+preplace portBus dac_dat_b -pg 1 -lvl 6 -x 1160 -y 450 -defaultsOSRD
+preplace inst proc_sys_reset -pg 1 -lvl 4 -x 520 -y 790 -defaultsOSRD
+preplace inst processing_system7 -pg 1 -lvl 4 -x 520 -y 480 -defaultsOSRD
+preplace inst xlconstant -pg 1 -lvl 3 -x 190 -y 790 -defaultsOSRD
+preplace inst axi_interconnect_0 -pg 1 -lvl 5 -x 960 -y 440 -defaultsOSRD
+preplace inst rp_expansion_to_in_0 -pg 1 -lvl 1 -x -540 -y 140 -defaultsOSRD
+preplace inst acquire_top_0 -pg 1 -lvl 2 -x -60 -y 470 -defaultsOSRD
+preplace netloc xlconstant_dout 1 3 1 N 790
+preplace netloc ARESETN_1 1 1 4 -380 670 N 670 N 670 800
+preplace netloc clk_wiz_0_clk_62_5 1 3 2 280 660 780J
+preplace netloc M00_ACLK_1 1 1 5 -390 620 N 620 270 650 790 590 N
+preplace netloc processing_system7_FCLK_RESET0_N 1 3 2 290 680 760
+preplace netloc Net 1 0 2 NJ 210 -430
+preplace netloc adc_data_ch1_1 1 0 2 -760J 60 -400
+preplace netloc adc_data_ch2_1 1 0 2 -750J 70 -420
+preplace netloc rp_expansion_to_in_0_gpio_out 1 1 1 -410 150n
+preplace netloc acquire_top_0_succ 1 2 4 90 80 NJ 80 NJ 80 NJ
+preplace netloc acquire_top_0_trig_out 1 2 4 100J 300 NJ 300 NJ 300 1140
+preplace netloc S00_AXI_1 1 4 1 770 380n
+preplace netloc processing_system7_DDR 1 4 2 750J 310 1130
+preplace netloc processing_system7_FIXED_IO 1 4 2 760J 320 1120
+preplace netloc axi_interconnect_0_M00_AXI 1 1 5 -380 290 NJ 290 NJ 290 NJ 290 1110
+preplace netloc acquire_top_0_m_axi 1 2 2 NJ 440 270
+levelinfo -pg 1 -780 -540 -60 190 520 960 1160
+pagesize -pg 1 -db -bbox -sgen -980 -280 1330 1670
+"
+}
+0

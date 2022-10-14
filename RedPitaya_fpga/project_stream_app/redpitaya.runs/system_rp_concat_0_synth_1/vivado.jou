@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Wed Sep 28 16:45:17 2022
+# Process ID: 77495
+# Current directory: /home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.runs/system_rp_concat_0_synth_1
+# Command line: vivado -log system_rp_concat_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source system_rp_concat_0.tcl
+# Log file: /home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.runs/system_rp_concat_0_synth_1/system_rp_concat_0.vds
+# Journal file: /home/pinceta/RedPitaya/RedPitaya/fpga/classic/prj/stream_app/project/redpitaya.runs/system_rp_concat_0_synth_1/vivado.jou
+#-----------------------------------------------------------
+source system_rp_concat_0.tcl -notrace
