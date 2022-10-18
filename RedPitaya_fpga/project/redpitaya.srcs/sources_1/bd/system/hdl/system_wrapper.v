@@ -1,8 +1,8 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Fri Oct 14 18:10:47 2022
-//Host        : pinceta-MS-7B98 running 64-bit Ubuntu 20.04.5 LTS
+//Date        : Tue Oct 18 12:46:00 2022
+//Host        : martin-MS-7996 running 64-bit Ubuntu 22.04.1 LTS
 //Command     : generate_target system_wrapper.bd
 //Design      : system_wrapper
 //Purpose     : IP block netlist
@@ -70,7 +70,7 @@ module system_wrapper
   output [15:0]dac_dat_b;
   inout [7:0]gpio_n;
   inout [7:0]gpio_p;
-  output succ;
+  output [7:0]succ;
   output trig;
 
   wire [14:0]DDR_addr;
@@ -102,7 +102,7 @@ module system_wrapper
   wire [15:0]dac_dat_b;
   wire [7:0]gpio_n;
   wire [7:0]gpio_p;
-  wire succ;
+  wire [7:0]succ;
   wire trig;
 
   system system_i

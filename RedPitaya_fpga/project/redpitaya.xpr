@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="49" Path="/home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.xpr">
+<Project Version="7" Minor="49" Path="/home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="d7dfd3f56ec14c538a0f711ec58ad2fe"/>
@@ -38,20 +38,20 @@
     <Option Name="IPUserFilesDir" Val="$PIPUSERFILESDIR"/>
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
-    <Option Name="WTXSimLaunchSim" Val="0"/>
+    <Option Name="WTXSimLaunchSim" Val="7"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="4"/>
-    <Option Name="WTModelSimExportSim" Val="4"/>
-    <Option Name="WTQuestaExportSim" Val="4"/>
-    <Option Name="WTIesExportSim" Val="4"/>
-    <Option Name="WTVcsExportSim" Val="4"/>
-    <Option Name="WTRivieraExportSim" Val="4"/>
-    <Option Name="WTActivehdlExportSim" Val="4"/>
+    <Option Name="WTXSimExportSim" Val="8"/>
+    <Option Name="WTModelSimExportSim" Val="8"/>
+    <Option Name="WTQuestaExportSim" Val="8"/>
+    <Option Name="WTIesExportSim" Val="8"/>
+    <Option Name="WTVcsExportSim" Val="8"/>
+    <Option Name="WTRivieraExportSim" Val="8"/>
+    <Option Name="WTActivehdlExportSim" Val="8"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -68,13 +68,6 @@
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
       <Filter Type="Srcs"/>
       <File Path="$PSRCDIR/sources_1/new/expansion_to_in.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/ip/reg_ctrl/reg_ctrl.xci">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -115,17 +108,20 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="system.bd" FileRelPathName="ip/system_rp_expansion_to_in_0_0/system_rp_expansion_to_in_0_0.xci">
-          <Proxy FileSetName="system_rp_expansion_to_in_0_0"/>
+        <CompFileExtendedInfo CompFileName="system.bd" FileRelPathName="ip/system_proc_sys_reset_0/system_proc_sys_reset_0.xci">
+          <Proxy FileSetName="system_proc_sys_reset_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="system.bd" FileRelPathName="ip/system_processing_system7_0/system_processing_system7_0.xci">
           <Proxy FileSetName="system_processing_system7_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="system.bd" FileRelPathName="ip/system_proc_sys_reset_0/system_proc_sys_reset_0.xci">
-          <Proxy FileSetName="system_proc_sys_reset_0"/>
-        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="system.bd" FileRelPathName="ip/system_acquire_top_0_2/system_acquire_top_0_2.xci">
           <Proxy FileSetName="system_acquire_top_0_2"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="system.bd" FileRelPathName="ip/system_rp_expansion_to_in_0_0/system_rp_expansion_to_in_0_0.xci">
+          <Proxy FileSetName="system_rp_expansion_to_in_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="system.bd" FileRelPathName="ip/system_clk_wiz_0_0/system_clk_wiz_0_0.xci">
+          <Proxy FileSetName="system_clk_wiz_0_0"/>
         </CompFileExtendedInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/imports/classic/rtl/red_pitaya_pll.sv">
@@ -141,6 +137,14 @@
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../RedPitaya/RedPitaya/fpga/classic/prj/classic/rtl/red_pitaya_top.sv"/>
           <Attr Name="ImportTime" Val="1663085540"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/ip/reg_ctrl/reg_ctrl.xci">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -281,6 +285,14 @@
     </FileSet>
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1">
       <Filter Type="Srcs"/>
+      <File Path="$PSRCDIR/sim_1/new/simulacija.v">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="red_pitaya_top"/>
@@ -317,6 +329,12 @@
     <FileSet Name="system_rp_expansion_to_in_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/system_rp_expansion_to_in_0_0">
       <Config>
         <Option Name="TopModule" Val="system_rp_expansion_to_in_0_0"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="system_clk_wiz_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/system_clk_wiz_0_0">
+      <Config>
+        <Option Name="TopModule" Val="system_clk_wiz_0_0"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -392,6 +410,16 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
+    <Run Id="system_clk_wiz_0_0_synth_1" Type="Ft3:Synth" SrcSet="system_clk_wiz_0_0" Part="xc7z010clg400-1" ConstrsSet="system_clk_wiz_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/system_clk_wiz_0_0_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2020"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
     <Run Id="system_acquire_top_0_2_synth_1" Type="Ft3:Synth" SrcSet="system_acquire_top_0_2" Part="xc7z010clg400-1" ConstrsSet="system_acquire_top_0_2" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/system_acquire_top_0_2_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020">
@@ -457,6 +485,23 @@
       <RQSFiles/>
     </Run>
     <Run Id="system_rp_expansion_to_in_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z010clg400-1" ConstrsSet="system_rp_expansion_to_in_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="system_rp_expansion_to_in_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020"/>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2020"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="system_clk_wiz_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z010clg400-1" ConstrsSet="system_clk_wiz_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="system_clk_wiz_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020"/>
         <Step Id="init_design"/>

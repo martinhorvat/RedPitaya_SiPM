@@ -41,55 +41,60 @@ module axi_s2mm#
     input  wire [1:0]                             m_axi_bresp,      
     input  wire                                   m_axi_bvalid,     
     output wire                                   m_axi_bready, 
-    input wire avalid,
-    //input wire valid,
-    input wire [M_AXI_CNT_DATA_BITS-1:0]  data);
-    
+    input  wire                                   avalid,
+    input  wire  [M_AXI_CNT_DATA_BITS-1:0]        data,
+    output wire  [7:0]                            succ);
+        
     reg awvalid;
     reg wvalid;
-    
-    reg old_avalid = 0;
+    reg last;
+    reg bready;
     
     wire atransfer;
     wire transfer;
     
-    assign m_axi_awlen = 0;
+    assign m_axi_awlen = 4'b0000;
     assign m_axi_awsize = 3'b011;
-    assign m_axi_awburst = 0;
+    assign m_axi_awburst = 2'b00;
     assign m_axi_awprot = 3'b000;
-    assign m_axi_awcache = 4'b0000;
+    assign m_axi_awcache = 4'b0011;
     assign m_axi_wstrb = 8'b11111111;
+    assign m_axi_awaddr = 32'h19000000;
     
     assign m_axi_awvalid = awvalid;
     assign m_axi_wvalid = wvalid;
-    assign m_axi_wlast = 1'b1;
+    assign m_axi_bready = 1'b0;
+    
+    assign m_axi_wlast = last;
     assign m_axi_wdata = data;
     
     assign atransfer = m_axi_awvalid && m_axi_awready;
     assign transfer = m_axi_wvalid && m_axi_wready;
     
+    assign succ[1] = m_axi_awready;
+    assign succ[0] = m_axi_awvalid;
+    assign succ[2] = avalid;
+    
     always @ (posedge m_axi_aclk) begin
         if (~m_axi_aresetn) begin
             awvalid <= 0;
-            old_avalid <= 0;
         end else if (atransfer) begin
             awvalid <= 0;
-            old_avalid <= avalid;
-        end else if (avalid > old_avalid) begin
+        end else if (avalid == 1) begin
             awvalid <= 1;
-            old_avalid <= avalid;
-        end else begin
-            old_avalid <= avalid;
         end
     end
     
     always @ (posedge m_axi_aclk) begin
         if (~m_axi_aresetn) begin
             wvalid <= 0;
+            last <= 0;
         end else if (transfer) begin
             wvalid <= 0;
+            last <= 0;
         end else if (atransfer) begin
             wvalid <= 1;
+            last <= 1;
         end          
     end
     

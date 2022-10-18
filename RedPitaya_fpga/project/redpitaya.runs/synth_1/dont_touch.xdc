@@ -5,9 +5,6 @@
 
 # XDC: imports/classic/prj/classic/sdc/red_pitaya.xdc
 
-# IP: ip/reg_ctrl/reg_ctrl.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==reg_ctrl || ORIG_REF_NAME==reg_ctrl} -quiet] -quiet
-
 # Block Designs: bd/system/system.bd
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==system || ORIG_REF_NAME==system} -quiet] -quiet
 
@@ -20,22 +17,13 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==system_processi
 # IP: bd/system/ip/system_xlconstant_0/system_xlconstant_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==system_xlconstant_0 || ORIG_REF_NAME==system_xlconstant_0} -quiet] -quiet
 
-# IP: bd/system/ip/system_axi_interconnect_0_0/system_axi_interconnect_0_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==system_axi_interconnect_0_0 || ORIG_REF_NAME==system_axi_interconnect_0_0} -quiet] -quiet
-
 # IP: bd/system/ip/system_rp_expansion_to_in_0_0/system_rp_expansion_to_in_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==system_rp_expansion_to_in_0_0 || ORIG_REF_NAME==system_rp_expansion_to_in_0_0} -quiet] -quiet
 
 # IP: bd/system/ip/system_acquire_top_0_2/system_acquire_top_0_2.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==system_acquire_top_0_2 || ORIG_REF_NAME==system_acquire_top_0_2} -quiet] -quiet
 
-# IP: ip/reg_ctrl/reg_ctrl.xci
-#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==reg_ctrl || ORIG_REF_NAME==reg_ctrl} -quiet] -quiet
-
-# IP: bd/system/ip/system_auto_cc_0/system_auto_cc_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==system_auto_cc_0 || ORIG_REF_NAME==system_auto_cc_0} -quiet] -quiet
-
-# IP: bd/system/ip/system_auto_pc_0/system_auto_pc_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==system_auto_pc_0 || ORIG_REF_NAME==system_auto_pc_0} -quiet] -quiet
+# IP: bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==system_clk_wiz_0_0 || ORIG_REF_NAME==system_clk_wiz_0_0} -quiet] -quiet
 
 # XDC: bd/system/system_ooc.xdc

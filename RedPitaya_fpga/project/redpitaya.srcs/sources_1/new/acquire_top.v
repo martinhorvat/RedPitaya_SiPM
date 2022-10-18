@@ -25,34 +25,34 @@ module acquire_top#
     parameter M_AXI_CNT_ADDR_BITS   = 32,
     parameter M_AXI_CNT_DATA_BITS   = 64,
     parameter ADC_DATA_BITS         = 14,
-    parameter COUNTER_BITS          = 32)
+    parameter COUNTER_BITS          = 16)
    (input  wire                                   clk,
     input  wire                                   rst_n,
     input  wire                                   gpio_pulse,
     input  wire [ADC_DATA_BITS-1:0]               adc_data_ch1,
     input  wire [ADC_DATA_BITS-1:0]               adc_data_ch2,
     //    
-    input  wire                                   s_axi_reg_aclk,    
-    input  wire                                   s_axi_reg_aresetn,    
-    input  wire [S_AXI_REG_ADDR_BITS-1:0]         s_axi_reg_awaddr,     
-    input  wire [2:0]                             s_axi_reg_awprot,  
-    input  wire                                   s_axi_reg_awvalid,    
-    output wire                                   s_axi_reg_awready,                                   
-    input  wire [31:0]                            s_axi_reg_wdata,   
-    input  wire [3:0]                             s_axi_reg_wstrb,     
-    input  wire                                   s_axi_reg_wvalid,     
-    output wire                                   s_axi_reg_wready,     
-    output wire [1:0]                             s_axi_reg_bresp,       
-    output wire                                   s_axi_reg_bvalid,       
-    input  wire                                   s_axi_reg_bready,   
-    input  wire [S_AXI_REG_ADDR_BITS-1:0]         s_axi_reg_araddr,     
-    input  wire [2:0]                             s_axi_reg_arprot,  
-    input  wire                                   s_axi_reg_arvalid,    
-    output wire                                   s_axi_reg_arready,         
-    output wire [31:0]                            s_axi_reg_rdata, 
-    output wire [1:0]                             s_axi_reg_rresp,
-    output wire                                   s_axi_reg_rvalid,
-    input  wire                                   s_axi_reg_rready, 
+//    input  wire                                   s_axi_reg_aclk,    
+//    input  wire                                   s_axi_reg_aresetn,    
+//    input  wire [S_AXI_REG_ADDR_BITS-1:0]         s_axi_reg_awaddr,     
+//    input  wire [2:0]                             s_axi_reg_awprot,  
+//    input  wire                                   s_axi_reg_awvalid,    
+//    output wire                                   s_axi_reg_awready,                                   
+//    input  wire [31:0]                            s_axi_reg_wdata,   
+//    input  wire [3:0]                             s_axi_reg_wstrb,     
+//    input  wire                                   s_axi_reg_wvalid,     
+//    output wire                                   s_axi_reg_wready,     
+//    output wire [1:0]                             s_axi_reg_bresp,       
+//    output wire                                   s_axi_reg_bvalid,       
+//    input  wire                                   s_axi_reg_bready,   
+//    input  wire [S_AXI_REG_ADDR_BITS-1:0]         s_axi_reg_araddr,     
+//    input  wire [2:0]                             s_axi_reg_arprot,  
+//    input  wire                                   s_axi_reg_arvalid,    
+//    output wire                                   s_axi_reg_arready,         
+//    output wire [31:0]                            s_axi_reg_rdata, 
+//    output wire [1:0]                             s_axi_reg_rresp,
+//    output wire                                   s_axi_reg_rvalid,
+//    input  wire                                   s_axi_reg_rready, 
     //
     input  wire                                   m_axi_aclk,    
     input  wire                                   m_axi_aresetn,     
@@ -73,7 +73,7 @@ module acquire_top#
     input  wire                                   m_axi_bvalid,    
     output wire                                   m_axi_bready,
     output wire                                   cnt_out,
-    output wire                                   succ,
+    output wire [7:0]                             succ,
     output wire trig_out);
 
     // PARAMETERS
@@ -85,8 +85,8 @@ module acquire_top#
     
     // SIGNALS
     
-    reg  [16:0]                                         dec_cnt = 0;
-    reg  [16:0]                                         cfg_dec = 32'd625000000;
+    reg  [31:0]                                         dec_cnt;
+    reg  [31:0]                                         cfg_dec = 32'd125000000;
     wire                                                reg_clk;
     wire                                                reg_rst;
     wire [S_AXI_REG_ADDR_BITS-1:0]                      reg_addr;
@@ -98,49 +98,50 @@ module acquire_top#
     reg  [31:0]                                         dest_addr;
     reg                                                 start_acq;
     reg  [31:0]                                         buff_size;
-    wire  [COUNTER_BITS-1:0]                             cnt;
+    wire [COUNTER_BITS-1:0]                             cnt;
     wire [ADC_DATA_BITS-1:0]                            data_osc1;
     wire [ADC_DATA_BITS-1:0]                            data_osc2;
     wire [ADC_DATA_BITS+ADC_DATA_BITS+COUNTER_BITS-1:0] tdata;
-    assign succ = m_axi_bvalid;
+    wire                                                trig;
+    
     assign trig_out = trig;
     
     assign tdata[ADC_DATA_BITS-1:0] = data_osc1;
     assign tdata[2*ADC_DATA_BITS-1:ADC_DATA_BITS] = data_osc2;
     assign tdata[2*ADC_DATA_BITS+COUNTER_BITS-1:2*ADC_DATA_BITS] = cnt;
-    assign trig = (dec_cnt >= cfg_dec) ? 1 : 0;
+    assign trig = (dec_cnt >= 32'd125000000) ? 1 : 0;
     
     // REG CTRL
     
-    reg_ctrl U_reg_ctrl(
-        .s_axi_aclk     (s_axi_reg_aclk),       
-        .s_axi_aresetn  (s_axi_reg_aresetn), 
-        .s_axi_awaddr   (s_axi_reg_awaddr),
-        .s_axi_awprot   (s_axi_reg_awprot),   
-        .s_axi_awvalid  (s_axi_reg_awvalid), 
-        .s_axi_awready  (s_axi_reg_awready), 
-        .s_axi_wdata    (s_axi_reg_wdata),     
-        .s_axi_wstrb    (s_axi_reg_wstrb),     
-        .s_axi_wvalid   (s_axi_reg_wvalid),   
-        .s_axi_wready   (s_axi_reg_wready),   
-        .s_axi_bresp    (s_axi_reg_bresp),     
-        .s_axi_bvalid   (s_axi_reg_bvalid),   
-        .s_axi_bready   (s_axi_reg_bready),   
-        .s_axi_araddr   (s_axi_reg_araddr),   
-        .s_axi_arprot   (s_axi_reg_arprot),   
-        .s_axi_arvalid  (s_axi_reg_arvalid), 
-        .s_axi_arready  (s_axi_reg_arready), 
-        .s_axi_rdata    (s_axi_reg_rdata),     
-        .s_axi_rresp    (s_axi_reg_rresp),     
-        .s_axi_rvalid   (s_axi_reg_rvalid),   
-        .s_axi_rready   (s_axi_reg_rready),   
-        .bram_rst_a     (reg_rst),       
-        .bram_clk_a     (reg_clk),       
-        .bram_en_a      (reg_en),         
-        .bram_we_a      (reg_we),         
-        .bram_addr_a    (reg_addr),     
-        .bram_wrdata_a  (reg_wr_data), 
-        .bram_rddata_a  (reg_rd_data)); 
+//    reg_ctrl U_reg_ctrl(
+//        .s_axi_aclk     (s_axi_reg_aclk),       
+//        .s_axi_aresetn  (s_axi_reg_aresetn), 
+//        .s_axi_awaddr   (s_axi_reg_awaddr),
+//        .s_axi_awprot   (s_axi_reg_awprot),   
+//        .s_axi_awvalid  (s_axi_reg_awvalid), 
+//        .s_axi_awready  (s_axi_reg_awready), 
+//        .s_axi_wdata    (s_axi_reg_wdata),     
+//        .s_axi_wstrb    (s_axi_reg_wstrb),     
+//        .s_axi_wvalid   (s_axi_reg_wvalid),   
+//        .s_axi_wready   (s_axi_reg_wready),   
+//        .s_axi_bresp    (s_axi_reg_bresp),     
+//        .s_axi_bvalid   (s_axi_reg_bvalid),   
+//        .s_axi_bready   (s_axi_reg_bready),   
+//        .s_axi_araddr   (s_axi_reg_araddr),   
+//        .s_axi_arprot   (s_axi_reg_arprot),   
+//        .s_axi_arvalid  (s_axi_reg_arvalid), 
+//        .s_axi_arready  (s_axi_reg_arready), 
+//        .s_axi_rdata    (s_axi_reg_rdata),     
+//        .s_axi_rresp    (s_axi_reg_rresp),     
+//        .s_axi_rvalid   (s_axi_reg_rvalid),   
+//        .s_axi_rready   (s_axi_reg_rready),   
+//        .bram_rst_a     (reg_rst),       
+//        .bram_clk_a     (reg_clk),       
+//        .bram_en_a      (reg_en),         
+//        .bram_we_a      (reg_we),         
+//        .bram_addr_a    (reg_addr),     
+//        .bram_wrdata_a  (reg_wr_data), 
+//        .bram_rddata_a  (reg_rd_data)); 
         
     // OSC_1
     
@@ -179,9 +180,8 @@ module acquire_top#
         .M_AXI_CNT_DATA_BITS (M_AXI_CNT_DATA_BITS))
         U_axi_s2mm(
         .m_axi_aclk         (m_axi_aclk),    
-        .m_axi_aresetn      (m_axi_aresetn),     
-        .m_axi_awaddr       (32'h19000000),
-        //.m_axi_cnt_awaddr       (m_axi_cnt_awaddr) 
+        .m_axi_aresetn      (m_axi_aresetn), 
+        .m_axi_awaddr       (m_axi_awaddr),
         .m_axi_awlen    (m_axi_awlen),  
         .m_axi_awsize   (m_axi_awsize), 
         .m_axi_awburst  (m_axi_awburst),
@@ -198,7 +198,8 @@ module acquire_top#
         .m_axi_bvalid   (m_axi_bvalid), 
         .m_axi_bready   (m_axi_bready), 
         .data                   (64'd69),
-        .avalid                 (trig));
+        .avalid                 (trig),
+        .succ                   (succ));
         
     // DECIMATION
     
@@ -208,7 +209,7 @@ module acquire_top#
         else if (trig)
             dec_cnt <= 1;
         else
-            dec_cnt <= dec_cnt + 1;
+            dec_cnt <= dec_cnt + 32'b1;
     end
     
     // GET DECIMATION FACTOR
@@ -226,41 +227,41 @@ module acquire_top#
     
     // GET START_ACQ SIGNAL
     
-    always @(posedge clk)
-    begin
-      if (rst_n == 0) begin
-        start_acq <= 1'b1;
-      end else begin
-        if ((reg_addr[8-1:0] == START_ACQ_ADDR ) && (reg_wr_we == 1)) begin
-          start_acq <= 1'b1;
-        end
-      end
-    end
+//    always @(posedge clk)
+//    begin
+//      if (rst_n == 0) begin
+//        start_acq <= 1'b1;
+//      end else begin
+//        if ((reg_addr[8-1:0] == START_ACQ_ADDR ) && (reg_wr_we == 1)) begin
+//          start_acq <= 1'b1;
+//        end
+//      end
+//    end
     
-    // GET DEST_ADDR 
+//    // GET DEST_ADDR 
     
-    always @(posedge clk)
-    begin
-      if (rst_n == 0) begin
-        dest_addr <= 0;
-      end else begin
-        if ((reg_addr[8-1:0] == DEST_ADDR ) && (reg_wr_we == 1)) begin
-          dest_addr <= reg_wr_data;
-        end
-      end
-    end
+//    always @(posedge clk)
+//    begin
+//      if (rst_n == 0) begin
+//        dest_addr <= 0;
+//      end else begin
+//        if ((reg_addr[8-1:0] == DEST_ADDR ) && (reg_wr_we == 1)) begin
+//          dest_addr <= reg_wr_data;
+//        end
+//      end
+//    end
     
-    // GET BUFF_SIZE 
+//    // GET BUFF_SIZE 
     
-    always @(posedge clk)
-    begin
-      if (rst_n == 0) begin
-        buff_size <= 0;
-      end else begin
-        if ((reg_addr[8-1:0] == BUFF_SIZE_ADDR ) && (reg_wr_we == 1)) begin
-          buff_size <= reg_wr_data;
-        end
-      end
-    end
+//    always @(posedge clk)
+//    begin
+//      if (rst_n == 0) begin
+//        buff_size <= 0;
+//      end else begin
+//        if ((reg_addr[8-1:0] == BUFF_SIZE_ADDR ) && (reg_wr_we == 1)) begin
+//          buff_size <= reg_wr_data;
+//        end
+//      end
+//    end
     
 endmodule

@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Sun Oct 16 21:56:30 2022
+# Process ID: 133372
+# Current directory: /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.sim/sim_1/behav/xsim
+# Command line: wbtcv -mode batch -source /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.sim/sim_1/behav/xsim/xsim.dir/red_pitaya_top_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.sim/sim_1/behav/xsim/webtalk.log
+# Journal file: /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.sim/sim_1/behav/xsim/webtalk.jou
+#-----------------------------------------------------------
+source /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.sim/sim_1/behav/xsim/xsim.dir/red_pitaya_top_behav/webtalk/xsim_webtalk.tcl -notrace

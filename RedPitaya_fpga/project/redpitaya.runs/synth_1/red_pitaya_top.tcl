@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "/home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.runs/synth_1/red_pitaya_top.tcl"
+  variable script "/home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.runs/synth_1/red_pitaya_top.tcl"
   variable category "vivado_synth"
 }
 
@@ -79,30 +79,28 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir /home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.cache/wt [current_project]
-set_property parent.project_path /home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.xpr [current_project]
-set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
+set_property webtalk.parent_dir /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.cache/wt [current_project]
+set_property parent.project_path /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.xpr [current_project]
+set_property XPM_LIBRARIES XPM_CDC [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property ip_output_repo /home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.cache/ip [current_project]
+set_property ip_output_repo /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib -sv {
-  /home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/imports/classic/rtl/red_pitaya_pll.sv
-  /home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/imports/classic/prj/classic/rtl/red_pitaya_top.sv
+  /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/imports/classic/rtl/red_pitaya_pll.sv
+  /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/imports/classic/prj/classic/rtl/red_pitaya_top.sv
 }
-add_files /home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/system.bd
-set_property used_in_implementation false [get_files -all /home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_proc_sys_reset_0/system_proc_sys_reset_0_board.xdc]
-set_property used_in_implementation false [get_files -all /home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_proc_sys_reset_0/system_proc_sys_reset_0.xdc]
-set_property used_in_implementation false [get_files -all /home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_proc_sys_reset_0/system_proc_sys_reset_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_processing_system7_0/system_processing_system7_0.xdc]
-set_property used_in_implementation false [get_files -all /home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_acquire_top_0_2/system_acquire_top_0_2_ooc.xdc]
-set_property used_in_synthesis false [get_files -all /home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_auto_cc_0/system_auto_cc_0_clocks.xdc]
-set_property used_in_implementation false [get_files -all /home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_auto_cc_0/system_auto_cc_0_clocks.xdc]
-set_property used_in_implementation false [get_files -all /home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_auto_cc_0/system_auto_cc_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/system_ooc.xdc]
+add_files /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/system.bd
+set_property used_in_implementation false [get_files -all /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_proc_sys_reset_0/system_proc_sys_reset_0_board.xdc]
+set_property used_in_implementation false [get_files -all /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_proc_sys_reset_0/system_proc_sys_reset_0.xdc]
+set_property used_in_implementation false [get_files -all /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_proc_sys_reset_0/system_proc_sys_reset_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_processing_system7_0/system_processing_system7_0.xdc]
+set_property used_in_implementation false [get_files -all /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0_board.xdc]
+set_property used_in_implementation false [get_files -all /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0.xdc]
+set_property used_in_implementation false [get_files -all /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/system_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -113,11 +111,11 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc /home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc
-set_property used_in_implementation false [get_files /home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc]
+read_xdc /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc
+set_property used_in_implementation false [get_files /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc]
 
-read_xdc /home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/constrs_1/imports/classic/prj/classic/sdc/red_pitaya.xdc
-set_property used_in_implementation false [get_files /home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/constrs_1/imports/classic/prj/classic/sdc/red_pitaya.xdc]
+read_xdc /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/constrs_1/imports/classic/prj/classic/sdc/red_pitaya.xdc
+set_property used_in_implementation false [get_files /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/constrs_1/imports/classic/prj/classic/sdc/red_pitaya.xdc]
 
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]

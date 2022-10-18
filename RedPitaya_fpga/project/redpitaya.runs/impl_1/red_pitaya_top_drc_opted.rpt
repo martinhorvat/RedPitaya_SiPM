@@ -1,8 +1,8 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date         : Fri Oct 14 18:13:11 2022
-| Host         : pinceta-MS-7B98 running 64-bit Ubuntu 20.04.5 LTS
+| Date         : Tue Oct 18 12:48:39 2022
+| Host         : martin-MS-7996 running 64-bit Ubuntu 22.04.1 LTS
 | Command      : report_drc -file red_pitaya_top_drc_opted.rpt -pb red_pitaya_top_drc_opted.pb -rpx red_pitaya_top_drc_opted.rpx
 | Design       : red_pitaya_top
 | Device       : xc7z010clg400-1
@@ -24,16 +24,15 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 23
-+-------------+----------+-------------------------------------------------------------+------------+
-| Rule        | Severity | Description                                                 | Violations |
-+-------------+----------+-------------------------------------------------------------+------------+
-| BUFC-1      | Warning  | Input Buffer Connections                                    | 8          |
-| PLHOLDVIO-2 | Warning  | Non-Optimal connections which could lead to hold violations | 1          |
-| PLIO-3      | Warning  | Placement Constraints Check for IO constraints              | 2          |
-| PLIO-8      | Warning  | Placement Constraints Check for IO constraints              | 4          |
-| RPBF-3      | Warning  | IO port buffering is incomplete                             | 8          |
-+-------------+----------+-------------------------------------------------------------+------------+
+             Violations found: 22
++--------+----------+------------------------------------------------+------------+
+| Rule   | Severity | Description                                    | Violations |
++--------+----------+------------------------------------------------+------------+
+| BUFC-1 | Warning  | Input Buffer Connections                       | 8          |
+| PLIO-3 | Warning  | Placement Constraints Check for IO constraints | 2          |
+| PLIO-8 | Warning  | Placement Constraints Check for IO constraints | 4          |
+| RPBF-3 | Warning  | IO port buffering is incomplete                | 8          |
++--------+----------+------------------------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
@@ -75,16 +74,6 @@ Related violations: <none>
 BUFC-1#8 Warning
 Input Buffer Connections  
 Input buffer system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[7]/IBUF (in system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[7] macro) has no loads. It is recommended to have an input buffer drive an internal load.
-Related violations: <none>
-
-PLHOLDVIO-2#1 Warning
-Non-Optimal connections which could lead to hold violations  
-A LUT system_wrapper_i/acquire_top_0/inst/U_axi_s2mm/trig_out_INST_0 is driving clock pin of 15 cells. This could lead to large hold time violations. Involved cells are:
-flag_reg[0], flag_reg[0]_lopt_replica, flag_reg[1],
-flag_reg[1]_lopt_replica, flag_reg[2], flag_reg[2]_lopt_replica,
-flag_reg[3], flag_reg[3]_lopt_replica, flag_reg[4],
-flag_reg[4]_lopt_replica, flag_reg[5], flag_reg[5]_lopt_replica,
-flag_reg[6], flag_reg[6]_lopt_replica, flag_reg[7]
 Related violations: <none>
 
 PLIO-3#1 Warning

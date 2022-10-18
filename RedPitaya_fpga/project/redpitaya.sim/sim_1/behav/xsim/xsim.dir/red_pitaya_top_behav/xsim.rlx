@@ -1,0 +1,12 @@
+
+{ 
+    crc :  3211347092500292150  , 
+    ccp_crc :  0  , 
+    cmdline : " -wto d7dfd3f56ec14c538a0f711ec58ad2fe --incr --debug typical --relax --mt 8 -L xil_defaultlib -L lib_cdc_v1_0_2 -L proc_sys_reset_v5_0_13 -L axi_infrastructure_v1_1_0 -L axi_vip_v1_1_7 -L processing_system7_vip_v1_0_9 -L xlconstant_v1_1_7 -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot red_pitaya_top_behav xil_defaultlib.red_pitaya_top xil_defaultlib.glbl" , 
+    buildDate : "May 27 2020" , 
+    buildTime : "19:59:15" , 
+    linkCmd : "/usr/bin/gcc -Wa,-W  -O -fPIC  -m64  -Wl,--no-as-needed  -Wl,--unresolved-symbols=ignore-all  -o \"xsim.dir/red_pitaya_top_behav/xsimk\"   \"xsim.dir/red_pitaya_top_behav/obj/xsim_0.lnx64.o\" \"xsim.dir/red_pitaya_top_behav/obj/xsim_1.lnx64.o\" \"xsim.dir/red_pitaya_top_behav/obj/xsim_2.lnx64.o\" \"xsim.dir/red_pitaya_top_behav/obj/xsim_3.lnx64.o\" \"xsim.dir/red_pitaya_top_behav/obj/xsim_4.lnx64.o\" \"xsim.dir/red_pitaya_top_behav/obj/xsim_5.lnx64.o\" \"xsim.dir/red_pitaya_top_behav/obj/xsim_6.lnx64.o\" \"xsim.dir/red_pitaya_top_behav/obj/xsim_7.lnx64.o\" \"xsim.dir/red_pitaya_top_behav/obj/xsim_8.lnx64.o\" \"xsim.dir/red_pitaya_top_behav/obj/xsim_9.lnx64.o\" \"xsim.dir/red_pitaya_top_behav/obj/xsim_10.lnx64.o\" \"xsim.dir/red_pitaya_top_behav/obj/xsim_11.lnx64.o\" -L\"/tools/Xilinx/Vivado/2020.1/lib/lnx64.o\" -lrdi_simulator_kernel   -lrdi_simbridge_kernel" , 
+    aggregate_nets : 
+    [ 
+    ] 
+} 

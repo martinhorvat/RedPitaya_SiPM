@@ -1,0 +1,4 @@
+Running: xsim.dir/red_pitaya_top_behav/xsimk -simmode gui -wdb red_pitaya_top_behav.wdb -simrunnum 0 -socket 53091
+Design successfully loaded
+Design Loading Memory Usage: 53248 KB (Peak: 53248 KB)
+Design Loading CPU Usage: 50 ms

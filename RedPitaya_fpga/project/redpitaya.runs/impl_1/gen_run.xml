@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z010clg400-1" LaunchTime="1665763870">
+<GenRun Id="impl_1" LaunchPart="xc7z010clg400-1" LaunchTime="1666089974">
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <File Type="BITSTR-SYSDEF" Name="red_pitaya_top.sysdef"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
@@ -84,13 +84,6 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/ip/reg_ctrl/reg_ctrl.xci">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/new/axi_s2mm.sv">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -139,6 +132,14 @@
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../../RedPitaya/RedPitaya/fpga/classic/prj/classic/rtl/red_pitaya_top.sv"/>
         <Attr Name="ImportTime" Val="1663085540"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/ip/reg_ctrl/reg_ctrl.xci">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -296,6 +297,7 @@
     <Step Id="write_bitstream"/>
   </Strategy>
   <BlockFileSet Type="BlockSrcs" Name="system_acquire_top_0_2"/>
+  <BlockFileSet Type="BlockSrcs" Name="system_clk_wiz_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="system_rp_expansion_to_in_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="system_processing_system7_0"/>
   <BlockFileSet Type="BlockSrcs" Name="system_proc_sys_reset_0"/>

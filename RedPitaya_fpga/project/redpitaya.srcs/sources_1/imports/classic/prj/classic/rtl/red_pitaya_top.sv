@@ -70,16 +70,25 @@ module red_pitaya_top #(
   inout  logic [ 8-1:0] led_o
 );
 
-wire succ;
+wire [7:0] succ;
 wire trig;
 reg [7:0] flag = 0;
+wire clk_125;
 
-always @(posedge trig) begin
-    flag = flag << 1;
-    flag[0] = 1;
-end
+//always @(posedge trig) begin
+//    flag = flag << 1;
+//    flag[0] = 1;
+//end
 
-assign led_o = flag;
+//always @(posedge clk_125) begin
+//    if (succ == 1) begin 
+//        flag = flag << 1;
+//        flag[0] = 1;
+//    end    
+//end
+
+
+assign led_o = succ;
 
 // PLL signals
 logic                 adc_clk_in;
@@ -104,7 +113,6 @@ wire adc_clk_out = 1'b0;
 `endif
 
 wire trig_out;
-wire clk_125;
 wire trig_ext_syncd;
 wire rstn_0;
 

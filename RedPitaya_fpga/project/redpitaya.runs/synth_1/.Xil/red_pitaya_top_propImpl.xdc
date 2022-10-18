@@ -1,11 +1,13 @@
-set_property SRC_FILE_INFO {cfile:/home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_processing_system7_0/system_processing_system7_0/system_processing_system7_0_in_context.xdc rfile:../../../redpitaya.srcs/sources_1/bd/system/ip/system_processing_system7_0/system_processing_system7_0/system_processing_system7_0_in_context.xdc id:1 order:EARLY scoped_inst:system_wrapper_i/processing_system7} [current_design]
-set_property SRC_FILE_INFO {cfile:/home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc rfile:../../../redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc id:2} [current_design]
-set_property SRC_FILE_INFO {cfile:/home/pinceta/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/constrs_1/imports/classic/prj/classic/sdc/red_pitaya.xdc rfile:../../../redpitaya.srcs/constrs_1/imports/classic/prj/classic/sdc/red_pitaya.xdc id:3} [current_design]
-current_instance system_wrapper_i/processing_system7
-set_property src_info {type:SCOPED_XDC file:1 line:2 export:INPUT save:INPUT read:READ} [current_design]
-create_clock -period 8.000 [get_ports {}]
+set_property SRC_FILE_INFO {cfile:/home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0/system_clk_wiz_0_0_in_context.xdc rfile:../../../redpitaya.srcs/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0/system_clk_wiz_0_0_in_context.xdc id:1 order:EARLY scoped_inst:system_wrapper_i/clk_wiz_0} [current_design]
+set_property SRC_FILE_INFO {cfile:/home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc rfile:../../../redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc id:2} [current_design]
+set_property SRC_FILE_INFO {cfile:/home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/constrs_1/imports/classic/prj/classic/sdc/red_pitaya.xdc rfile:../../../redpitaya.srcs/constrs_1/imports/classic/prj/classic/sdc/red_pitaya.xdc id:3} [current_design]
+current_instance system_wrapper_i/clk_wiz_0
+set_property src_info {type:SCOPED_XDC file:1 line:1 export:INPUT save:INPUT read:READ} [current_design]
+create_clock -period 8.000 [get_ports -no_traverse {}]
 set_property src_info {type:SCOPED_XDC file:1 line:4 export:INPUT save:INPUT read:READ} [current_design]
-create_clock -period 16.000 [get_ports {}]
+create_generated_clock -source [get_ports clk_in1] -edges {1 2 3} -edge_shift {0.000 0.000 0.000} [get_ports {}]
+set_property src_info {type:SCOPED_XDC file:1 line:6 export:INPUT save:INPUT read:READ} [current_design]
+create_generated_clock -source [get_ports clk_in1] -edges {1 2 3} -edge_shift {0.000 4.000 8.000} [get_ports {}]
 current_instance
 set_property src_info {type:XDC file:2 line:19 export:INPUT save:INPUT read:READ} [current_design]
 set_property IOB        TRUE     [get_ports {adc_dat_i[*][*]}]

@@ -1,0 +1,12 @@
+verilog xil_defaultlib --include "../../../../redpitaya.srcs/sources_1/bd/system/ipshared/ec67/hdl" --include "../../../../redpitaya.srcs/sources_1/bd/system/ipshared/6b56/hdl" --include "../../../../redpitaya.srcs/sources_1/bd/system/ipshared/8b3d" \
+"../../../bd/system/ip/system_processing_system7_0/sim/system_processing_system7_0.v" \
+"../../../bd/system/ip/system_xlconstant_0/sim/system_xlconstant_0.v" \
+"../../../bd/system/ip/system_rp_expansion_to_in_0_0/sim/system_rp_expansion_to_in_0_0.v" \
+"../../../bd/system/ip/system_acquire_top_0_2/sim/system_acquire_top_0_2.v" \
+"../../../bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0_clk_wiz.v" \
+"../../../bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0.v" \
+"../../../bd/system/sim/system.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort
