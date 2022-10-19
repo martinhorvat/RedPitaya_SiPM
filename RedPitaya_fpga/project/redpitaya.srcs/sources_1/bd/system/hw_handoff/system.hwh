@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Oct 18 12:46:00 2022" VIVADOVERSION="2020.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Oct 19 20:43:25 2022" VIVADOVERSION="2020.1">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z010" NAME="system" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -35,6 +35,11 @@
     <PORT DIR="O" NAME="trig" SIGIS="data" SIGNAME="acquire_top_0_trig_out">
       <CONNECTIONS>
         <CONNECTION INSTANCE="acquire_top_0" PORT="trig_out"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="7" NAME="succ" RIGHT="0" SIGIS="data" SIGNAME="acquire_top_0_succ">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="acquire_top_0" PORT="succ"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="IO" LEFT="53" NAME="FIXED_IO_mio" RIGHT="0" SIGIS="undef" SIGNAME="processing_system7_MIO">
@@ -140,11 +145,6 @@
     <PORT DIR="IO" LEFT="3" NAME="DDR_dqs_p" RIGHT="0" SIGIS="undef" SIGNAME="processing_system7_DDR_DQS">
       <CONNECTIONS>
         <CONNECTION INSTANCE="processing_system7" PORT="DDR_DQS"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="7" NAME="succ" RIGHT="0" SIGIS="data" SIGNAME="acquire_top_0_succ">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="acquire_top_0" PORT="succ"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>

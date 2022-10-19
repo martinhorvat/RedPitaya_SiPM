@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date             : Tue Oct 18 12:48:57 2022
+| Date             : Wed Oct 19 20:46:10 2022
 | Host             : martin-MS-7996 running 64-bit Ubuntu 22.04.1 LTS
 | Command          : report_power -file red_pitaya_top_power_routed.rpt -pb red_pitaya_top_power_summary_routed.pb -rpx red_pitaya_top_power_routed.rpx
 | Design           : red_pitaya_top
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 1.607        |
+| Total On-Chip Power (W)  | 1.620        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.483        |
+| Dynamic (W)              | 1.495        |
 | Device Static (W)        | 0.125        |
 | Effective TJA (C/W)      | 11.5         |
-| Max Ambient (C)          | 66.5         |
-| Junction Temperature (C) | 43.5         |
+| Max Ambient (C)          | 66.3         |
+| Junction Temperature (C) | 43.7         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -53,19 +53,19 @@ Table of Contents
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
 | Clocks                  |     0.004 |       11 |       --- |             --- |
-| Slice Logic             |    <0.001 |      273 |       --- |             --- |
-|   LUT as Logic          |    <0.001 |       28 |     17600 |            0.16 |
+| Slice Logic             |    <0.001 |      287 |       --- |             --- |
+|   LUT as Logic          |    <0.001 |       34 |     17600 |            0.19 |
 |   CARRY4                |    <0.001 |        8 |      4400 |            0.18 |
-|   Register              |    <0.001 |       64 |     35200 |            0.18 |
+|   Register              |    <0.001 |       72 |     35200 |            0.20 |
 |   Others                |     0.000 |      162 |       --- |             --- |
 |   LUT as Shift Register |     0.000 |        1 |      6000 |            0.02 |
-| Signals                 |    <0.001 |      113 |       --- |             --- |
+| Signals                 |    <0.001 |      119 |       --- |             --- |
 | MMCM                    |     0.106 |        1 |         2 |           50.00 |
 | PLL                     |     0.000 |        1 |         2 |           50.00 |
-| I/O                     |     0.092 |       47 |       100 |           47.00 |
+| I/O                     |     0.104 |       47 |       100 |           47.00 |
 | PS7                     |     1.280 |        1 |       --- |             --- |
 | Static Power            |     0.125 |          |           |                 |
-| Total                   |     1.607 |          |           |                 |
+| Total                   |     1.620 |          |           |                 |
 +-------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -77,7 +77,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Vccint    |       1.000 |     0.014 |       0.007 |      0.007 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.070 |       0.062 |      0.008 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.022 |       0.021 |      0.001 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.026 |       0.025 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.009 |       0.008 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -159,10 +159,12 @@ Table of Contents
 +------------------------+-----------+
 | Name                   | Power (W) |
 +------------------------+-----------+
-| red_pitaya_top         |     1.483 |
+| red_pitaya_top         |     1.495 |
 |   i_OBUF_clk           |     0.014 |
 |   i_OBUF_trig          |     0.004 |
 |   system_wrapper_i     |     1.388 |
+|     acquire_top_0      |     0.001 |
+|       inst             |     0.001 |
 |     clk_wiz_0          |     0.107 |
 |       inst             |     0.107 |
 |     processing_system7 |     1.280 |
