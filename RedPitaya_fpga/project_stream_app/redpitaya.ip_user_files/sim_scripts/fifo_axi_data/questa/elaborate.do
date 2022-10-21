@@ -1,1 +1,0 @@
-vopt -64 +acc -l elaborate.log -L xilinx_vip -L xpm -L axi_vip_v1_1_7 -L processing_system7_vip_v1_0_9 -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -work xil_defaultlib xil_defaultlib.fifo_axi_data xil_defaultlib.glbl -o fifo_axi_data_opt
