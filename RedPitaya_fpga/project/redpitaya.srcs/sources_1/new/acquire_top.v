@@ -32,27 +32,27 @@ module acquire_top#
     input  wire [ADC_DATA_BITS-1:0]               adc_data_ch1,
     input  wire [ADC_DATA_BITS-1:0]               adc_data_ch2,
     //    
-//    input  wire                                   s_axi_reg_aclk,    
-//    input  wire                                   s_axi_reg_aresetn,    
-//    input  wire [S_AXI_REG_ADDR_BITS-1:0]         s_axi_reg_awaddr,     
-//    input  wire [2:0]                             s_axi_reg_awprot,  
-//    input  wire                                   s_axi_reg_awvalid,    
-//    output wire                                   s_axi_reg_awready,                                   
-//    input  wire [31:0]                            s_axi_reg_wdata,   
-//    input  wire [3:0]                             s_axi_reg_wstrb,     
-//    input  wire                                   s_axi_reg_wvalid,     
-//    output wire                                   s_axi_reg_wready,     
-//    output wire [1:0]                             s_axi_reg_bresp,       
-//    output wire                                   s_axi_reg_bvalid,       
-//    input  wire                                   s_axi_reg_bready,   
-//    input  wire [S_AXI_REG_ADDR_BITS-1:0]         s_axi_reg_araddr,     
-//    input  wire [2:0]                             s_axi_reg_arprot,  
-//    input  wire                                   s_axi_reg_arvalid,    
-//    output wire                                   s_axi_reg_arready,         
-//    output wire [31:0]                            s_axi_reg_rdata, 
-//    output wire [1:0]                             s_axi_reg_rresp,
-//    output wire                                   s_axi_reg_rvalid,
-//    input  wire                                   s_axi_reg_rready, 
+    input  wire                                   s_axi_reg_aclk,    
+    input  wire                                   s_axi_reg_aresetn,    
+    input  wire [S_AXI_REG_ADDR_BITS-1:0]         s_axi_reg_awaddr,     
+    input  wire [2:0]                             s_axi_reg_awprot,  
+    input  wire                                   s_axi_reg_awvalid,    
+    output wire                                   s_axi_reg_awready,                                   
+    input  wire [31:0]                            s_axi_reg_wdata,   
+    input  wire [3:0]                             s_axi_reg_wstrb,     
+    input  wire                                   s_axi_reg_wvalid,     
+    output wire                                   s_axi_reg_wready,     
+    output wire [1:0]                             s_axi_reg_bresp,       
+    output wire                                   s_axi_reg_bvalid,       
+    input  wire                                   s_axi_reg_bready,   
+    input  wire [S_AXI_REG_ADDR_BITS-1:0]         s_axi_reg_araddr,     
+    input  wire [2:0]                             s_axi_reg_arprot,  
+    input  wire                                   s_axi_reg_arvalid,    
+    output wire                                   s_axi_reg_arready,         
+    output wire [31:0]                            s_axi_reg_rdata, 
+    output wire [1:0]                             s_axi_reg_rresp,
+    output wire                                   s_axi_reg_rvalid,
+    input  wire                                   s_axi_reg_rready, 
     //
     input  wire                                   m_axi_aclk,    
     input  wire                                   m_axi_aresetn,     
@@ -81,7 +81,8 @@ module acquire_top#
     localparam DEC_FACTOR_ADDR       = 8'h0;   //0  Decimation factor address     
     localparam START_ACQ_ADDR        = 8'h4;   //4  Start acquisiton signal address     
     localparam DEST_ADDR             = 8'h8;   //8  Destination address address
-    localparam BUFF_SIZE_ADDR        = 8'h12;  //12 Buffer size address
+    localparam BUFF_SIZE_ADDR        = 8'hC;   //12 Buffer size address
+    localparam TEST_DATA_ADDR        = 8'h10;  //16
     
     // SIGNALS
     
@@ -103,6 +104,7 @@ module acquire_top#
     wire [ADC_DATA_BITS-1:0]                            data_osc2;
     wire [ADC_DATA_BITS+ADC_DATA_BITS+COUNTER_BITS-1:0] tdata;
     wire                                                trig;
+    reg  [63:0]                                         test_data;
     
     assign trig_out = trig;
     
@@ -113,35 +115,35 @@ module acquire_top#
     
     // REG CTRL
     
-//    reg_ctrl U_reg_ctrl(
-//        .s_axi_aclk     (s_axi_reg_aclk),       
-//        .s_axi_aresetn  (s_axi_reg_aresetn), 
-//        .s_axi_awaddr   (s_axi_reg_awaddr),
-//        .s_axi_awprot   (s_axi_reg_awprot),   
-//        .s_axi_awvalid  (s_axi_reg_awvalid), 
-//        .s_axi_awready  (s_axi_reg_awready), 
-//        .s_axi_wdata    (s_axi_reg_wdata),     
-//        .s_axi_wstrb    (s_axi_reg_wstrb),     
-//        .s_axi_wvalid   (s_axi_reg_wvalid),   
-//        .s_axi_wready   (s_axi_reg_wready),   
-//        .s_axi_bresp    (s_axi_reg_bresp),     
-//        .s_axi_bvalid   (s_axi_reg_bvalid),   
-//        .s_axi_bready   (s_axi_reg_bready),   
-//        .s_axi_araddr   (s_axi_reg_araddr),   
-//        .s_axi_arprot   (s_axi_reg_arprot),   
-//        .s_axi_arvalid  (s_axi_reg_arvalid), 
-//        .s_axi_arready  (s_axi_reg_arready), 
-//        .s_axi_rdata    (s_axi_reg_rdata),     
-//        .s_axi_rresp    (s_axi_reg_rresp),     
-//        .s_axi_rvalid   (s_axi_reg_rvalid),   
-//        .s_axi_rready   (s_axi_reg_rready),   
-//        .bram_rst_a     (reg_rst),       
-//        .bram_clk_a     (reg_clk),       
-//        .bram_en_a      (reg_en),         
-//        .bram_we_a      (reg_we),         
-//        .bram_addr_a    (reg_addr),     
-//        .bram_wrdata_a  (reg_wr_data), 
-//        .bram_rddata_a  (reg_rd_data)); 
+    reg_ctrl U_reg_ctrl(
+        .s_axi_aclk     (s_axi_reg_aclk),       
+        .s_axi_aresetn  (s_axi_reg_aresetn), 
+        .s_axi_awaddr   (s_axi_reg_awaddr),
+        .s_axi_awprot   (s_axi_reg_awprot),   
+        .s_axi_awvalid  (s_axi_reg_awvalid), 
+        .s_axi_awready  (s_axi_reg_awready), 
+        .s_axi_wdata    (s_axi_reg_wdata),     
+        .s_axi_wstrb    (s_axi_reg_wstrb),     
+        .s_axi_wvalid   (s_axi_reg_wvalid),   
+        .s_axi_wready   (s_axi_reg_wready),   
+        .s_axi_bresp    (s_axi_reg_bresp),     
+        .s_axi_bvalid   (s_axi_reg_bvalid),   
+        .s_axi_bready   (s_axi_reg_bready),   
+        .s_axi_araddr   (s_axi_reg_araddr),   
+        .s_axi_arprot   (s_axi_reg_arprot),   
+        .s_axi_arvalid  (s_axi_reg_arvalid), 
+        .s_axi_arready  (s_axi_reg_arready), 
+        .s_axi_rdata    (s_axi_reg_rdata),     
+        .s_axi_rresp    (s_axi_reg_rresp),     
+        .s_axi_rvalid   (s_axi_reg_rvalid),   
+        .s_axi_rready   (s_axi_reg_rready),   
+        .bram_rst_a     (reg_rst),       
+        .bram_clk_a     (reg_clk),       
+        .bram_en_a      (reg_en),         
+        .bram_we_a      (reg_we),         
+        .bram_addr_a    (reg_addr),     
+        .bram_wrdata_a  (reg_wr_data), 
+        .bram_rddata_a  (reg_rd_data)); 
         
     // OSC_1
     
@@ -197,7 +199,7 @@ module acquire_top#
         .m_axi_bresp    (m_axi_bresp),  
         .m_axi_bvalid   (m_axi_bvalid), 
         .m_axi_bready   (m_axi_bready), 
-        .data                   (64'd69),
+        .data                   (test_data),
         .avalid                 (trig),
         .succ                   (succ));
         
@@ -214,54 +216,67 @@ module acquire_top#
     
     // GET DECIMATION FACTOR
     
-//    always @(posedge clk)
-//    begin
-//      if (rst_n == 0) begin
-//        cfg_dec <= 32'd125000000;
-//      end else begin
-//        if ((reg_addr[8-1:0] == DEC_FACTOR_ADDR ) && (reg_wr_we == 1)) begin
-//          cfg_dec <= 32'd125000000;
-//        end
-//      end
-//    end
+    always @(posedge clk)
+    begin
+      if (rst_n == 0) begin
+        cfg_dec <= 0;
+      end else begin
+        if ((reg_addr[8-1:0] == DEC_FACTOR_ADDR ) && (reg_wr_we == 1)) begin
+          cfg_dec <= reg_wr_data;
+        end
+      end
+    end
     
     // GET START_ACQ SIGNAL
     
-//    always @(posedge clk)
-//    begin
-//      if (rst_n == 0) begin
-//        start_acq <= 1'b1;
-//      end else begin
-//        if ((reg_addr[8-1:0] == START_ACQ_ADDR ) && (reg_wr_we == 1)) begin
-//          start_acq <= 1'b1;
-//        end
-//      end
-//    end
+    always @(posedge clk)
+    begin
+      if (rst_n == 0) begin
+        start_acq <= 1'b1;
+      end else begin
+        if ((reg_addr[8-1:0] == START_ACQ_ADDR ) && (reg_wr_we == 1)) begin
+          start_acq <= 1'b1;
+        end
+      end
+    end
     
-//    // GET DEST_ADDR 
+    // GET DEST_ADDR 
     
-//    always @(posedge clk)
-//    begin
-//      if (rst_n == 0) begin
-//        dest_addr <= 0;
-//      end else begin
-//        if ((reg_addr[8-1:0] == DEST_ADDR ) && (reg_wr_we == 1)) begin
-//          dest_addr <= reg_wr_data;
-//        end
-//      end
-//    end
+    always @(posedge clk)
+    begin
+      if (rst_n == 0) begin
+        dest_addr <= 0;
+      end else begin
+        if ((reg_addr[8-1:0] == DEST_ADDR ) && (reg_wr_we == 1)) begin
+          dest_addr <= reg_wr_data;
+        end
+      end
+    end
     
-//    // GET BUFF_SIZE 
+    // GET BUFF_SIZE 
     
-//    always @(posedge clk)
-//    begin
-//      if (rst_n == 0) begin
-//        buff_size <= 0;
-//      end else begin
-//        if ((reg_addr[8-1:0] == BUFF_SIZE_ADDR ) && (reg_wr_we == 1)) begin
-//          buff_size <= reg_wr_data;
-//        end
-//      end
-//    end
+    always @(posedge clk)
+    begin
+      if (rst_n == 0) begin
+        buff_size <= 0;
+      end else begin
+        if ((reg_addr[8-1:0] == BUFF_SIZE_ADDR ) && (reg_wr_we == 1)) begin
+          buff_size <= reg_wr_data;
+        end
+      end
+    end
+    
+    // GET TEST_DATA
+    
+    always @(posedge clk)
+    begin
+      if (rst_n == 0) begin
+        test_data <= 64'd69;
+      end else begin
+        if ((reg_addr[8-1:0] == TEST_DATA_ADDR ) && (reg_wr_we == 1)) begin
+          test_data[31:0] <= reg_wr_data;
+        end
+      end
+    end
     
 endmodule

@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date         : Wed Oct 19 20:44:16 2022
+| Date         : Sat Oct 22 13:40:18 2022
 | Host         : martin-MS-7996 running 64-bit Ubuntu 22.04.1 LTS
 | Command      : report_utilization -file system_acquire_top_0_2_utilization_synth.rpt -pb system_acquire_top_0_2_utilization_synth.pb
 | Design       : system_acquire_top_0_2
@@ -30,11 +30,11 @@ Table of Contents
 +-------------------------+------+-------+-----------+-------+
 |        Site Type        | Used | Fixed | Available | Util% |
 +-------------------------+------+-------+-----------+-------+
-| Slice LUTs*             |   22 |     0 |     17600 |  0.13 |
-|   LUT as Logic          |   22 |     0 |     17600 |  0.13 |
+| Slice LUTs*             |   47 |     0 |     17600 |  0.27 |
+|   LUT as Logic          |   47 |     0 |     17600 |  0.27 |
 |   LUT as Memory         |    0 |     0 |      6000 |  0.00 |
-| Slice Registers         |   43 |     0 |     35200 |  0.12 |
-|   Register as Flip Flop |   43 |     0 |     35200 |  0.12 |
+| Slice Registers         |   55 |     0 |     35200 |  0.16 |
+|   Register as Flip Flop |   55 |     0 |     35200 |  0.16 |
 |   Register as Latch     |    0 |     0 |     35200 |  0.00 |
 | F7 Muxes                |    0 |     0 |      8800 |  0.00 |
 | F8 Muxes                |    0 |     0 |      4400 |  0.00 |
@@ -56,8 +56,8 @@ Table of Contents
 | 0     |          Yes |           - |            - |
 | 0     |          Yes |           - |          Set |
 | 1     |          Yes |           - |        Reset |
-| 0     |          Yes |         Set |            - |
-| 42    |          Yes |       Reset |            - |
+| 1     |          Yes |         Set |            - |
+| 53    |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -146,14 +146,15 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| FDRE     |   42 |        Flop & Latch |
+| FDRE     |   53 |        Flop & Latch |
+| LUT6     |   21 |                 LUT |
+| LUT5     |   10 |                 LUT |
+| LUT3     |    9 |                 LUT |
 | CARRY4   |    8 |          CarryLogic |
-| LUT5     |    7 |                 LUT |
-| LUT2     |    6 |                 LUT |
-| LUT3     |    4 |                 LUT |
-| LUT6     |    3 |                 LUT |
-| LUT1     |    3 |                 LUT |
-| LUT4     |    1 |                 LUT |
+| LUT2     |    7 |                 LUT |
+| LUT1     |    4 |                 LUT |
+| LUT4     |    2 |                 LUT |
+| FDSE     |    1 |        Flop & Latch |
 | FDCE     |    1 |        Flop & Latch |
 +----------+------+---------------------+
 

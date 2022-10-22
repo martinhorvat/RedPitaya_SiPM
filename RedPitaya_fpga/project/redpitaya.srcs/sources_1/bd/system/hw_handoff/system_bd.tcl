@@ -193,6 +193,12 @@ proc create_root_design { parentCell } {
      return 1
    }
   
+  # Create instance: axi_interconnect_0, and set properties
+  set axi_interconnect_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi_interconnect_0 ]
+  set_property -dict [ list \
+   CONFIG.NUM_MI {1} \
+ ] $axi_interconnect_0
+
   # Create instance: clk_wiz_0, and set properties
   set clk_wiz_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_wiz_0 ]
   set_property -dict [ list \
@@ -659,7 +665,7 @@ proc create_root_design { parentCell } {
    CONFIG.PCW_USB_RESET_ENABLE {1} \
    CONFIG.PCW_USB_RESET_SELECT {Share reset pin} \
    CONFIG.PCW_USE_FABRIC_INTERRUPT {1} \
-   CONFIG.PCW_USE_M_AXI_GP0 {0} \
+   CONFIG.PCW_USE_M_AXI_GP0 {1} \
    CONFIG.PCW_USE_M_AXI_GP1 {0} \
    CONFIG.PCW_USE_S_AXI_GP0 {0} \
    CONFIG.PCW_USE_S_AXI_HP0 {1} \
@@ -682,41 +688,29 @@ proc create_root_design { parentCell } {
 
   # Create interface connections
   connect_bd_intf_net -intf_net acquire_top_0_m_axi [get_bd_intf_pins acquire_top_0/m_axi] [get_bd_intf_pins processing_system7/S_AXI_HP0]
+  connect_bd_intf_net -intf_net axi_interconnect_0_M00_AXI [get_bd_intf_pins acquire_top_0/s_axi_reg] [get_bd_intf_pins axi_interconnect_0/M00_AXI]
   connect_bd_intf_net -intf_net processing_system7_DDR [get_bd_intf_ports DDR] [get_bd_intf_pins processing_system7/DDR]
   connect_bd_intf_net -intf_net processing_system7_FIXED_IO [get_bd_intf_ports FIXED_IO] [get_bd_intf_pins processing_system7/FIXED_IO]
+  connect_bd_intf_net -intf_net processing_system7_M_AXI_GP0 [get_bd_intf_pins axi_interconnect_0/S00_AXI] [get_bd_intf_pins processing_system7/M_AXI_GP0]
 
   # Create port connections
-  connect_bd_net -net ARESETN_1 [get_bd_pins acquire_top_0/m_axi_aresetn] [get_bd_pins acquire_top_0/rst_n] [get_bd_pins proc_sys_reset/interconnect_aresetn]
-  connect_bd_net -net M00_ACLK_1 [get_bd_ports clk_out] [get_bd_pins acquire_top_0/clk] [get_bd_pins acquire_top_0/m_axi_aclk] [get_bd_pins clk_wiz_0/clk_out1] [get_bd_pins processing_system7/S_AXI_HP0_ACLK]
+  connect_bd_net -net M00_ACLK_1 [get_bd_ports clk_out] [get_bd_pins acquire_top_0/clk] [get_bd_pins acquire_top_0/m_axi_aclk] [get_bd_pins acquire_top_0/s_axi_reg_aclk] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins clk_wiz_0/clk_out1] [get_bd_pins processing_system7/S_AXI_HP0_ACLK]
+  connect_bd_net -net M00_ARESETN_1 [get_bd_pins acquire_top_0/m_axi_aresetn] [get_bd_pins acquire_top_0/rst_n] [get_bd_pins acquire_top_0/s_axi_reg_aresetn] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins proc_sys_reset/peripheral_aresetn]
   connect_bd_net -net Net [get_bd_ports gpio_p] [get_bd_pins rp_expansion_to_in_0/exp_in]
-  connect_bd_net -net acquire_top_0_m_axi_awaddr [get_bd_pins acquire_top_0/m_axi_awaddr] [get_bd_pins processing_system7/S_AXI_HP0_AWADDR]
-  connect_bd_net -net acquire_top_0_m_axi_awburst [get_bd_pins acquire_top_0/m_axi_awburst] [get_bd_pins processing_system7/S_AXI_HP0_AWBURST]
-  connect_bd_net -net acquire_top_0_m_axi_awcache [get_bd_pins acquire_top_0/m_axi_awcache] [get_bd_pins processing_system7/S_AXI_HP0_AWCACHE]
-  connect_bd_net -net acquire_top_0_m_axi_awlen [get_bd_pins acquire_top_0/m_axi_awlen] [get_bd_pins processing_system7/S_AXI_HP0_AWLEN]
-  connect_bd_net -net acquire_top_0_m_axi_awprot [get_bd_pins acquire_top_0/m_axi_awprot] [get_bd_pins processing_system7/S_AXI_HP0_AWPROT]
-  connect_bd_net -net acquire_top_0_m_axi_awsize [get_bd_pins acquire_top_0/m_axi_awsize] [get_bd_pins processing_system7/S_AXI_HP0_AWSIZE]
-  connect_bd_net -net acquire_top_0_m_axi_awvalid [get_bd_pins acquire_top_0/m_axi_awvalid] [get_bd_pins processing_system7/S_AXI_HP0_AWVALID]
-  connect_bd_net -net acquire_top_0_m_axi_bready [get_bd_pins acquire_top_0/m_axi_bready] [get_bd_pins processing_system7/S_AXI_HP0_BREADY]
-  connect_bd_net -net acquire_top_0_m_axi_wdata [get_bd_pins acquire_top_0/m_axi_wdata] [get_bd_pins processing_system7/S_AXI_HP0_WDATA]
-  connect_bd_net -net acquire_top_0_m_axi_wlast [get_bd_pins acquire_top_0/m_axi_wlast] [get_bd_pins processing_system7/S_AXI_HP0_WLAST]
-  connect_bd_net -net acquire_top_0_m_axi_wstrb [get_bd_pins acquire_top_0/m_axi_wstrb] [get_bd_pins processing_system7/S_AXI_HP0_WSTRB]
-  connect_bd_net -net acquire_top_0_m_axi_wvalid [get_bd_pins acquire_top_0/m_axi_wvalid] [get_bd_pins processing_system7/S_AXI_HP0_WVALID]
   connect_bd_net -net acquire_top_0_succ [get_bd_ports succ] [get_bd_pins acquire_top_0/succ]
   connect_bd_net -net acquire_top_0_trig_out [get_bd_ports trig] [get_bd_pins acquire_top_0/trig_out]
   connect_bd_net -net adc_clk_1 [get_bd_ports adc_clk] [get_bd_pins clk_wiz_0/clk_in1]
   connect_bd_net -net adc_data_ch1_1 [get_bd_ports adc_data_ch1] [get_bd_pins acquire_top_0/adc_data_ch1]
   connect_bd_net -net adc_data_ch2_1 [get_bd_ports adc_data_ch2] [get_bd_pins acquire_top_0/adc_data_ch2]
-  connect_bd_net -net clk_wiz_0_clk_62_5 [get_bd_pins clk_wiz_0/clk_out2] [get_bd_pins proc_sys_reset/slowest_sync_clk]
+  connect_bd_net -net clk_wiz_0_clk_62_5 [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins clk_wiz_0/clk_out2] [get_bd_pins proc_sys_reset/slowest_sync_clk] [get_bd_pins processing_system7/M_AXI_GP0_ACLK]
+  connect_bd_net -net proc_sys_reset_interconnect_aresetn [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins proc_sys_reset/interconnect_aresetn]
   connect_bd_net -net processing_system7_FCLK_RESET0_N [get_bd_pins proc_sys_reset/ext_reset_in] [get_bd_pins processing_system7/FCLK_RESET0_N]
-  connect_bd_net -net processing_system7_S_AXI_HP0_AWREADY [get_bd_pins acquire_top_0/m_axi_awready] [get_bd_pins processing_system7/S_AXI_HP0_AWREADY]
-  connect_bd_net -net processing_system7_S_AXI_HP0_BRESP [get_bd_pins acquire_top_0/m_axi_bresp] [get_bd_pins processing_system7/S_AXI_HP0_BRESP]
-  connect_bd_net -net processing_system7_S_AXI_HP0_BVALID [get_bd_pins acquire_top_0/m_axi_bvalid] [get_bd_pins processing_system7/S_AXI_HP0_BVALID]
-  connect_bd_net -net processing_system7_S_AXI_HP0_WREADY [get_bd_pins acquire_top_0/m_axi_wready] [get_bd_pins processing_system7/S_AXI_HP0_WREADY]
   connect_bd_net -net rp_expansion_to_in_0_gpio_out [get_bd_pins acquire_top_0/gpio_pulse] [get_bd_pins rp_expansion_to_in_0/gpio_out]
   connect_bd_net -net xlconstant_dout [get_bd_pins proc_sys_reset/aux_reset_in] [get_bd_pins xlconstant/dout]
 
   # Create address segments
   assign_bd_address -offset 0x00000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces acquire_top_0/m_axi] [get_bd_addr_segs processing_system7/S_AXI_HP0/HP0_DDR_LOWOCM] -force
+  assign_bd_address -offset 0x40000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces processing_system7/Data] [get_bd_addr_segs acquire_top_0/s_axi_reg/reg0] -force
 
 
   # Restore current instance

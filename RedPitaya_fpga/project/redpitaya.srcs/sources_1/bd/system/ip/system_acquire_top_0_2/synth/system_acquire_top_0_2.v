@@ -61,6 +61,27 @@ module system_acquire_top_0_2 (
   gpio_pulse,
   adc_data_ch1,
   adc_data_ch2,
+  s_axi_reg_aclk,
+  s_axi_reg_aresetn,
+  s_axi_reg_awaddr,
+  s_axi_reg_awprot,
+  s_axi_reg_awvalid,
+  s_axi_reg_awready,
+  s_axi_reg_wdata,
+  s_axi_reg_wstrb,
+  s_axi_reg_wvalid,
+  s_axi_reg_wready,
+  s_axi_reg_bresp,
+  s_axi_reg_bvalid,
+  s_axi_reg_bready,
+  s_axi_reg_araddr,
+  s_axi_reg_arprot,
+  s_axi_reg_arvalid,
+  s_axi_reg_arready,
+  s_axi_reg_rdata,
+  s_axi_reg_rresp,
+  s_axi_reg_rvalid,
+  s_axi_reg_rready,
   m_axi_aclk,
   m_axi_aresetn,
   m_axi_awaddr,
@@ -84,7 +105,7 @@ module system_acquire_top_0_2 (
   trig_out
 );
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_BUSIF m_axi, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_BUSIF m_axi:s_axi_reg, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst_n, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
@@ -93,6 +114,52 @@ input wire rst_n;
 input wire gpio_pulse;
 input wire [13 : 0] adc_data_ch1;
 input wire [13 : 0] adc_data_ch2;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axi_reg_aclk, ASSOCIATED_RESET s_axi_reg_aresetn, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 s_axi_reg_aclk CLK" *)
+input wire s_axi_reg_aclk;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axi_reg_aresetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 s_axi_reg_aresetn RST" *)
+input wire s_axi_reg_aresetn;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi_reg AWADDR" *)
+input wire [11 : 0] s_axi_reg_awaddr;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi_reg AWPROT" *)
+input wire [2 : 0] s_axi_reg_awprot;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi_reg AWVALID" *)
+input wire s_axi_reg_awvalid;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi_reg AWREADY" *)
+output wire s_axi_reg_awready;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi_reg WDATA" *)
+input wire [31 : 0] s_axi_reg_wdata;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi_reg WSTRB" *)
+input wire [3 : 0] s_axi_reg_wstrb;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi_reg WVALID" *)
+input wire s_axi_reg_wvalid;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi_reg WREADY" *)
+output wire s_axi_reg_wready;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi_reg BRESP" *)
+output wire [1 : 0] s_axi_reg_bresp;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi_reg BVALID" *)
+output wire s_axi_reg_bvalid;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi_reg BREADY" *)
+input wire s_axi_reg_bready;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi_reg ARADDR" *)
+input wire [11 : 0] s_axi_reg_araddr;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi_reg ARPROT" *)
+input wire [2 : 0] s_axi_reg_arprot;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi_reg ARVALID" *)
+input wire s_axi_reg_arvalid;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi_reg ARREADY" *)
+output wire s_axi_reg_arready;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi_reg RDATA" *)
+output wire [31 : 0] s_axi_reg_rdata;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi_reg RRESP" *)
+output wire [1 : 0] s_axi_reg_rresp;
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi_reg RVALID" *)
+output wire s_axi_reg_rvalid;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axi_reg, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 125000000, ID_WIDTH 0, ADDR_WIDTH 12, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, NUM_READ_THREADS 4, NUM_WRITE_THREA\
+DS 4, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi_reg RREADY" *)
+input wire s_axi_reg_rready;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m_axi_aclk, ASSOCIATED_RESET m_axi_aresetn, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 m_axi_aclk CLK" *)
 input wire m_axi_aclk;
@@ -149,6 +216,27 @@ output wire trig_out;
     .gpio_pulse(gpio_pulse),
     .adc_data_ch1(adc_data_ch1),
     .adc_data_ch2(adc_data_ch2),
+    .s_axi_reg_aclk(s_axi_reg_aclk),
+    .s_axi_reg_aresetn(s_axi_reg_aresetn),
+    .s_axi_reg_awaddr(s_axi_reg_awaddr),
+    .s_axi_reg_awprot(s_axi_reg_awprot),
+    .s_axi_reg_awvalid(s_axi_reg_awvalid),
+    .s_axi_reg_awready(s_axi_reg_awready),
+    .s_axi_reg_wdata(s_axi_reg_wdata),
+    .s_axi_reg_wstrb(s_axi_reg_wstrb),
+    .s_axi_reg_wvalid(s_axi_reg_wvalid),
+    .s_axi_reg_wready(s_axi_reg_wready),
+    .s_axi_reg_bresp(s_axi_reg_bresp),
+    .s_axi_reg_bvalid(s_axi_reg_bvalid),
+    .s_axi_reg_bready(s_axi_reg_bready),
+    .s_axi_reg_araddr(s_axi_reg_araddr),
+    .s_axi_reg_arprot(s_axi_reg_arprot),
+    .s_axi_reg_arvalid(s_axi_reg_arvalid),
+    .s_axi_reg_arready(s_axi_reg_arready),
+    .s_axi_reg_rdata(s_axi_reg_rdata),
+    .s_axi_reg_rresp(s_axi_reg_rresp),
+    .s_axi_reg_rvalid(s_axi_reg_rvalid),
+    .s_axi_reg_rready(s_axi_reg_rready),
     .m_axi_aclk(m_axi_aclk),
     .m_axi_aresetn(m_axi_aresetn),
     .m_axi_awaddr(m_axi_awaddr),

@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date         : Wed Oct 19 20:45:05 2022
+| Date         : Sat Oct 22 13:41:11 2022
 | Host         : martin-MS-7996 running 64-bit Ubuntu 22.04.1 LTS
 | Command      : report_utilization -file red_pitaya_top_utilization_synth.rpt -pb red_pitaya_top_utilization_synth.pb
 | Design       : red_pitaya_top
@@ -170,6 +170,8 @@ Table of Contents
 | system_processing_system7_0   |    1 |
 | system_proc_sys_reset_0       |    1 |
 | system_clk_wiz_0_0            |    1 |
+| system_auto_pc_0              |    1 |
+| system_auto_cc_0              |    1 |
 | system_acquire_top_0_2        |    1 |
 +-------------------------------+------+
 

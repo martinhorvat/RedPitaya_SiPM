@@ -70,6 +70,8 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "system_processing_system7_0_synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 1
+set_msg_config -id {HDL-1065} -limit 10000
 set_param project.vivado.isBlockSynthRun true
 set_msg_config -msgmgr_mode ooc_run
 OPTRACE "Creating in-memory project" START { }
@@ -81,7 +83,7 @@ set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
 set_property webtalk.parent_dir /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.cache/wt [current_project]
 set_property parent.project_path /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.xpr [current_project]
-set_property XPM_LIBRARIES XPM_CDC [current_project]
+set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property ip_output_repo /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.cache/ip [current_project]
