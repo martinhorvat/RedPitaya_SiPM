@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
    "Default View_ScaleFactor":"0.717935",
-   "Default View_TopLeft":"-40,254",
+   "Default View_TopLeft":"28,266",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:9.0 TLS
 #  -string -flagsOSRD
@@ -37,11 +37,11 @@ preplace netloc adc_clk_1 1 0 1 -760J 500n
 preplace netloc acquire_top_0_succ 1 2 3 630 310 N 310 NJ
 preplace netloc proc_sys_reset_interconnect_aresetn 1 1 4 290 290 610J 300 NJ 300 1260
 preplace netloc M00_ARESETN_1 1 1 4 270 260 N 260 N 260 1280
-preplace netloc processing_system7_FIXED_IO 1 4 1 1300J 530n
 preplace netloc processing_system7_DDR 1 4 1 1280J 510n
+preplace netloc processing_system7_FIXED_IO 1 4 1 1300J 530n
 preplace netloc acquire_top_0_m_axi 1 2 2 N 660 N
-preplace netloc processing_system7_M_AXI_GP0 1 1 4 280 270 N 270 N 270 1270
 preplace netloc axi_interconnect_0_M00_AXI 1 1 2 300J 300 600
+preplace netloc processing_system7_M_AXI_GP0 1 1 4 280 270 N 270 N 270 1270
 levelinfo -pg 1 -780 100 450 710 1030 1320
 pagesize -pg 1 -db -bbox -sgen -980 -280 1490 1690
 "

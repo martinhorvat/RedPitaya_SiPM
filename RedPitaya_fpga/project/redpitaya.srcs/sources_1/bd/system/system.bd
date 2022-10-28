@@ -1370,6 +1370,12 @@
               }
             },
             "interface_nets": {
+              "auto_pc_to_s00_couplers": {
+                "interface_ports": [
+                  "M_AXI",
+                  "auto_pc/M_AXI"
+                ]
+              },
               "s00_couplers_to_auto_cc": {
                 "interface_ports": [
                   "S_AXI",
@@ -1380,12 +1386,6 @@
                 "interface_ports": [
                   "auto_cc/M_AXI",
                   "auto_pc/S_AXI"
-                ]
-              },
-              "auto_pc_to_s00_couplers": {
-                "interface_ports": [
-                  "M_AXI",
-                  "auto_pc/M_AXI"
                 ]
               }
             },

@@ -1,7 +1,7 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
--- Date        : Sat Oct 22 13:40:18 2022
+-- Date        : Sat Oct 22 18:46:02 2022
 -- Host        : martin-MS-7996 running 64-bit Ubuntu 22.04.1 LTS
 -- Command     : write_vhdl -force -mode funcsim -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix
 --               decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ system_acquire_top_0_2_sim_netlist.vhdl
@@ -567,10 +567,9 @@ use UNISIM.VCOMPONENTS.ALL;
 entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_axi_s2mm is
   port (
     m_axi_wlast : out STD_LOGIC;
-    bready_reg_0 : out STD_LOGIC;
+    m_axi_bready : out STD_LOGIC;
     m_axi_awvalid : out STD_LOGIC;
     \dec_cnt_reg[23]\ : out STD_LOGIC;
-    Q : out STD_LOGIC_VECTOR ( 5 downto 0 );
     m_axi_aclk : in STD_LOGIC;
     m_axi_awready : in STD_LOGIC;
     m_axi_aresetn : in STD_LOGIC;
@@ -587,18 +586,14 @@ entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_axi_s2mm is
 end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_axi_s2mm;
 
 architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_axi_s2mm is
-  signal \^q\ : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal awvalid_i_1_n_0 : STD_LOGIC;
   signal bready_i_1_n_0 : STD_LOGIC;
-  signal \^bready_reg_0\ : STD_LOGIC;
   signal busy : STD_LOGIC;
   signal busy_i_1_n_0 : STD_LOGIC;
   signal \^dec_cnt_reg[23]\ : STD_LOGIC;
   signal \^m_axi_awvalid\ : STD_LOGIC;
+  signal \^m_axi_bready\ : STD_LOGIC;
   signal \^m_axi_wlast\ : STD_LOGIC;
-  signal p_0_in : STD_LOGIC;
-  signal resp : STD_LOGIC;
-  signal succ_0 : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal trig_out_INST_0_i_1_n_0 : STD_LOGIC;
   signal trig_out_INST_0_i_2_n_0 : STD_LOGIC;
   signal trig_out_INST_0_i_3_n_0 : STD_LOGIC;
@@ -608,16 +603,10 @@ architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_axi_s2mm is
   signal trig_out_INST_0_i_7_n_0 : STD_LOGIC;
   signal trig_out_INST_0_i_8_n_0 : STD_LOGIC;
   signal wvalid_i_1_n_0 : STD_LOGIC;
-  attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \succ_[1]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \succ_[2]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \succ_[3]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \succ_[4]_i_1\ : label is "soft_lutpair4";
 begin
-  Q(5 downto 0) <= \^q\(5 downto 0);
-  bready_reg_0 <= \^bready_reg_0\;
   \dec_cnt_reg[23]\ <= \^dec_cnt_reg[23]\;
   m_axi_awvalid <= \^m_axi_awvalid\;
+  m_axi_bready <= \^m_axi_bready\;
   m_axi_wlast <= \^m_axi_wlast\;
 awvalid_i_1: unisim.vcomponents.LUT5
     generic map(
@@ -648,7 +637,7 @@ bready_i_1: unisim.vcomponents.LUT5
       I1 => \^m_axi_wlast\,
       I2 => m_axi_wready,
       I3 => m_axi_bvalid,
-      I4 => \^bready_reg_0\,
+      I4 => \^m_axi_bready\,
       O => bready_i_1_n_0
     );
 bready_reg: unisim.vcomponents.FDRE
@@ -656,7 +645,7 @@ bready_reg: unisim.vcomponents.FDRE
       C => m_axi_aclk,
       CE => '1',
       D => bready_i_1_n_0,
-      Q => \^bready_reg_0\,
+      Q => \^m_axi_bready\,
       R => '0'
     );
 busy_i_1: unisim.vcomponents.LUT5
@@ -665,7 +654,7 @@ busy_i_1: unisim.vcomponents.LUT5
     )
         port map (
       I0 => busy,
-      I1 => \^bready_reg_0\,
+      I1 => \^m_axi_bready\,
       I2 => m_axi_bvalid,
       I3 => \^dec_cnt_reg[23]\,
       I4 => m_axi_aresetn,
@@ -678,134 +667,6 @@ busy_reg: unisim.vcomponents.FDRE
       D => busy_i_1_n_0,
       Q => busy,
       R => '0'
-    );
-\succ_[0]_i_1\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => \^q\(0),
-      O => succ_0(0)
-    );
-\succ_[1]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => \^q\(0),
-      I1 => \^q\(1),
-      O => succ_0(1)
-    );
-\succ_[2]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"78"
-    )
-        port map (
-      I0 => \^q\(0),
-      I1 => \^q\(1),
-      I2 => \^q\(2),
-      O => succ_0(2)
-    );
-\succ_[3]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"7F80"
-    )
-        port map (
-      I0 => \^q\(1),
-      I1 => \^q\(0),
-      I2 => \^q\(2),
-      I3 => \^q\(3),
-      O => succ_0(3)
-    );
-\succ_[4]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"7FFF8000"
-    )
-        port map (
-      I0 => \^q\(2),
-      I1 => \^q\(0),
-      I2 => \^q\(1),
-      I3 => \^q\(3),
-      I4 => \^q\(4),
-      O => succ_0(4)
-    );
-\succ_[5]_i_1\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => m_axi_aresetn,
-      O => p_0_in
-    );
-\succ_[5]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"8"
-    )
-        port map (
-      I0 => \^bready_reg_0\,
-      I1 => m_axi_bvalid,
-      O => resp
-    );
-\succ_[5]_i_3\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"7FFFFFFF80000000"
-    )
-        port map (
-      I0 => \^q\(3),
-      I1 => \^q\(1),
-      I2 => \^q\(0),
-      I3 => \^q\(2),
-      I4 => \^q\(4),
-      I5 => \^q\(5),
-      O => succ_0(5)
-    );
-\succ__reg[0]\: unisim.vcomponents.FDRE
-     port map (
-      C => m_axi_aclk,
-      CE => resp,
-      D => succ_0(0),
-      Q => \^q\(0),
-      R => p_0_in
-    );
-\succ__reg[1]\: unisim.vcomponents.FDRE
-     port map (
-      C => m_axi_aclk,
-      CE => resp,
-      D => succ_0(1),
-      Q => \^q\(1),
-      R => p_0_in
-    );
-\succ__reg[2]\: unisim.vcomponents.FDRE
-     port map (
-      C => m_axi_aclk,
-      CE => resp,
-      D => succ_0(2),
-      Q => \^q\(2),
-      R => p_0_in
-    );
-\succ__reg[3]\: unisim.vcomponents.FDRE
-     port map (
-      C => m_axi_aclk,
-      CE => resp,
-      D => succ_0(3),
-      Q => \^q\(3),
-      R => p_0_in
-    );
-\succ__reg[4]\: unisim.vcomponents.FDRE
-     port map (
-      C => m_axi_aclk,
-      CE => resp,
-      D => succ_0(4),
-      Q => \^q\(4),
-      R => p_0_in
-    );
-\succ__reg[5]\: unisim.vcomponents.FDRE
-     port map (
-      C => m_axi_aclk,
-      CE => resp,
-      D => succ_0(5),
-      Q => \^q\(5),
-      R => p_0_in
     );
 trig_out_INST_0: unisim.vcomponents.LUT6
     generic map(
@@ -1377,7 +1238,6 @@ architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_acquire_top 
   signal \^m_axi_wlast\ : STD_LOGIC;
   signal reg_addr : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal reg_wr_data : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal \^succ\ : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal \^trig_out\ : STD_LOGIC;
   signal NLW_U_reg_ctrl_bram_clk_a_UNCONNECTED : STD_LOGIC;
   signal NLW_U_reg_ctrl_bram_en_a_UNCONNECTED : STD_LOGIC;
@@ -1526,7 +1386,12 @@ begin
   m_axi_wvalid <= \^m_axi_wlast\;
   succ(7) <= \<const0>\;
   succ(6) <= \<const0>\;
-  succ(5 downto 0) <= \^succ\(5 downto 0);
+  succ(5) <= \<const0>\;
+  succ(4) <= \<const0>\;
+  succ(3) <= \<const0>\;
+  succ(2) <= \<const0>\;
+  succ(1) <= \<const0>\;
+  succ(0) <= \<const0>\;
   trig_out <= \^trig_out\;
 GND: unisim.vcomponents.GND
      port map (
@@ -1534,17 +1399,16 @@ GND: unisim.vcomponents.GND
     );
 U_axi_s2mm: entity work.decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_axi_s2mm
      port map (
-      Q(5 downto 0) => \^succ\(5 downto 0),
       S(3) => \dec_cnt_reg_n_0_[24]\,
       S(2) => \dec_cnt_reg_n_0_[23]\,
       S(1) => \dec_cnt_reg_n_0_[22]\,
       S(0) => \dec_cnt_reg_n_0_[21]\,
-      bready_reg_0 => m_axi_bready,
       \dec_cnt_reg[23]\ => \^trig_out\,
       m_axi_aclk => m_axi_aclk,
       m_axi_aresetn => m_axi_aresetn,
       m_axi_awready => m_axi_awready,
       m_axi_awvalid => m_axi_awvalid,
+      m_axi_bready => m_axi_bready,
       m_axi_bvalid => m_axi_bvalid,
       m_axi_wlast => \^m_axi_wlast\,
       m_axi_wready => m_axi_wready,

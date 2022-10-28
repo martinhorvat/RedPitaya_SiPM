@@ -268,13 +268,17 @@ module acquire_top#
     
     // GET TEST_DATA
     
+    reg  [7:0] succ_;
+    assign succ = succ_;
+        
     always @(posedge clk)
     begin
       if (rst_n == 0) begin
         test_data <= 64'd69;
       end else begin
         if ((reg_addr[8-1:0] == TEST_DATA_ADDR ) && (reg_wr_we == 1)) begin
-          test_data[31:0] <= reg_wr_data;
+            succ_ <= 7'b1;
+            test_data[31:0] <= reg_wr_data;
         end
       end
     end

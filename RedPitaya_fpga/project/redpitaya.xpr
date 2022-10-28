@@ -115,17 +115,17 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="system.bd" FileRelPathName="ip/system_acquire_top_0_2/system_acquire_top_0_2.xci">
-          <Proxy FileSetName="system_acquire_top_0_2"/>
-        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="system.bd" FileRelPathName="ip/system_proc_sys_reset_0/system_proc_sys_reset_0.xci">
           <Proxy FileSetName="system_proc_sys_reset_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="system.bd" FileRelPathName="ip/system_processing_system7_0/system_processing_system7_0.xci">
+          <Proxy FileSetName="system_processing_system7_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="system.bd" FileRelPathName="ip/system_rp_expansion_to_in_0_0/system_rp_expansion_to_in_0_0.xci">
           <Proxy FileSetName="system_rp_expansion_to_in_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="system.bd" FileRelPathName="ip/system_processing_system7_0/system_processing_system7_0.xci">
-          <Proxy FileSetName="system_processing_system7_0"/>
+        <CompFileExtendedInfo CompFileName="system.bd" FileRelPathName="ip/system_acquire_top_0_2/system_acquire_top_0_2.xci">
+          <Proxy FileSetName="system_acquire_top_0_2"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="system.bd" FileRelPathName="ip/system_clk_wiz_0_0/system_clk_wiz_0_0.xci">
           <Proxy FileSetName="system_clk_wiz_0_0"/>

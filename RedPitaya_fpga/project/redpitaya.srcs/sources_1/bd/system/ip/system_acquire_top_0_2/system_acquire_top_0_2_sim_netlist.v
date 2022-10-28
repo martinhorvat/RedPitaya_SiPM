@@ -1,7 +1,7 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-// Date        : Sat Oct 22 13:40:18 2022
+// Date        : Sat Oct 22 18:46:02 2022
 // Host        : martin-MS-7996 running 64-bit Ubuntu 22.04.1 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_acquire_top_0_2/system_acquire_top_0_2_sim_netlist.v
@@ -451,7 +451,6 @@ module system_acquire_top_0_2_acquire_top
   wire s_axi_reg_wready;
   wire [3:0]s_axi_reg_wstrb;
   wire s_axi_reg_wvalid;
-  wire [5:0]\^succ ;
   wire trig_out;
   wire NLW_U_reg_ctrl_bram_clk_a_UNCONNECTED;
   wire NLW_U_reg_ctrl_bram_en_a_UNCONNECTED;
@@ -584,18 +583,22 @@ module system_acquire_top_0_2_acquire_top
   assign m_axi_wvalid = m_axi_wlast;
   assign succ[7] = \<const0> ;
   assign succ[6] = \<const0> ;
-  assign succ[5:0] = \^succ [5:0];
+  assign succ[5] = \<const0> ;
+  assign succ[4] = \<const0> ;
+  assign succ[3] = \<const0> ;
+  assign succ[2] = \<const0> ;
+  assign succ[1] = \<const0> ;
+  assign succ[0] = \<const0> ;
   GND GND
        (.G(\<const0> ));
   system_acquire_top_0_2_axi_s2mm U_axi_s2mm
-       (.Q(\^succ ),
-        .S({\dec_cnt_reg_n_0_[24] ,\dec_cnt_reg_n_0_[23] ,\dec_cnt_reg_n_0_[22] ,\dec_cnt_reg_n_0_[21] }),
-        .bready_reg_0(m_axi_bready),
+       (.S({\dec_cnt_reg_n_0_[24] ,\dec_cnt_reg_n_0_[23] ,\dec_cnt_reg_n_0_[22] ,\dec_cnt_reg_n_0_[21] }),
         .\dec_cnt_reg[23] (trig_out),
         .m_axi_aclk(m_axi_aclk),
         .m_axi_aresetn(m_axi_aresetn),
         .m_axi_awready(m_axi_awready),
         .m_axi_awvalid(m_axi_awvalid),
+        .m_axi_bready(m_axi_bready),
         .m_axi_bvalid(m_axi_bvalid),
         .m_axi_wlast(m_axi_wlast),
         .m_axi_wready(m_axi_wready),
@@ -1518,10 +1521,9 @@ endmodule
 (* ORIG_REF_NAME = "axi_s2mm" *) 
 module system_acquire_top_0_2_axi_s2mm
    (m_axi_wlast,
-    bready_reg_0,
+    m_axi_bready,
     m_axi_awvalid,
     \dec_cnt_reg[23] ,
-    Q,
     m_axi_aclk,
     m_axi_awready,
     m_axi_aresetn,
@@ -1535,10 +1537,9 @@ module system_acquire_top_0_2_axi_s2mm
     m_axi_wready,
     m_axi_bvalid);
   output m_axi_wlast;
-  output bready_reg_0;
+  output m_axi_bready;
   output m_axi_awvalid;
   output \dec_cnt_reg[23] ;
-  output [5:0]Q;
   input m_axi_aclk;
   input m_axi_awready;
   input m_axi_aresetn;
@@ -1552,11 +1553,9 @@ module system_acquire_top_0_2_axi_s2mm
   input m_axi_wready;
   input m_axi_bvalid;
 
-  wire [5:0]Q;
   wire [3:0]S;
   wire awvalid_i_1_n_0;
   wire bready_i_1_n_0;
-  wire bready_reg_0;
   wire busy;
   wire busy_i_1_n_0;
   wire \dec_cnt_reg[23] ;
@@ -1564,12 +1563,10 @@ module system_acquire_top_0_2_axi_s2mm
   wire m_axi_aresetn;
   wire m_axi_awready;
   wire m_axi_awvalid;
+  wire m_axi_bready;
   wire m_axi_bvalid;
   wire m_axi_wlast;
   wire m_axi_wready;
-  wire p_0_in;
-  wire resp;
-  wire [5:0]succ_0;
   wire [3:0]trig_out;
   wire [2:0]trig_out_0;
   wire [3:0]trig_out_1;
@@ -1608,19 +1605,19 @@ module system_acquire_top_0_2_axi_s2mm
         .I1(m_axi_wlast),
         .I2(m_axi_wready),
         .I3(m_axi_bvalid),
-        .I4(bready_reg_0),
+        .I4(m_axi_bready),
         .O(bready_i_1_n_0));
   FDRE bready_reg
        (.C(m_axi_aclk),
         .CE(1'b1),
         .D(bready_i_1_n_0),
-        .Q(bready_reg_0),
+        .Q(m_axi_bready),
         .R(1'b0));
   LUT5 #(
     .INIT(32'hFF2A0000)) 
     busy_i_1
        (.I0(busy),
-        .I1(bready_reg_0),
+        .I1(m_axi_bready),
         .I2(m_axi_bvalid),
         .I3(\dec_cnt_reg[23] ),
         .I4(m_axi_aresetn),
@@ -1631,102 +1628,6 @@ module system_acquire_top_0_2_axi_s2mm
         .D(busy_i_1_n_0),
         .Q(busy),
         .R(1'b0));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \succ_[0]_i_1 
-       (.I0(Q[0]),
-        .O(succ_0[0]));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
-  LUT2 #(
-    .INIT(4'h6)) 
-    \succ_[1]_i_1 
-       (.I0(Q[0]),
-        .I1(Q[1]),
-        .O(succ_0[1]));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
-  LUT3 #(
-    .INIT(8'h78)) 
-    \succ_[2]_i_1 
-       (.I0(Q[0]),
-        .I1(Q[1]),
-        .I2(Q[2]),
-        .O(succ_0[2]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
-  LUT4 #(
-    .INIT(16'h7F80)) 
-    \succ_[3]_i_1 
-       (.I0(Q[1]),
-        .I1(Q[0]),
-        .I2(Q[2]),
-        .I3(Q[3]),
-        .O(succ_0[3]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
-  LUT5 #(
-    .INIT(32'h7FFF8000)) 
-    \succ_[4]_i_1 
-       (.I0(Q[2]),
-        .I1(Q[0]),
-        .I2(Q[1]),
-        .I3(Q[3]),
-        .I4(Q[4]),
-        .O(succ_0[4]));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \succ_[5]_i_1 
-       (.I0(m_axi_aresetn),
-        .O(p_0_in));
-  LUT2 #(
-    .INIT(4'h8)) 
-    \succ_[5]_i_2 
-       (.I0(bready_reg_0),
-        .I1(m_axi_bvalid),
-        .O(resp));
-  LUT6 #(
-    .INIT(64'h7FFFFFFF80000000)) 
-    \succ_[5]_i_3 
-       (.I0(Q[3]),
-        .I1(Q[1]),
-        .I2(Q[0]),
-        .I3(Q[2]),
-        .I4(Q[4]),
-        .I5(Q[5]),
-        .O(succ_0[5]));
-  FDRE \succ__reg[0] 
-       (.C(m_axi_aclk),
-        .CE(resp),
-        .D(succ_0[0]),
-        .Q(Q[0]),
-        .R(p_0_in));
-  FDRE \succ__reg[1] 
-       (.C(m_axi_aclk),
-        .CE(resp),
-        .D(succ_0[1]),
-        .Q(Q[1]),
-        .R(p_0_in));
-  FDRE \succ__reg[2] 
-       (.C(m_axi_aclk),
-        .CE(resp),
-        .D(succ_0[2]),
-        .Q(Q[2]),
-        .R(p_0_in));
-  FDRE \succ__reg[3] 
-       (.C(m_axi_aclk),
-        .CE(resp),
-        .D(succ_0[3]),
-        .Q(Q[3]),
-        .R(p_0_in));
-  FDRE \succ__reg[4] 
-       (.C(m_axi_aclk),
-        .CE(resp),
-        .D(succ_0[4]),
-        .Q(Q[4]),
-        .R(p_0_in));
-  FDRE \succ__reg[5] 
-       (.C(m_axi_aclk),
-        .CE(resp),
-        .D(succ_0[5]),
-        .Q(Q[5]),
-        .R(p_0_in));
   LUT6 #(
     .INIT(64'hFFFFFFFF45454544)) 
     trig_out_INST_0

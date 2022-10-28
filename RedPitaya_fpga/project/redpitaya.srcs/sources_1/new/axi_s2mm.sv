@@ -120,14 +120,14 @@ module axi_s2mm#
         end 
     end
     
-    always @ (posedge m_axi_aclk) begin
-        if (~m_axi_aresetn) begin
-            succ_ <= 0;
-        end else if (resp) begin
-            succ_[5:0] <= succ_[5:0] + 6'b1;
-        end else if (resp) begin
-            succ_[7:6] <= m_axi_bresp;
-        end
-    end
+//    always @ (posedge m_axi_aclk) begin
+//        if (~m_axi_aresetn) begin
+//            succ_ <= 0;
+//        end else if (resp) begin
+//            succ_[5:0] <= succ_[5:0] + 6'b1;
+//        end else if (resp) begin
+//            succ_[7:6] <= m_axi_bresp;
+//        end
+//    end
     
 endmodule
