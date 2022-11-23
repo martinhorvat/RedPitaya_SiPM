@@ -87,7 +87,7 @@ module acquire_top#
     // SIGNALS
     
     reg  [31:0]                                         dec_cnt;
-    reg  [31:0]                                         cfg_dec = 32'd125000000;
+    reg  [31:0]                                         cfg_dec;
     wire                                                reg_clk;
     wire                                                reg_rst;
     wire [S_AXI_REG_ADDR_BITS-1:0]                      reg_addr;
@@ -95,7 +95,7 @@ module acquire_top#
     wire [3:0]                                          reg_we;
     wire                                                reg_wr_we;
     wire [31:0]                                         reg_wr_data;    
-    wire [31:0]                                         reg_rd_data;
+    reg  [31:0]                                         reg_rd_data;
     reg  [31:0]                                         dest_addr;
     reg                                                 start_acq;
     reg  [31:0]                                         buff_size;
@@ -112,6 +112,8 @@ module acquire_top#
     assign tdata[2*ADC_DATA_BITS-1:ADC_DATA_BITS] = data_osc2;
     assign tdata[2*ADC_DATA_BITS+COUNTER_BITS-1:2*ADC_DATA_BITS] = cnt;
     assign trig = (dec_cnt >= 32'd125000000) ? 1 : 0;
+    
+    assign reg_wr_we = reg_en & (reg_we == 4'hF);
     
     // REG CTRL
     
@@ -184,24 +186,24 @@ module acquire_top#
         .m_axi_aclk         (m_axi_aclk),    
         .m_axi_aresetn      (m_axi_aresetn), 
         .m_axi_awaddr       (m_axi_awaddr),
-        .m_axi_awlen    (m_axi_awlen),  
-        .m_axi_awsize   (m_axi_awsize), 
-        .m_axi_awburst  (m_axi_awburst),
-        .m_axi_awprot   (m_axi_awprot), 
-        .m_axi_awcache  (m_axi_awcache),
-        .m_axi_awvalid  (m_axi_awvalid),
-        .m_axi_awready  (m_axi_awready),
-        .m_axi_wdata    (m_axi_wdata),  
-        .m_axi_wstrb    (m_axi_wstrb),  
-        .m_axi_wlast    (m_axi_wlast),  
-        .m_axi_wvalid   (m_axi_wvalid), 
-        .m_axi_wready   (m_axi_wready), 
-        .m_axi_bresp    (m_axi_bresp),  
-        .m_axi_bvalid   (m_axi_bvalid), 
-        .m_axi_bready   (m_axi_bready), 
-        .data                   (test_data),
-        .avalid                 (trig),
-        .succ                   (succ));
+        .m_axi_awlen        (m_axi_awlen),  
+        .m_axi_awsize       (m_axi_awsize), 
+        .m_axi_awburst      (m_axi_awburst),
+        .m_axi_awprot       (m_axi_awprot), 
+        .m_axi_awcache      (m_axi_awcache),
+        .m_axi_awvalid      (m_axi_awvalid),
+        .m_axi_awready      (m_axi_awready),
+        .m_axi_wdata        (m_axi_wdata),  
+        .m_axi_wstrb        (m_axi_wstrb),  
+        .m_axi_wlast        (m_axi_wlast),  
+        .m_axi_wvalid       (m_axi_wvalid), 
+        .m_axi_wready       (m_axi_wready), 
+        .m_axi_bresp        (m_axi_bresp),  
+        .m_axi_bvalid       (m_axi_bvalid), 
+        .m_axi_bready       (m_axi_bready), 
+        .data               (test_data),
+        .avalid             (trig),
+        .succ               (succ));
         
     // DECIMATION
     
@@ -219,7 +221,7 @@ module acquire_top#
     always @(posedge clk)
     begin
       if (rst_n == 0) begin
-        cfg_dec <= 0;
+        cfg_dec <= 1;
       end else begin
         if ((reg_addr[8-1:0] == DEC_FACTOR_ADDR ) && (reg_wr_we == 1)) begin
           cfg_dec <= reg_wr_data;
@@ -232,10 +234,10 @@ module acquire_top#
     always @(posedge clk)
     begin
       if (rst_n == 0) begin
-        start_acq <= 1'b1;
+        start_acq <= 1'b0;
       end else begin
         if ((reg_addr[8-1:0] == START_ACQ_ADDR ) && (reg_wr_we == 1)) begin
-          start_acq <= 1'b1;
+          start_acq <= reg_wr_data[0];
         end
       end
     end
@@ -258,7 +260,7 @@ module acquire_top#
     always @(posedge clk)
     begin
       if (rst_n == 0) begin
-        buff_size <= 0;
+        buff_size <= 1024;
       end else begin
         if ((reg_addr[8-1:0] == BUFF_SIZE_ADDR ) && (reg_wr_we == 1)) begin
           buff_size <= reg_wr_data;
@@ -274,13 +276,30 @@ module acquire_top#
     always @(posedge clk)
     begin
       if (rst_n == 0) begin
-        test_data <= 64'd69;
+        test_data <= 64'd123;
       end else begin
         if ((reg_addr[8-1:0] == TEST_DATA_ADDR ) && (reg_wr_we == 1)) begin
-            succ_ <= 7'b1;
+            // succ_ <= 7'b1;
             test_data[31:0] <= reg_wr_data;
         end
       end
     end
-    
+
+////////////////////////////////////////////////////////////
+// Name : Register Read Data
+// 
+////////////////////////////////////////////////////////////
+
+always @(posedge clk)
+begin
+  case (reg_addr[8-1:0])
+    DEC_FACTOR_ADDR:   reg_rd_data <= cfg_dec;
+    START_ACQ_ADDR:    reg_rd_data <= {31'b0, start_acq};
+    DEST_ADDR:         reg_rd_data <= dest_addr;
+    BUFF_SIZE_ADDR:    reg_rd_data <= buff_size;
+    TEST_DATA_ADDR:    reg_rd_data <= test_data[31:0];          
+    default            reg_rd_data <= 32'd0;                  
+  endcase
+end
+
 endmodule

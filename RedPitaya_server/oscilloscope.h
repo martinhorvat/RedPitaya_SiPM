@@ -28,6 +28,7 @@ public:
         size_t _bufferSize);
     ~Oscilloscope();
 
+    auto print() -> void;
     static Ptr create(const UioT &_uio);
     auto prepare() -> void;
 

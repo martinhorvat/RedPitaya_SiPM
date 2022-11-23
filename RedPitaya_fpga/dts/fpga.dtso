@@ -5,7 +5,7 @@
 		target = <&amba_pl>;
                 __overlay__ {
 
-                        rp_acquire: rp_acquire@40000000 {
+                        rp_acquire: rp_acquire@50000000 {
                      		#address-cells = <1>;
                 		#size-cells = <1>;
                                 compatible = "generic-uio";
@@ -14,7 +14,7 @@
 
                         };
 
-                        rp_generate: rp_generate@40100000 {
+                        rp_generate: rp_generate@50100000 {
                      		#address-cells = <1>;
                 		#size-cells = <1>;
                                 compatible = "generic-uio";

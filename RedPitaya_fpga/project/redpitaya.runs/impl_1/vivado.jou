@@ -2,11 +2,11 @@
 # Vivado v2020.1 (64-bit)
 # SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
 # IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
-# Start of session at: Sat Oct 22 18:47:00 2022
-# Process ID: 9606
-# Current directory: /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.runs/impl_1
+# Start of session at: Wed Nov 23 20:13:42 2022
+# Process ID: 39584
+# Current directory: /home/martin/projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.runs/impl_1
 # Command line: vivado -log red_pitaya_top.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source red_pitaya_top.tcl -notrace
-# Log file: /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.runs/impl_1/red_pitaya_top.vdi
-# Journal file: /home/martin/Projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.runs/impl_1/vivado.jou
+# Log file: /home/martin/projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.runs/impl_1/red_pitaya_top.vdi
+# Journal file: /home/martin/projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.runs/impl_1/vivado.jou
 #-----------------------------------------------------------
 source red_pitaya_top.tcl -notrace

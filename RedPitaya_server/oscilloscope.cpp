@@ -12,7 +12,7 @@ void * MmapNumber(int _fd, size_t _size, size_t _number) {
     return mmap(nullptr, _size, PROT_READ | PROT_WRITE, MAP_SHARED, _fd, offset);
 }
 
-void setRegister(volatile RegMap * baseOsc_addr,volatile uint32_t *reg, int32_t value){
+void setRegister(volatile RegMap * baseOsc_addr, volatile uint32_t *reg, int32_t value){
     (void)(baseOsc_addr);
 //    fprintf(stderr,"\tSet register 0x%X <- 0x%X\n",(uint32_t)reg-(uint32_t)baseOsc_addr,value);
     *reg = value;
@@ -76,6 +76,7 @@ Oscilloscope::Oscilloscope(int _fd, void *_regset, size_t _regsetSize, void *_bu
     m_OscBufferNumber(0)
 {
     uintptr_t oscMap = reinterpret_cast<uintptr_t>(m_Regset);
+    // uintptr_t oscMap = reinterpret_cast<uintptr_t>(m_Buffer);
     m_OscMap = reinterpret_cast<RegMap *>(oscMap);
     m_OscBuffer1 = static_cast<uint8_t *>(m_Buffer);
     m_OscBuffer2 = static_cast<uint8_t *>(m_Buffer) + osc_buf_size * 2;    
@@ -88,10 +89,20 @@ Oscilloscope::~Oscilloscope()
     close(m_Fd);
 }
 
+auto Oscilloscope::print() -> void {
+    std::cout << "dec_factor: " << m_OscMap->dec_factor << std::endl;
+    std::cout << "start_acq: " << m_OscMap->start_acq << std::endl;
+    std::cout << "dest_addr: " << m_OscMap->dest_addr << std::endl;
+    std::cout << "buff_size: " << m_OscMap->buff_size << std::endl;
+    std::cout << "test_data: " << m_OscMap->test_data << std::endl;
+}
+
 auto Oscilloscope::setReg(volatile RegMap *_OscMap) -> void{
     setRegister(_OscMap, &(_OscMap->dec_factor), 120);
-
-    std::cout << _OscMap -> dec_factor << std::endl;
+    setRegister(_OscMap, &(_OscMap->start_acq), 120);
+    setRegister(_OscMap, &(_OscMap->dest_addr), 120);
+    setRegister(_OscMap, &(_OscMap->buff_size), 120);
+    setRegister(_OscMap, &(_OscMap->test_data), 120);
 }
 
 auto Oscilloscope::prepare() -> void {
