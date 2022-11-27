@@ -5,6 +5,9 @@
 
 # XDC: imports/classic/prj/classic/sdc/red_pitaya.xdc
 
+# IP: ip/FIFO_16_64/FIFO_16_64.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==FIFO_16_64 || ORIG_REF_NAME==FIFO_16_64} -quiet] -quiet
+
 # IP: ip/reg_ctrl/reg_ctrl.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==reg_ctrl || ORIG_REF_NAME==reg_ctrl} -quiet] -quiet
 
@@ -26,6 +29,9 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==system_rp_expan
 # IP: bd/system/ip/system_acquire_top_0_2/system_acquire_top_0_2.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==system_acquire_top_0_2 || ORIG_REF_NAME==system_acquire_top_0_2} -quiet] -quiet
 
+# IP: ip/FIFO_16_64/FIFO_16_64.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==FIFO_16_64 || ORIG_REF_NAME==FIFO_16_64} -quiet] -quiet
+
 # IP: ip/reg_ctrl/reg_ctrl.xci
 #dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==reg_ctrl || ORIG_REF_NAME==reg_ctrl} -quiet] -quiet
 
@@ -40,5 +46,17 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==system_auto_cc_
 
 # IP: bd/system/ip/system_auto_pc_0/system_auto_pc_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==system_auto_pc_0 || ORIG_REF_NAME==system_auto_pc_0} -quiet] -quiet
+
+# XDC: ip/FIFO_16_64/FIFO_16_64.xdc
+set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==FIFO_16_64 || ORIG_REF_NAME==FIFO_16_64} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: ip/FIFO_16_64/FIFO_16_64_clocks.xdc
+#dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==FIFO_16_64 || ORIG_REF_NAME==FIFO_16_64} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: ip/FIFO_16_64/FIFO_16_64.xdc
+#dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==FIFO_16_64 || ORIG_REF_NAME==FIFO_16_64} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: ip/FIFO_16_64/FIFO_16_64_clocks.xdc
+#dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==FIFO_16_64 || ORIG_REF_NAME==FIFO_16_64} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
 # XDC: bd/system/system_ooc.xdc

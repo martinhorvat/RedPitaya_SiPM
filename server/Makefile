@@ -2,44 +2,79 @@ CC = gcc
 CCFLAGS = -g -Wall
 
 SOURCEDIR = src/app
+TESTDIR = src/test
 BUILDDIR = build
+BIN = $(BUILDDIR)/bin
+OBJ = $(BUILDDIR)/obj
 MAIN = src
 
-TEST_SOURCES = $(wildcard $(SOURCEDIR)/*.test.c)
+UNIT_TEST_SOURCES = $(wildcard $(SOURCEDIR)/*.test.c)
 SOURCES = $(wildcard $(SOURCEDIR)/*.c)
-TEST_EXECUTABLES = $(patsubst $(SOURCEDIR)/%.c, $(BUILDDIR)/bin/%, $(TEST_SOURCES))
-EXECUTABLES = $(patsubst $(SOURCEDIR)/%.c, $(BUILDDIR)/bin/%, $(SOURCES))
+UNIT_TEST_EXECUTABLES = $(patsubst $(SOURCEDIR)/%.c, $(BIN)/%, $(UNIT_TEST_SOURCES))
+EXECUTABLES = $(patsubst $(SOURCEDIR)/%.c, $(BIN)/%, $(SOURCES))
+TEST_SOURCES = $(wildcard src/test/*.c)
+TEST_EXECUTABLES = $(patsubst src/test/%.c,$(BIN)/test/%, $(TEST_SOURCES))
+
 
 .PHONY: rebuild
-rebuild_test:
+rebuild:
 	$(MAKE) clean
 	$(MAKE) main
+
+.PHONY: rebuild_unit_test
+rebuild_unit_test:
+	$(MAKE) clean
+	$(MAKE) unit_test
+
+.PHONY: rebuild_all_test
+rebuild_all_test: 
+	$(MAKE) clean
+	$(MAKE) unit_test
+	$(MAKE) test
 
 .PHONY: rebuild_test
 rebuild_test:
 	$(MAKE) clean
 	$(MAKE) test
 
+.PHONY: main
+main: $(BIN)/rpsspd
+
+.PHONY: unit_test
+unit_test: $(UNIT_TEST_EXECUTABLES)
+
 .PHONY: test
 test: $(TEST_EXECUTABLES)
-
-.PHONY: main
-main: $(BUILDDIR)/bin/rpsspd
 
 .PHONY: clean
 clean:
 	rm -rf $(BUILDDIR)
-	mkdir -p $(BUILDDIR)/bin
-	mkdir -p $(BUILDDIR)/obj
+	mkdir -p $(BIN)/test
+	mkdir -p $(OBJ)/test
 
-$(BUILDDIR)/bin/%.test: $(BUILDDIR)/obj/%.test.o $(BUILDDIR)/obj/%.o
+$(BIN)/%.test: $(OBJ)/%.test.o $(OBJ)/%.o
+	$(CC) $(CCFLAGS) $^ -o $@
+
+$(OBJ)/%.test.o: $(SOURCEDIR)/%.test.c
+	$(CC) $^ -o $@ -c
+
+$(OBJ)/%.o: $(SOURCEDIR)/%.c
+	$(CC) $^ -o $@ -c
+
+$(BIN)/oscilloscope.test: $(OBJ)/oscilloscope.test.o \
+	$(OBJ)/oscilloscope.o $(OBJ)/uio_parser.o
 	$(CC) $^ -o $@
 
-$(BUILDDIR)/obj/%.test.o: $(SOURCEDIR)/%.test.c
+# fpga.dtbo : fpga.dtso
+# 	dtc -@ -O dtb -o fpga.dtbo fpga.dtso
+
+$(BIN)/test/fifo_counts: $(OBJ)/test/fifo_counts.o \
+	$(OBJ)/oscilloscope.o $(OBJ)/uio_parser.o
+
+	$(CC) $(CCFLAGS) $^ -o $@
+
+$(OBJ)/test/%.o: $(TESTDIR)/%.c
 	$(CC) $^ -o $@ -c
 
-$(BUILDDIR)/obj/%.o: $(SOURCEDIR)/%.c
+$(OBJ)/test/%.o: $(TESTDIR)/%.c
 	$(CC) $^ -o $@ -c
-
-$(BUILDDIR)/obj/oscilloscope.o: $(BUILDDIR)/obj/uio_parser.o $(SOURCEDIR)/oscilloscope.h $(SOURCEDIR)/oscilloscope.c
-	$(CC) $(FLAGS) $< -o $@

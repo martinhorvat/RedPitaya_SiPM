@@ -20,7 +20,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='/home/martin/projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.runs/system_acquire_top_0_2_synth_1'
+HD_PWD='/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/system_acquire_top_0_2_synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

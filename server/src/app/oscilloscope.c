@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <string.h>
+#include <stdio.h>
 #include "oscilloscope.h"
 
 void *memory_map(int fd, size_t size, size_t number) {
@@ -14,7 +15,10 @@ void *memory_map(int fd, size_t size, size_t number) {
 }
 
 Acq *create_acq(Uio uio) {
-    int fd = open(strcat("/dev/", uio.name), O_RDWR);
+    char *path = malloc(sizeof(char[100]));
+    snprintf(path, 100, "%s%s", "/dev/", uio.name);
+    
+    int fd = open(path, O_RDWR);
 
     Reg_map *reg = memory_map(fd, uio.maps->uio_map.size, 0);
     Buffer *buff = memory_map(fd, uio.maps->next->uio_map.size, 1);
@@ -40,4 +44,13 @@ void stop_acq(Acq *acq) {
 
 void set_decimation(Acq *acq, uint32_t dec) {
     set_reg(&(acq->reg->dec_factor), dec);
+}
+
+void print_reg(Acq *acq) {
+    printf("dec_factor: %d\n", acq->reg->dec_factor);
+    printf("start_acq: %d\n", acq->reg->start_acq);
+    printf("dest_addr: %d\n", acq->reg->dest_addr);
+    printf("buff_size: %d\n", acq->reg->buff_size);
+    printf("test_data: %d\n", acq->reg->test_data);
+    printf("fifo_count: %d\n", acq->reg->fifo_count);
 }

@@ -21,6 +21,7 @@ typedef struct UioMap_list_t{
 } UioMap_list;
 
 typedef struct {
+    char node_name[20];
     char name[20];
     UioMap_list *maps;
 } Uio;
@@ -37,5 +38,6 @@ int read_file(char *, char[100]);
 UioMap_list *create_maps(struct dirent *);
 void add_uio(Uio_list **, Uio_list *);
 void add_uiomap(UioMap_list **, UioMap_list *);
+Uio *find_uio_by_name(Uio_list *, const char *);
 
 #endif

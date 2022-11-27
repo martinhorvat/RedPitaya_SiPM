@@ -23,7 +23,8 @@ Uio_list *get_uios() {
         
         fresh = malloc(sizeof(Uio_list));
 
-        strcpy(fresh->uio.name, get_uio_name(pdirent));
+        strcpy(fresh->uio.node_name, get_uio_name(pdirent));
+        strcpy(fresh->uio.name, pdirent->d_name);
         fresh->uio.maps = create_maps(pdirent);
 
         add_uio(&root, fresh);
@@ -167,4 +168,18 @@ UioMap_list *create_maps(struct dirent *pdirent) {
     }
 
     return root;
+}
+
+Uio *find_uio_by_name(Uio_list *uio_list, const char *name) {
+    Uio_list *current = uio_list;
+
+    while(current != NULL) {
+        if(strcmp(current->uio.node_name, name) == 0) {
+            return &(current->uio);
+        }
+
+        current = current -> next;
+    }
+
+    return NULL;
 }

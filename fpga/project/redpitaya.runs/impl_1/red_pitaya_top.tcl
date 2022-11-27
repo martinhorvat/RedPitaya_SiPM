@@ -17,7 +17,7 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
-  variable script "/home/martin/projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.runs/impl_1/red_pitaya_top.tcl"
+  variable script "/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/impl_1/red_pitaya_top.tcl"
   variable category "vivado_impl"
 }
 
@@ -114,6 +114,7 @@ proc step_failed { step } {
   close $ch
 }
 
+set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {HDL-1065} -limit 10000
 
 OPTRACE "Implementation" START { ROLLUP_1 }
@@ -129,22 +130,23 @@ OPTRACE "create in-memory project" START { }
   set_param project.singleFileAddWarning.threshold 0
 OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
-  set_property webtalk.parent_dir /home/martin/projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.cache/wt [current_project]
-  set_property parent.project_path /home/martin/projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.xpr [current_project]
-  set_property ip_output_repo /home/martin/projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.cache/ip [current_project]
+  set_property webtalk.parent_dir /home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.cache/wt [current_project]
+  set_property parent.project_path /home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.xpr [current_project]
+  set_property ip_output_repo /home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
-  add_files -quiet /home/martin/projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.runs/synth_1/red_pitaya_top.dcp
+  add_files -quiet /home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/red_pitaya_top.dcp
   set_msg_config -source 4 -id {BD 41-1661} -limit 0
   set_param project.isImplRun true
-  read_ip -quiet /home/martin/projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/ip/reg_ctrl/reg_ctrl.xci
-  add_files /home/martin/projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/system.bd
+  read_ip -quiet /home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/FIFO_16_64/FIFO_16_64.xci
+  read_ip -quiet /home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/reg_ctrl/reg_ctrl.xci
+  add_files /home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/system.bd
   set_param project.isImplRun false
 OPTRACE "read constraints: implementation" START { }
-  read_xdc /home/martin/projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc
-  read_xdc /home/martin/projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/constrs_1/imports/classic/prj/classic/sdc/red_pitaya.xdc
+  read_xdc /home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/constrs_1/imports/classic/sdc/red_pitaya.xdc
+  read_xdc /home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/constrs_1/imports/classic/prj/classic/sdc/red_pitaya.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "add files" END { }
 OPTRACE "link_design" START { }

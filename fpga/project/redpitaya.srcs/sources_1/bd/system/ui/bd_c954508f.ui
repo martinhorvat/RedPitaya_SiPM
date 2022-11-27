@@ -3,7 +3,7 @@
    "Color Coded_ScaleFactor":"0.569952",
    "Color Coded_TopLeft":"-177,-2",
    "Default View_ScaleFactor":"0.892756",
-   "Default View_TopLeft":"-1026,253",
+   "Default View_TopLeft":"-1026,254",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:9.0 TLS
 #  -string -flagsOSRD
@@ -40,8 +40,8 @@ preplace netloc ACLK_1 1 1 3 N 440 -80 280 330
 preplace netloc clk_gen_locked 1 1 4 N 420 -100 570 340 570 980
 preplace netloc adc_clk_1 1 0 1 -760 450n
 preplace netloc processing_system7_M_AXI_GP0 1 2 3 -40 310 N 310 970
-preplace netloc axi_interconnect_0_M00_AXI 1 2 2 -50 320 310
 preplace netloc acquire_top_0_m_axi 1 3 1 N 700
+preplace netloc axi_interconnect_0_M00_AXI 1 2 2 -50 320 310
 preplace netloc processing_system7_FIXED_IO 1 4 1 1000 530n
 preplace netloc processing_system7_DDR 1 4 1 990 500n
 levelinfo -pg 1 -780 -420 -210 160 730 1780

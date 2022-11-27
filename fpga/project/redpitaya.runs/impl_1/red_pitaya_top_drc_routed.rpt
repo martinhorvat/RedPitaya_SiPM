@@ -1,0 +1,160 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
+| Date         : Sun Nov 27 12:40:16 2022
+| Host         : martin-desktop running 64-bit ArcoLinux
+| Command      : report_drc -file red_pitaya_top_drc_routed.rpt -pb red_pitaya_top_drc_routed.pb -rpx red_pitaya_top_drc_routed.rpx
+| Design       : red_pitaya_top
+| Device       : xc7z010clg400-1
+| Speed File   : -1
+| Design State : Fully Routed
+------------------------------------------------------------------------------------------------------------------------------------
+
+Report DRC
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+           Ruledeck: default
+             Max violations: <unlimited>
+             Violations found: 23
++-----------+----------+------------------------------------------------+------------+
+| Rule      | Severity | Description                                    | Violations |
++-----------+----------+------------------------------------------------+------------+
+| BUFC-1    | Warning  | Input Buffer Connections                       | 8          |
+| PLIO-3    | Warning  | Placement Constraints Check for IO constraints | 2          |
+| PLIO-8    | Warning  | Placement Constraints Check for IO constraints | 4          |
+| RPBF-3    | Warning  | IO port buffering is incomplete                | 8          |
+| RTSTAT-10 | Warning  | No routable loads                              | 1          |
++-----------+----------+------------------------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+BUFC-1#1 Warning
+Input Buffer Connections  
+Input buffer system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[0]/IBUF (in system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[0] macro) has no loads. It is recommended to have an input buffer drive an internal load.
+Related violations: <none>
+
+BUFC-1#2 Warning
+Input Buffer Connections  
+Input buffer system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[1]/IBUF (in system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[1] macro) has no loads. It is recommended to have an input buffer drive an internal load.
+Related violations: <none>
+
+BUFC-1#3 Warning
+Input Buffer Connections  
+Input buffer system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[2]/IBUF (in system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[2] macro) has no loads. It is recommended to have an input buffer drive an internal load.
+Related violations: <none>
+
+BUFC-1#4 Warning
+Input Buffer Connections  
+Input buffer system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[3]/IBUF (in system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[3] macro) has no loads. It is recommended to have an input buffer drive an internal load.
+Related violations: <none>
+
+BUFC-1#5 Warning
+Input Buffer Connections  
+Input buffer system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[4]/IBUF (in system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[4] macro) has no loads. It is recommended to have an input buffer drive an internal load.
+Related violations: <none>
+
+BUFC-1#6 Warning
+Input Buffer Connections  
+Input buffer system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[5]/IBUF (in system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[5] macro) has no loads. It is recommended to have an input buffer drive an internal load.
+Related violations: <none>
+
+BUFC-1#7 Warning
+Input Buffer Connections  
+Input buffer system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[6]/IBUF (in system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[6] macro) has no loads. It is recommended to have an input buffer drive an internal load.
+Related violations: <none>
+
+BUFC-1#8 Warning
+Input Buffer Connections  
+Input buffer system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[7]/IBUF (in system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[7] macro) has no loads. It is recommended to have an input buffer drive an internal load.
+Related violations: <none>
+
+PLIO-3#1 Warning
+Placement Constraints Check for IO constraints  
+Partially locked IO Bus is found. Following components of the IO Bus vinn_i[4:0] are not locked:  vinn_i[4]
+Related violations: <none>
+
+PLIO-3#2 Warning
+Placement Constraints Check for IO constraints  
+Partially locked IO Bus is found. Following components of the IO Bus vinp_i[4:0] are not locked:  vinp_i[4]
+Related violations: <none>
+
+PLIO-8#1 Warning
+Placement Constraints Check for IO constraints  
+Terminal dac_pwm_o[0] has IOB constraint set to TRUE, but it is either not connected to a FLOP element or the connected FLOP element could not be brought into the I/O.
+Related violations: <none>
+
+PLIO-8#2 Warning
+Placement Constraints Check for IO constraints  
+Terminal dac_pwm_o[1] has IOB constraint set to TRUE, but it is either not connected to a FLOP element or the connected FLOP element could not be brought into the I/O.
+Related violations: <none>
+
+PLIO-8#3 Warning
+Placement Constraints Check for IO constraints  
+Terminal dac_pwm_o[2] has IOB constraint set to TRUE, but it is either not connected to a FLOP element or the connected FLOP element could not be brought into the I/O.
+Related violations: <none>
+
+PLIO-8#4 Warning
+Placement Constraints Check for IO constraints  
+Terminal dac_pwm_o[3] has IOB constraint set to TRUE, but it is either not connected to a FLOP element or the connected FLOP element could not be brought into the I/O.
+Related violations: <none>
+
+RPBF-3#1 Warning
+IO port buffering is incomplete  
+Device port led_o[0] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#2 Warning
+IO port buffering is incomplete  
+Device port led_o[1] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#3 Warning
+IO port buffering is incomplete  
+Device port led_o[2] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#4 Warning
+IO port buffering is incomplete  
+Device port led_o[3] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#5 Warning
+IO port buffering is incomplete  
+Device port led_o[4] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#6 Warning
+IO port buffering is incomplete  
+Device port led_o[5] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#7 Warning
+IO port buffering is incomplete  
+Device port led_o[6] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#8 Warning
+IO port buffering is incomplete  
+Device port led_o[7] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RTSTAT-10#1 Warning
+No routable loads  
+10 net(s) have no routable loads. The problem bus(es) and/or net(s) are system_wrapper_i/acquire_top_0/inst/axi_control/FIFO/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/aempty_fwft_i,
+system_wrapper_i/acquire_top_0/inst/axi_control/FIFO/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/empty_fwft_i,
+system_wrapper_i/acquire_top_0/inst/axi_control/FIFO/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_i,
+system_wrapper_i/acquire_top_0/inst/axi_control/FIFO/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_i,
+system_wrapper_i/acquire_top_0/inst/axi_control/FIFO/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg[2:0],
+system_wrapper_i/acquire_top_0/inst/axi_control/FIFO/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg[2:0].
+Related violations: <none>
+
+

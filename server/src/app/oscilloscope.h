@@ -1,11 +1,13 @@
 #ifndef UIO_LIB_OSCILLOSCOPE_H
 #define UIO_LIB_OSCILLOSCOPE_H
 
+#ifndef ACQ_BUF_SIZE
+#define ACQ_BUF_SIZE (65536) / 2.0
+#endif
+
 #include <stddef.h>
 #include <stdint.h>
 #include "uio_parser.h"
-
-const uint32_t ACQ_BUF_SIZE = (65536) / 2.0;
 
 typedef volatile struct {
     uint32_t dec_factor;
