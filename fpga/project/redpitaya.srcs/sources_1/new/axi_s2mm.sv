@@ -43,24 +43,26 @@ module axi_s2mm#
     output wire                                   m_axi_bready, 
     input  wire                                   avalid,
     input  wire  [M_AXI_CNT_DATA_BITS-1:0]        data,
-    output wire  [7:0]                            succ);
+    output wire  [7:0]                            succ,
+    input  wire                                   last,
+    input  wire  [3:0]                            len,
+    output wire                                   transfer);
         
     reg awvalid;
     reg wvalid;
-    reg last;
     reg bready;
     reg busy;
     
     wire atransfer;
-    wire transfer;
+    //wire transfer;
     wire resp;
     
     reg [7:0] succ_;
     assign succ = succ_;
     
-    assign m_axi_awlen = 4'b0000;
+    assign m_axi_awlen = len - 1;
     assign m_axi_awsize = 3'b011;
-    assign m_axi_awburst = 2'b00;
+    assign m_axi_awburst = 2'b01;
     assign m_axi_awprot = 3'b000;
     assign m_axi_awcache = 4'b0011;
     assign m_axi_wstrb = 8'b11111111;
@@ -90,13 +92,10 @@ module axi_s2mm#
     always @ (posedge m_axi_aclk) begin
         if (~m_axi_aresetn) begin
             wvalid <= 0;
-            last <= 0;
         end else if (avalid && ~busy) begin
             wvalid <= 1;
-            last <= 1;
-        end else if (transfer) begin
+        end else if (transfer && last) begin
             wvalid <= 0;
-            last <= 0;
         end 
     end
     
@@ -105,7 +104,7 @@ module axi_s2mm#
             bready <= 0;
         end else if (resp) begin
             bready <= 0;
-        end else if (transfer) begin
+        end else if (transfer && last) begin
             bready <= 1;
         end 
     end
@@ -113,20 +112,18 @@ module axi_s2mm#
     always @ (posedge m_axi_aclk) begin
         if (~m_axi_aresetn) begin
             busy <= 0;
+        end else if (resp) begin
+            busy <= 0; 
         end else if (avalid) begin
             busy <= 1;
-        end else if (resp) begin
-            busy <= 0;
-        end 
+        end        
     end
     
 //    always @ (posedge m_axi_aclk) begin
 //        if (~m_axi_aresetn) begin
 //            succ_ <= 0;
-//        end else if (resp) begin
-//            succ_[5:0] <= succ_[5:0] + 6'b1;
-//        end else if (resp) begin
-//            succ_[7:6] <= m_axi_bresp;
+//        end else if (transfer) begin
+//            succ_ += 1; 
 //        end
 //    end
     

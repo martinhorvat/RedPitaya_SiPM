@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
 -- Date        : Sat Nov 26 17:13:05 2022
 -- Host        : martin-desktop running 64-bit ArcoLinux
--- Command     : write_vhdl -force -mode funcsim
---               /home/martin/projects/RedPitaya_SiPM/RedPitaya_fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_proc_sys_reset_0/system_proc_sys_reset_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top system_proc_sys_reset_0 -prefix
+--               system_proc_sys_reset_0_ system_proc_sys_reset_0_sim_netlist.vhdl
 -- Design      : system_proc_sys_reset_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -25,8 +25,6 @@ entity system_proc_sys_reset_0_cdc_sync is
     aux_reset_in : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_proc_sys_reset_0_cdc_sync : entity is "cdc_sync";
 end system_proc_sys_reset_0_cdc_sync;
 
 architecture STRUCTURE of system_proc_sys_reset_0_cdc_sync is
@@ -218,8 +216,6 @@ entity system_proc_sys_reset_0_upcnt_n is
     seq_cnt_en : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_proc_sys_reset_0_upcnt_n : entity is "upcnt_n";
 end system_proc_sys_reset_0_upcnt_n;
 
 architecture STRUCTURE of system_proc_sys_reset_0_upcnt_n is
@@ -384,8 +380,6 @@ entity system_proc_sys_reset_0_lpf is
     ext_reset_in : in STD_LOGIC;
     aux_reset_in : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_proc_sys_reset_0_lpf : entity is "lpf";
 end system_proc_sys_reset_0_lpf;
 
 architecture STRUCTURE of system_proc_sys_reset_0_lpf is
@@ -530,8 +524,6 @@ entity system_proc_sys_reset_0_sequence_psr is
     lpf_int : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_proc_sys_reset_0_sequence_psr : entity is "sequence_psr";
 end system_proc_sys_reset_0_sequence_psr;
 
 architecture STRUCTURE of system_proc_sys_reset_0_sequence_psr is
@@ -870,8 +862,6 @@ entity system_proc_sys_reset_0_proc_sys_reset is
   attribute C_NUM_PERP_ARESETN of system_proc_sys_reset_0_proc_sys_reset : entity is 1;
   attribute C_NUM_PERP_RST : integer;
   attribute C_NUM_PERP_RST of system_proc_sys_reset_0_proc_sys_reset : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_proc_sys_reset_0_proc_sys_reset : entity is "proc_sys_reset";
 end system_proc_sys_reset_0_proc_sys_reset;
 
 architecture STRUCTURE of system_proc_sys_reset_0_proc_sys_reset is

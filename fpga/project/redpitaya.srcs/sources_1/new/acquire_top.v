@@ -84,9 +84,11 @@ module acquire_top#
     localparam BUFF_SIZE_ADDR        = 8'hC;   //12 Buffer size address
     localparam TEST_DATA_ADDR        = 8'h10;  //16 Test data address
     localparam FIFO_RD_CNT_ADDT      = 8'h14;  //20 Number of reads in fifo address
+    localparam FIFO_MIN_THRESH_ADDR  = 8'h18;  //24 Minimum number of counts in FIFO for transfer to happen
     
     // SIGNALS
     
+    reg  [3:0]                                          fifo_min_thresh;
     reg  [31:0]                                         dec_cnt;
     reg  [31:0]                                         cfg_dec;
     wire                                                reg_clk;
@@ -106,6 +108,10 @@ module acquire_top#
     wire                                                trig;
     reg  [63:0]                                         test_data;
     wire [6:0]                                          fifo_rd_cnt;
+    wire                                                transfer;
+    wire                                                last;
+    wire                                                axi_data;
+    wire                                                transfer_in_progress;
     
     assign trig_out = trig;
     assign cnt_out = cnt;
@@ -197,19 +203,27 @@ module acquire_top#
         .m_axi_bresp        (m_axi_bresp),  
         .m_axi_bvalid       (m_axi_bvalid), 
         .m_axi_bready       (m_axi_bready), 
-        .data               (test_data),
-        .avalid             (trig),
-        .succ               (succ));
+        .data               (axi_data),
+        .avalid             (transfer_in_progress),
+        .succ               (succ),
+        .len                (fifo_min_thresh),
+        .transfer           (transfer),
+        .last               (last)
+    );
         
     axi_control axi_control(
         .osc1_data      (data_osc1),
         .osc2_data      (data_osc2),
         .cnt_data       (cnt),
         .trigger        (trig),
-        .clk            (clk),
+        .clk            (m_axi_aclk),
         .rst_n          (rst_n),
-        .axi_data       (),
-        .fifo_rd_cnt    (fifo_rd_cnt)
+        .axi_data       (axi_data),
+        .fifo_rd_cnt    (fifo_rd_cnt),
+        .transfer       (transfer),
+        .last           (last),
+        .fifo_min_thresh (fifo_min_thresh),
+        .transfer_in_progress (transfer_in_progress)
     );    
         
     // DECIMATION
@@ -275,6 +289,19 @@ module acquire_top#
       end
     end
     
+    // GET fifo_min_thresh 
+    
+    always @(posedge clk)
+    begin
+      if (rst_n == 0) begin
+        fifo_min_thresh <= 3;
+      end else begin
+        if ((reg_addr[8-1:0] == FIFO_MIN_THRESH_ADDR ) && (reg_wr_we == 1)) begin
+          fifo_min_thresh <= reg_wr_data[3:0];
+        end
+      end
+    end
+    
     // GET TEST_DATA
     
     reg  [7:0] succ_;
@@ -300,13 +327,14 @@ module acquire_top#
 always @(posedge clk)
 begin
   case (reg_addr[8-1:0])
-    DEC_FACTOR_ADDR:   reg_rd_data <= cfg_dec;
-    START_ACQ_ADDR:    reg_rd_data <= {31'b0, start_acq};
-    DEST_ADDR:         reg_rd_data <= dest_addr;
-    BUFF_SIZE_ADDR:    reg_rd_data <= buff_size;
-    TEST_DATA_ADDR:    reg_rd_data <= test_data[31:0];  
-    FIFO_RD_CNT_ADDT:  reg_rd_data <= {25'b0, fifo_rd_cnt};          
-    default            reg_rd_data <= 32'd0;                  
+    DEC_FACTOR_ADDR:        reg_rd_data <= cfg_dec;
+    START_ACQ_ADDR:         reg_rd_data <= {31'b0, start_acq};
+    DEST_ADDR:              reg_rd_data <= dest_addr;
+    BUFF_SIZE_ADDR:         reg_rd_data <= buff_size;
+    TEST_DATA_ADDR:         reg_rd_data <= test_data[31:0];  
+    FIFO_RD_CNT_ADDT:       reg_rd_data <= {25'b0, fifo_rd_cnt};    
+    FIFO_MIN_THRESH_ADDR:   reg_rd_data <= {28'b0, fifo_min_thresh};   
+    default                 reg_rd_data <= 32'd0;                  
   endcase
 end
 

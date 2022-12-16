@@ -53,4 +53,5 @@ void print_reg(Acq *acq) {
     printf("buff_size: %d\n", acq->reg->buff_size);
     printf("test_data: %d\n", acq->reg->test_data);
     printf("fifo_count: %d\n", acq->reg->fifo_count);
+    printf("fifo_min_thresh: %d\n", acq->reg->fifo_min_thresh);
 }

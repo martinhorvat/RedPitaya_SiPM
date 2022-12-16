@@ -2,8 +2,8 @@
 # Vivado v2020.1 (64-bit)
 # SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
 # IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
-# Start of session at: Sun Nov 27 12:38:31 2022
-# Process ID: 6181
+# Start of session at: Fri Dec 16 22:23:51 2022
+# Process ID: 527726
 # Current directory: /home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1
 # Command line: vivado -log red_pitaya_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source red_pitaya_top.tcl
 # Log file: /home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/red_pitaya_top.vds

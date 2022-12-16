@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z010clg400-1" LaunchTime="1669549036">
+<GenRun Id="impl_1" LaunchPart="xc7z010clg400-1" LaunchTime="1671225748">
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <File Type="BITSTR-SYSDEF" Name="red_pitaya_top.sysdef"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
@@ -317,8 +317,5 @@
     <Step Id="write_bitstream"/>
   </Strategy>
   <BlockFileSet Type="BlockSrcs" Name="system_acquire_top_0_2"/>
-  <BlockFileSet Type="BlockSrcs" Name="system_clk_wiz_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="system_rp_expansion_to_in_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="system_processing_system7_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="system_proc_sys_reset_0"/>
 </GenRun>

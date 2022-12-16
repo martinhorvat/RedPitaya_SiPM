@@ -16,6 +16,7 @@ typedef volatile struct {
     uint32_t buff_size;
     uint32_t test_data;
     uint32_t fifo_count;
+    uint32_t fifo_min_thresh;
 } Reg_map;
 
 typedef volatile struct {
