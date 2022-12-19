@@ -14,9 +14,10 @@ typedef volatile struct {
     uint32_t start_acq;
     uint32_t dest_addr;
     uint32_t buff_size;
-    uint32_t test_data;
     uint32_t fifo_count;
     uint32_t fifo_min_thresh;
+    uint32_t fifo_dout_1;
+    uint32_t fifo_dout_2;
 } Reg_map;
 
 typedef volatile struct {
@@ -25,13 +26,14 @@ typedef volatile struct {
 
 typedef struct {
     Reg_map *reg;
-    Buffer *buff;
+    uint16_t *buff;
 } Acq;
 
 void set_reg(volatile uint32_t *, int32_t);
 void print_reg(Acq *);
+void print_buffer(Acq *, uint8_t);
 void start_acq(Acq *);
-void start_acq(Acq *);
+void stop_acq(Acq *);
 void *memory_map(int fd, size_t size, size_t number);
 Acq *create_acq(Uio);
 

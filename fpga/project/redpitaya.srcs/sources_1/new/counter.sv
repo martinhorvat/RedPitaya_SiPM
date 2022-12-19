@@ -22,15 +22,23 @@
 
 module counter#
     (parameter COUNTER_BITS = 16)
-    (input wire gpio_pulse,
+    (input wire clk,
+    input wire gpio_pulse,
     input wire rst_n,
     input wire trig,
     output reg [COUNTER_BITS-1:0] cnt);
     
-    always @ (posedge gpio_pulse or posedge trig or negedge rst_n) begin
-        if (~rst_n || trig)
+//    always @ (posedge gpio_pulse or posedge trig or negedge rst_n) begin
+//        if (~rst_n || trig)
+//            cnt <= 0;
+//        else
+//            cnt <= cnt + 1;
+//    end
+
+    always @ (clk) begin
+        if (~rst_n)
             cnt <= 0;
-        else
+        else if (gpio_pulse)
             cnt <= cnt + 1;
     end
    

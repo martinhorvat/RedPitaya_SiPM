@@ -22,8 +22,8 @@ int main() {
 
     set_reg(&(acq->reg->start_acq), 1);
 
-    for(int i=0; i<10; i++) {
-        sleep(1);
+    for(int i=0; i<40; i++) {
+        usleep(500000);
         print_reg(acq);
     }
 

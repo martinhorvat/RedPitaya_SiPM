@@ -21,7 +21,7 @@ Acq *create_acq(Uio uio) {
     int fd = open(path, O_RDWR);
 
     Reg_map *reg = memory_map(fd, uio.maps->uio_map.size, 0);
-    Buffer *buff = memory_map(fd, uio.maps->next->uio_map.size, 1);
+    uint16_t *buff = memory_map(fd, uio.maps->next->uio_map.size, 1);
     Acq *acq = malloc(sizeof(Acq));
 
     acq -> reg = reg;
@@ -32,6 +32,13 @@ Acq *create_acq(Uio uio) {
 
 void set_reg(volatile uint32_t *reg, int32_t value) {
     *reg = value;
+}
+
+void print_buffer(Acq *acq, uint8_t N) {
+    for (int i=0; i<N; i++) 
+        for (int j=0; j<3; j++) 
+            printf("buff[%d*3 + %d]: 0x%.4hX, %d\n", i, j, 
+                acq->buff[i*3 + j], acq->buff[i*3 + j]);
 }
 
 void start_acq(Acq *acq) {
@@ -51,7 +58,8 @@ void print_reg(Acq *acq) {
     printf("start_acq: %d\n", acq->reg->start_acq);
     printf("dest_addr: %d\n", acq->reg->dest_addr);
     printf("buff_size: %d\n", acq->reg->buff_size);
-    printf("test_data: %d\n", acq->reg->test_data);
     printf("fifo_count: %d\n", acq->reg->fifo_count);
     printf("fifo_min_thresh: %d\n", acq->reg->fifo_min_thresh);
+    printf("fifo_dout_1: 0x%.8X\n", acq->reg->fifo_dout_1);
+    printf("fifo_dout_2: 0x%.8X\n", acq->reg->fifo_dout_2);
 }

@@ -21,7 +21,6 @@ int main() {
     set_reg(&(acq->reg->dec_factor), 20);
     set_reg(&(acq->reg->dest_addr), 20);
     set_reg(&(acq->reg->buff_size), 20);
-    set_reg(&(acq->reg->test_data), 20);
 
     print_reg(acq);
 

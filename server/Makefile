@@ -73,6 +73,11 @@ $(BIN)/test/fifo_counts: $(OBJ)/test/fifo_counts.o \
 
 	$(CC) $(CCFLAGS) $^ -o $@
 
+$(BIN)/test/buffer_read: $(OBJ)/test/buffer_read.o \
+	$(OBJ)/oscilloscope.o $(OBJ)/uio_parser.o
+
+	$(CC) $(CCFLAGS) $^ -o $@
+
 $(OBJ)/test/%.o: $(TESTDIR)/%.c
 	$(CC) $^ -o $@ -c
 

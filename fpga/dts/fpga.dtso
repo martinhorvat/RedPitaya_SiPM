@@ -9,7 +9,7 @@
                      		#address-cells = <1>;
                 		#size-cells = <1>;
                                 compatible = "generic-uio";
-                                reg = <0x40000000 0x100000>,<0x1000000 0x80000>;
+                                reg = <0x40000000 0x100000>,<0x19000000 0x80000>;
                                        reg-names = "regset", "buffer";
 
                         };
