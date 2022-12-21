@@ -74,7 +74,8 @@ module acquire_top#
     output wire                                   m_axi_bready,
     output wire                                   cnt_out,
     output wire [7:0]                             succ,
-    output wire trig_out);
+    output wire trig_out,
+    output wire                                   intr);
 
     // PARAMETERS
     
@@ -86,12 +87,14 @@ module acquire_top#
     localparam FIFO_MIN_THRESH_ADDR  = 8'h14;  //24 Minimum number of counts in FIFO for transfer to happen
     localparam FIFO_DOUT_ADDR_1      = 8'h18;
     localparam FIFO_DOUT_ADDR_2      = 8'h1C;
+    localparam CTRL_REG_ADDR         = 8'h20;
     
     // SIGNALS
     
     reg  [3:0]                                          fifo_min_thresh;
     reg  [31:0]                                         dec_cnt;
     reg  [31:0]                                         cfg_dec;
+    reg  [31:0]                                         ctrl_reg;
     wire                                                reg_clk;
     wire                                                reg_rst;
     wire [S_AXI_REG_ADDR_BITS-1:0]                      reg_addr;
@@ -114,6 +117,7 @@ module acquire_top#
     wire [63:0]                                         axi_data;
     wire                                                transfer_in_progress;
     //wire                                                fifo_dout;
+    wire                                                resp;
     
     assign trig_out = trig;
     assign cnt_out = cnt;
@@ -211,10 +215,14 @@ module acquire_top#
         .succ               (succ),
         .len                (fifo_min_thresh),
         .transfer           (transfer),
-        .last               (last)
+        .last               (last),
+        .resp               (resp)
     );
         
-    axi_control axi_control(
+    axi_control #(
+        .CTRL_REG_ADDR          (CTRL_REG_ADDR),
+        .S_AXI_REG_ADDR_BITS    (S_AXI_REG_ADDR_BITS))
+        axi_control(
         .osc1_data              (data_osc1),
         .osc2_data              (data_osc2),
         .cnt_data               (cnt),
@@ -226,7 +234,9 @@ module acquire_top#
         .transfer               (transfer),
         .last                   (last),
         .fifo_min_thresh        (fifo_min_thresh),
-        .transfer_in_progress   (transfer_in_progress)
+        .transfer_in_progress   (transfer_in_progress),
+        .intr                   (intr),
+        .resp                   (resp)
     );    
         
     // DECIMATION
@@ -320,7 +330,8 @@ begin
     FIFO_RD_CNT_ADDT:       reg_rd_data <= {25'b0, fifo_rd_cnt};    
     FIFO_MIN_THRESH_ADDR:   reg_rd_data <= {28'b0, fifo_min_thresh}; 
     FIFO_DOUT_ADDR_1:       reg_rd_data <= axi_data[31:0];
-    FIFO_DOUT_ADDR_2:       reg_rd_data <= axi_data[63:32];   
+    FIFO_DOUT_ADDR_2:       reg_rd_data <= axi_data[63:32];
+    CTRL_REG_ADDR:          reg_rd_data <= ctrl_reg;      
     default                 reg_rd_data <= 32'd0;                  
   endcase
 end

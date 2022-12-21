@@ -46,7 +46,8 @@ module axi_s2mm#
     output wire  [7:0]                            succ,
     input  wire                                   last,
     input  wire  [3:0]                            len,
-    output wire                                   transfer);
+    output wire                                   transfer,
+    output wire                                   resp);
         
     reg awvalid;
     reg wvalid;
@@ -55,7 +56,6 @@ module axi_s2mm#
     
     wire atransfer;
     //wire transfer;
-    wire resp;
     
     reg [7:0] succ_;
     assign succ = succ_;

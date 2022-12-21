@@ -41,6 +41,12 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==system_axi_inte
 # IP: bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==system_clk_wiz_0_0 || ORIG_REF_NAME==system_clk_wiz_0_0} -quiet] -quiet
 
+# IP: bd/system/ip/system_xlconcat_0_0/system_xlconcat_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==system_xlconcat_0_0 || ORIG_REF_NAME==system_xlconcat_0_0} -quiet] -quiet
+
+# IP: bd/system/ip/system_xlconstant_0_0/system_xlconstant_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==system_xlconstant_0_0 || ORIG_REF_NAME==system_xlconstant_0_0} -quiet] -quiet
+
 # IP: bd/system/ip/system_auto_cc_0/system_auto_cc_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==system_auto_cc_0 || ORIG_REF_NAME==system_auto_cc_0} -quiet] -quiet
 

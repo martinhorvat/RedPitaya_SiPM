@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Mon Dec 19 14:49:57 2022
+//Date        : Wed Dec 21 18:30:56 2022
 //Host        : martin-desktop running 64-bit ArcoLinux
 //Command     : generate_target system.bd
 //Design      : system
@@ -437,7 +437,7 @@ module s00_couplers_imp_Y9JEWS
         .s_axi_wvalid(auto_cc_to_auto_pc_WVALID));
 endmodule
 
-(* CORE_GENERATION_INFO = "system,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=system,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=10,numReposBlks=8,numNonXlnxBlks=0,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "system.hwdef" *) 
+(* CORE_GENERATION_INFO = "system,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=system,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=12,numReposBlks=10,numNonXlnxBlks=0,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "system.hwdef" *) 
 module system
    (DDR_addr,
     DDR_ba,
@@ -505,6 +505,8 @@ module system
   wire ACLK_1;
   wire [0:0]M00_ARESETN_1;
   wire [7:0]Net;
+  wire [0:0]Net1;
+  wire acquire_top_0_intr;
   wire [31:0]acquire_top_0_m_axi_AWADDR;
   wire [1:0]acquire_top_0_m_axi_AWBURST;
   wire [3:0]acquire_top_0_m_axi_AWCACHE;
@@ -608,6 +610,7 @@ module system
   wire [3:0]processing_system7_M_AXI_GP0_WSTRB;
   wire processing_system7_M_AXI_GP0_WVALID;
   wire rp_expansion_to_in_0_gpio_out;
+  wire [15:0]xlconcat_0_dout;
   wire [0:0]xlconstant_dout;
 
   assign adc_clk_1 = adc_clk;
@@ -621,6 +624,7 @@ module system
         .adc_data_ch2(adc_data_ch2_1),
         .clk(clk_gen_locked),
         .gpio_pulse(rp_expansion_to_in_0_gpio_out),
+        .intr(acquire_top_0_intr),
         .m_axi_aclk(clk_gen_locked),
         .m_axi_aresetn(M00_ARESETN_1),
         .m_axi_awaddr(acquire_top_0_m_axi_AWADDR),
@@ -760,7 +764,7 @@ module system
         .DDR_WEB(DDR_we_n),
         .FCLK_RESET0_N(processing_system7_FCLK_RESET0_N),
         .GPIO_I({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .IRQ_F2P(1'b0),
+        .IRQ_F2P(xlconcat_0_dout),
         .MIO(FIXED_IO_mio[53:0]),
         .M_AXI_GP0_ACLK(ACLK_1),
         .M_AXI_GP0_ARADDR(processing_system7_M_AXI_GP0_ARADDR),
@@ -846,8 +850,28 @@ module system
   system_rp_expansion_to_in_0_0 rp_expansion_to_in_0
        (.exp_in(gpio_p[7:0]),
         .gpio_out(rp_expansion_to_in_0_gpio_out));
+  system_xlconcat_0_0 xlconcat_0
+       (.In0(Net1),
+        .In1(acquire_top_0_intr),
+        .In10(Net1),
+        .In11(Net1),
+        .In12(Net1),
+        .In13(Net1),
+        .In14(Net1),
+        .In15(Net1),
+        .In2(Net1),
+        .In3(Net1),
+        .In4(Net1),
+        .In5(Net1),
+        .In6(Net1),
+        .In7(Net1),
+        .In8(Net1),
+        .In9(Net1),
+        .dout(xlconcat_0_dout));
   system_xlconstant_0 xlconstant
        (.dout(xlconstant_dout));
+  system_xlconstant_0_0 xlconstant_0
+       (.dout(Net1));
 endmodule
 
 module system_axi_interconnect_0_0

@@ -668,8 +668,20 @@ proc create_root_design { parentCell } {
      return 1
    }
   
+  # Create instance: xlconcat_0, and set properties
+  set xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0 ]
+  set_property -dict [ list \
+   CONFIG.NUM_PORTS {16} \
+ ] $xlconcat_0
+
   # Create instance: xlconstant, and set properties
   set xlconstant [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant ]
+
+  # Create instance: xlconstant_0, and set properties
+  set xlconstant_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0 ]
+  set_property -dict [ list \
+   CONFIG.CONST_VAL {0} \
+ ] $xlconstant_0
 
   # Create interface connections
   connect_bd_intf_net -intf_net acquire_top_0_m_axi [get_bd_intf_pins acquire_top_0/m_axi] [get_bd_intf_pins processing_system7/S_AXI_HP0]
@@ -682,6 +694,8 @@ proc create_root_design { parentCell } {
   connect_bd_net -net ACLK_1 [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins clk_wiz_0/clk_62_5] [get_bd_pins proc_sys_reset/slowest_sync_clk] [get_bd_pins processing_system7/M_AXI_GP0_ACLK]
   connect_bd_net -net M00_ARESETN_1 [get_bd_pins acquire_top_0/m_axi_aresetn] [get_bd_pins acquire_top_0/rst_n] [get_bd_pins acquire_top_0/s_axi_reg_aresetn] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins proc_sys_reset/peripheral_aresetn]
   connect_bd_net -net Net [get_bd_ports gpio_p] [get_bd_pins rp_expansion_to_in_0/exp_in]
+  connect_bd_net -net Net1 [get_bd_pins xlconcat_0/In0] [get_bd_pins xlconcat_0/In2] [get_bd_pins xlconcat_0/In3] [get_bd_pins xlconcat_0/In4] [get_bd_pins xlconcat_0/In5] [get_bd_pins xlconcat_0/In6] [get_bd_pins xlconcat_0/In7] [get_bd_pins xlconcat_0/In8] [get_bd_pins xlconcat_0/In9] [get_bd_pins xlconcat_0/In10] [get_bd_pins xlconcat_0/In11] [get_bd_pins xlconcat_0/In12] [get_bd_pins xlconcat_0/In13] [get_bd_pins xlconcat_0/In14] [get_bd_pins xlconcat_0/In15] [get_bd_pins xlconstant_0/dout]
+  connect_bd_net -net acquire_top_0_intr [get_bd_pins acquire_top_0/intr] [get_bd_pins xlconcat_0/In1]
   connect_bd_net -net acquire_top_0_succ [get_bd_ports succ] [get_bd_pins acquire_top_0/succ]
   connect_bd_net -net acquire_top_0_trig_out [get_bd_ports trig] [get_bd_pins acquire_top_0/trig_out]
   connect_bd_net -net adc_clk_1 [get_bd_ports adc_clk] [get_bd_pins clk_wiz_0/clk_in1]
@@ -691,6 +705,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net proc_sys_reset_interconnect_aresetn [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins proc_sys_reset/interconnect_aresetn]
   connect_bd_net -net processing_system7_FCLK_RESET0_N [get_bd_pins proc_sys_reset/ext_reset_in] [get_bd_pins processing_system7/FCLK_RESET0_N]
   connect_bd_net -net rp_expansion_to_in_0_gpio_out [get_bd_pins acquire_top_0/gpio_pulse] [get_bd_pins rp_expansion_to_in_0/gpio_out]
+  connect_bd_net -net xlconcat_0_dout [get_bd_pins processing_system7/IRQ_F2P] [get_bd_pins xlconcat_0/dout]
   connect_bd_net -net xlconstant_dout [get_bd_pins proc_sys_reset/aux_reset_in] [get_bd_pins xlconstant/dout]
 
   # Create address segments

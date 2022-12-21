@@ -5,6 +5,10 @@
 #define ACQ_BUF_SIZE (65536) / 2.0
 #endif
 
+#ifndef TIMEOUT_MS
+#define TIMEOUT_MS 10000
+#endif
+
 #include <stddef.h>
 #include <stdint.h>
 #include "uio_parser.h"
@@ -18,6 +22,7 @@ typedef volatile struct {
     uint32_t fifo_min_thresh;
     uint32_t fifo_dout_1;
     uint32_t fifo_dout_2;
+    uint32_t ctrl_reg;
 } Reg_map;
 
 typedef volatile struct {
@@ -27,6 +32,7 @@ typedef volatile struct {
 typedef struct {
     Reg_map *reg;
     uint16_t *buff;
+    int *fd;
 } Acq;
 
 void set_reg(volatile uint32_t *, int32_t);
@@ -36,5 +42,6 @@ void start_acq(Acq *);
 void stop_acq(Acq *);
 void *memory_map(int fd, size_t size, size_t number);
 Acq *create_acq(Uio);
+int wait(Acq *);
 
 #endif

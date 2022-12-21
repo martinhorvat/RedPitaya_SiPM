@@ -6,6 +6,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "oscilloscope.h"
+#include <poll.h>
 
 void *memory_map(int fd, size_t size, size_t number) {
     const size_t offset = number * getpagesize();
@@ -17,6 +18,8 @@ void *memory_map(int fd, size_t size, size_t number) {
 Acq *create_acq(Uio uio) {
     char *path = malloc(sizeof(char[100]));
     snprintf(path, 100, "%s%s", "/dev/", uio.name);
+
+    printf("%s\n", path);
     
     int fd = open(path, O_RDWR);
 
@@ -26,6 +29,7 @@ Acq *create_acq(Uio uio) {
 
     acq -> reg = reg;
     acq -> buff = buff;
+    acq -> fd = &fd;
 
     return acq;
 }
@@ -62,4 +66,36 @@ void print_reg(Acq *acq) {
     printf("fifo_min_thresh: %d\n", acq->reg->fifo_min_thresh);
     printf("fifo_dout_1: 0x%.8X\n", acq->reg->fifo_dout_1);
     printf("fifo_dout_2: 0x%.8X\n", acq->reg->fifo_dout_2);
+    printf("ctrl_reg: 0x%.8X\n", acq->reg->ctrl_reg);
+}
+
+int wait(Acq *acq) {
+    uint32_t info = 1;
+    int *fd;
+    fd = acq -> fd;
+    ssize_t nb = write(*fd, &info, sizeof(info));
+
+    struct pollfd fds = {
+            .fd = *fd,
+            .events = POLLIN,
+        };
+
+    int ret = poll(&fds, 1, TIMEOUT_MS);
+
+    printf("poll returned\n");
+
+    if (ret >= 1) {
+        printf("reading\n");
+        nb = read(*fd, &info, sizeof(info));
+        if (nb == (ssize_t)sizeof(info)) {
+            printf("Interrupt #%u!\n", info);
+            return 1;
+        }
+    } else {
+        perror("poll() error");
+        close(*fd);
+    }
+
+    close(*fd);
+    return 0;
 }

@@ -11,7 +11,8 @@
                                 compatible = "generic-uio";
                                 reg = <0x40000000 0x100000>,<0x19000000 0x80000>;
                                        reg-names = "regset", "buffer";
-
+                                interrupt-parent = <&intc>;
+				interrupts = <0 30 1>;
                         };
 
                         rp_generate: rp_generate@50100000 {
@@ -20,7 +21,8 @@
                                 compatible = "generic-uio";
                                 reg = <0x40100000 0x100000>,<0x1080000 0x80000>;
                                        reg-names = "regset", "buffer";
-
+                                interrupt-parent = <&intc>;
+				interrupts = <0 31 1>;
                         };                    
                 };
 

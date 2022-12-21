@@ -3,48 +3,55 @@
    "Color Coded_ScaleFactor":"0.569952",
    "Color Coded_TopLeft":"-177,-2",
    "Default View_ScaleFactor":"0.892756",
-   "Default View_TopLeft":"226,353",
+   "Default View_TopLeft":"-221,358",
    "ExpandedHierarchyInLayout":"",
+   "PinnedBlocks":"/proc_sys_reset|/processing_system7|/xlconstant|/rp_expansion_to_in_0|/axi_interconnect_0|/clk_wiz_0|/acquire_top_0|/xlconcat_0|",
+   "PinnedPorts":"adc_data_ch1|adc_data_ch2|gpio_n|gpio_p|adc_clk|dac_dat_a|dac_dat_b|clk_out|trig|succ|DDR|FIXED_IO|",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:9.0 TLS
 #  -string -flagsOSRD
-preplace port DDR -pg 1 -lvl 5 -x 1780 -y 500 -defaultsOSRD
-preplace port FIXED_IO -pg 1 -lvl 5 -x 1780 -y 530 -defaultsOSRD
+preplace port DDR -pg 1 -lvl 6 -x 1780 -y 500 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 6 -x 1780 -y 530 -defaultsOSRD
 preplace port adc_clk -pg 1 -lvl 0 -x -780 -y 510 -defaultsOSRD
-preplace port clk_out -pg 1 -lvl 5 -x 1780 -y 590 -defaultsOSRD
-preplace port trig -pg 1 -lvl 5 -x 1780 -y 280 -defaultsOSRD
+preplace port clk_out -pg 1 -lvl 6 -x 1780 -y 590 -defaultsOSRD
+preplace port trig -pg 1 -lvl 6 -x 1780 -y 280 -defaultsOSRD
 preplace portBus adc_data_ch1 -pg 1 -lvl 0 -x -780 -y 120 -defaultsOSRD
 preplace portBus adc_data_ch2 -pg 1 -lvl 0 -x -780 -y 150 -defaultsOSRD
 preplace portBus gpio_n -pg 1 -lvl 0 -x -780 -y 180 -defaultsOSRD -left
 preplace portBus gpio_p -pg 1 -lvl 0 -x -780 -y 210 -defaultsOSRD -left
-preplace portBus dac_dat_a -pg 1 -lvl 5 -x 1780 -y 420 -defaultsOSRD
-preplace portBus dac_dat_b -pg 1 -lvl 5 -x 1780 -y 450 -defaultsOSRD
-preplace portBus succ -pg 1 -lvl 5 -x 1780 -y 310 -defaultsOSRD
-preplace inst proc_sys_reset -pg 1 -lvl 4 -x 730 -y 420 -defaultsOSRD
-preplace inst processing_system7 -pg 1 -lvl 4 -x 730 -y 720 -defaultsOSRD
-preplace inst xlconstant -pg 1 -lvl 4 -x 730 -y 140 -defaultsOSRD
+preplace portBus dac_dat_a -pg 1 -lvl 6 -x 1780 -y 420 -defaultsOSRD
+preplace portBus dac_dat_b -pg 1 -lvl 6 -x 1780 -y 450 -defaultsOSRD
+preplace portBus succ -pg 1 -lvl 6 -x 1780 -y 310 -defaultsOSRD
+preplace inst proc_sys_reset -pg 1 -lvl 5 -x 810 -y 420 -defaultsOSRD
+preplace inst processing_system7 -pg 1 -lvl 5 -x 810 -y 720 -defaultsOSRD
+preplace inst xlconstant -pg 1 -lvl 5 -x 810 -y 140 -defaultsOSRD
 preplace inst rp_expansion_to_in_0 -pg 1 -lvl 2 -x -210 -y 690 -defaultsOSRD
 preplace inst axi_interconnect_0 -pg 1 -lvl 3 -x 160 -y 440 -defaultsOSRD
 preplace inst clk_wiz_0 -pg 1 -lvl 1 -x -420 -y 440 -defaultsOSRD
 preplace inst acquire_top_0 -pg 1 -lvl 3 -x 160 -y 730 -defaultsOSRD
-preplace netloc xlconstant_dout 1 3 2 360 200 950
-preplace netloc processing_system7_FCLK_RESET0_N 1 3 2 370 320 960
+preplace inst xlconcat_0 -pg 1 -lvl 4 -x 450 -y 1100 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 3 -x 160 -y 1020 -defaultsOSRD
+preplace netloc xlconstant_dout 1 4 2 580 200 1040
+preplace netloc processing_system7_FCLK_RESET0_N 1 4 2 590 300 1060
 preplace netloc Net 1 0 3 NJ 210 N 210 -110
 preplace netloc adc_data_ch1_1 1 0 3 NJ 120 N 120 -70
 preplace netloc adc_data_ch2_1 1 0 3 NJ 150 N 150 -90
 preplace netloc rp_expansion_to_in_0_gpio_out 1 2 1 N 700
-preplace netloc acquire_top_0_trig_out 1 3 2 350 280 N
-preplace netloc acquire_top_0_succ 1 3 2 320 300 1000
-preplace netloc proc_sys_reset_interconnect_aresetn 1 2 3 -60 290 N 290 950
-preplace netloc M00_ARESETN_1 1 2 3 -40 560 N 560 950
-preplace netloc ACLK_1 1 1 3 N 440 -80 280 330
-preplace netloc clk_gen_locked 1 1 4 N 420 -100 570 340 570 980
+preplace netloc acquire_top_0_trig_out 1 3 3 320 300 570 280 N
+preplace netloc acquire_top_0_succ 1 3 3 330 310 N 310 N
+preplace netloc proc_sys_reset_interconnect_aresetn 1 2 4 -60 290 N 290 N 290 1050
+preplace netloc M00_ARESETN_1 1 2 4 -40 560 N 560 N 560 1030
+preplace netloc ACLK_1 1 1 4 N 440 -80 280 N 280 560
+preplace netloc clk_gen_locked 1 1 5 N 420 -100 570 N 570 580 570 1080
 preplace netloc adc_clk_1 1 0 1 -760 450n
-preplace netloc axi_interconnect_0_M00_AXI 1 2 2 -50 320 310
-preplace netloc acquire_top_0_m_axi 1 3 1 N 700
-preplace netloc processing_system7_M_AXI_GP0 1 2 3 -40 310 N 310 970
-preplace netloc processing_system7_FIXED_IO 1 4 1 1000 530n
-preplace netloc processing_system7_DDR 1 4 1 990 500n
-levelinfo -pg 1 -780 -420 -210 160 730 1780
+preplace netloc xlconcat_0_dout 1 4 1 570 760n
+preplace netloc Net1 1 3 1 340 950n
+preplace netloc acquire_top_0_intr 1 3 1 320 770n
+preplace netloc axi_interconnect_0_M00_AXI 1 2 2 -50 310 310
+preplace netloc acquire_top_0_m_axi 1 3 2 340 700 N
+preplace netloc processing_system7_M_AXI_GP0 1 2 4 -40 320 N 320 N 320 1040
+preplace netloc processing_system7_FIXED_IO 1 5 1 1090 530n
+preplace netloc processing_system7_DDR 1 5 1 1070 500n
+levelinfo -pg 1 -780 -420 -210 160 450 810 1780
 pagesize -pg 1 -db -bbox -sgen -960 -280 1940 1690
 "
 }

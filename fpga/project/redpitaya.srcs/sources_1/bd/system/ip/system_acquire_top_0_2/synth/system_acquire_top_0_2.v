@@ -102,7 +102,8 @@ module system_acquire_top_0_2 (
   m_axi_bready,
   cnt_out,
   succ,
-  trig_out
+  trig_out,
+  intr
 );
 
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_BUSIF m_axi:s_axi_reg, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *)
@@ -203,6 +204,9 @@ output wire m_axi_bready;
 output wire cnt_out;
 output wire [7 : 0] succ;
 output wire trig_out;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME intr, SENSITIVITY LEVEL_HIGH, PortWidth 1" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 intr INTERRUPT" *)
+output wire intr;
 
   acquire_top #(
     .S_AXI_REG_ADDR_BITS(12),
@@ -257,6 +261,7 @@ output wire trig_out;
     .m_axi_bready(m_axi_bready),
     .cnt_out(cnt_out),
     .succ(succ),
-    .trig_out(trig_out)
+    .trig_out(trig_out),
+    .intr(intr)
   );
 endmodule

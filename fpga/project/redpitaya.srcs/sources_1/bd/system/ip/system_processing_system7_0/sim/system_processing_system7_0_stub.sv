@@ -172,7 +172,7 @@ module system_processing_system7_0 (
   input bit [5 : 0] S_AXI_HP0_WID,
   input bit [63 : 0] S_AXI_HP0_WDATA,
   input bit [7 : 0] S_AXI_HP0_WSTRB,
-  input bit [0 : 0] IRQ_F2P,
+  input bit [15 : 0] IRQ_F2P,
   output bit_as_bool FCLK_RESET0_N,
   output bit [53 : 0] MIO,
   output bit_as_bool DDR_CAS_n,
@@ -311,7 +311,7 @@ module system_processing_system7_0 (GPIO_I,GPIO_O,GPIO_T,SPI0_SCLK_I,SPI0_SCLK_O
   input bit [5 : 0] S_AXI_HP0_WID;
   input bit [63 : 0] S_AXI_HP0_WDATA;
   input bit [7 : 0] S_AXI_HP0_WSTRB;
-  input bit [0 : 0] IRQ_F2P;
+  input bit [15 : 0] IRQ_F2P;
   output wire FCLK_RESET0_N;
   inout wire [53 : 0] MIO;
   inout wire DDR_CAS_n;
@@ -447,7 +447,7 @@ module system_processing_system7_0 (GPIO_I,GPIO_O,GPIO_T,SPI0_SCLK_I,SPI0_SCLK_O
   input bit [5 : 0] S_AXI_HP0_WID;
   input bit [63 : 0] S_AXI_HP0_WDATA;
   input bit [7 : 0] S_AXI_HP0_WSTRB;
-  input bit [0 : 0] IRQ_F2P;
+  input bit [15 : 0] IRQ_F2P;
   output wire FCLK_RESET0_N;
   inout wire [53 : 0] MIO;
   inout wire DDR_CAS_n;

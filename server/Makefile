@@ -78,6 +78,11 @@ $(BIN)/test/buffer_read: $(OBJ)/test/buffer_read.o \
 
 	$(CC) $(CCFLAGS) $^ -o $@
 
+$(BIN)/test/interrupt: $(OBJ)/test/interrupt.o \
+	$(OBJ)/oscilloscope.o $(OBJ)/uio_parser.o
+
+	$(CC) $(CCFLAGS) $^ -o $@
+
 $(OBJ)/test/%.o: $(TESTDIR)/%.c
 	$(CC) $^ -o $@ -c
 

@@ -21,7 +21,9 @@
         }
       },
       "clk_wiz_0": "",
-      "acquire_top_0": ""
+      "acquire_top_0": "",
+      "xlconcat_0": "",
+      "xlconstant_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -1971,6 +1973,20 @@
                 "value_src": "weak"
               }
             }
+          },
+          "intr": {
+            "type": "intr",
+            "direction": "O",
+            "parameters": {
+              "PortWidth": {
+                "value": "1",
+                "value_src": "default_prop"
+              },
+              "SENSITIVITY": {
+                "value": "LEVEL_HIGH",
+                "value_src": "constant"
+              }
+            }
           }
         },
         "addressing": {
@@ -1993,6 +2009,24 @@
               "mode": "Slave",
               "memory_map_ref": "s_axi_reg"
             }
+          }
+        }
+      },
+      "xlconcat_0": {
+        "vlnv": "xilinx.com:ip:xlconcat:2.1",
+        "xci_name": "system_xlconcat_0_0",
+        "parameters": {
+          "NUM_PORTS": {
+            "value": "16"
+          }
+        }
+      },
+      "xlconstant_0": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "xci_name": "system_xlconstant_0_0",
+        "parameters": {
+          "CONST_VAL": {
+            "value": "0"
           }
         }
       }
@@ -2118,6 +2152,38 @@
         "ports": [
           "adc_clk",
           "clk_wiz_0/clk_in1"
+        ]
+      },
+      "xlconcat_0_dout": {
+        "ports": [
+          "xlconcat_0/dout",
+          "processing_system7/IRQ_F2P"
+        ]
+      },
+      "Net1": {
+        "ports": [
+          "xlconstant_0/dout",
+          "xlconcat_0/In2",
+          "xlconcat_0/In3",
+          "xlconcat_0/In4",
+          "xlconcat_0/In5",
+          "xlconcat_0/In6",
+          "xlconcat_0/In7",
+          "xlconcat_0/In8",
+          "xlconcat_0/In9",
+          "xlconcat_0/In10",
+          "xlconcat_0/In11",
+          "xlconcat_0/In12",
+          "xlconcat_0/In13",
+          "xlconcat_0/In14",
+          "xlconcat_0/In15",
+          "xlconcat_0/In0"
+        ]
+      },
+      "acquire_top_0_intr": {
+        "ports": [
+          "acquire_top_0/intr",
+          "xlconcat_0/In1"
         ]
       }
     },
