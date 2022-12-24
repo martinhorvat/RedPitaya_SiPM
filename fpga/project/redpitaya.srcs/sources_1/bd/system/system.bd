@@ -21,9 +21,9 @@
         }
       },
       "clk_wiz_0": "",
-      "acquire_top_0": "",
       "xlconcat_0": "",
-      "xlconstant_0": ""
+      "xlconstant_0": "",
+      "acquire_top_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -1323,16 +1323,16 @@
           }
         },
         "interface_nets": {
-          "s00_couplers_to_axi_interconnect_0": {
-            "interface_ports": [
-              "M00_AXI",
-              "s00_couplers/M_AXI"
-            ]
-          },
           "axi_interconnect_0_to_s00_couplers": {
             "interface_ports": [
               "S00_AXI",
               "s00_couplers/S_AXI"
+            ]
+          },
+          "s00_couplers_to_axi_interconnect_0": {
+            "interface_ports": [
+              "M00_AXI",
+              "s00_couplers/M_AXI"
             ]
           }
         },
@@ -1414,6 +1414,24 @@
           },
           "PRIM_IN_FREQ": {
             "value": "125"
+          }
+        }
+      },
+      "xlconcat_0": {
+        "vlnv": "xilinx.com:ip:xlconcat:2.1",
+        "xci_name": "system_xlconcat_0_0",
+        "parameters": {
+          "NUM_PORTS": {
+            "value": "16"
+          }
+        }
+      },
+      "xlconstant_0": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "xci_name": "system_xlconstant_0_0",
+        "parameters": {
+          "CONST_VAL": {
+            "value": "0"
           }
         }
       },
@@ -2009,24 +2027,6 @@
               "mode": "Slave",
               "memory_map_ref": "s_axi_reg"
             }
-          }
-        }
-      },
-      "xlconcat_0": {
-        "vlnv": "xilinx.com:ip:xlconcat:2.1",
-        "xci_name": "system_xlconcat_0_0",
-        "parameters": {
-          "NUM_PORTS": {
-            "value": "16"
-          }
-        }
-      },
-      "xlconstant_0": {
-        "vlnv": "xilinx.com:ip:xlconstant:1.1",
-        "xci_name": "system_xlconstant_0_0",
-        "parameters": {
-          "CONST_VAL": {
-            "value": "0"
           }
         }
       }

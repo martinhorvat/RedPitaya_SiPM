@@ -66,7 +66,6 @@ void print_reg(Acq *acq) {
     printf("fifo_min_thresh: %d\n", acq->reg->fifo_min_thresh);
     printf("fifo_dout_1: 0x%.8X\n", acq->reg->fifo_dout_1);
     printf("fifo_dout_2: 0x%.8X\n", acq->reg->fifo_dout_2);
-    printf("ctrl_reg: 0x%.8X\n", acq->reg->ctrl_reg);
 }
 
 int wait(Acq *acq) {
@@ -89,13 +88,16 @@ int wait(Acq *acq) {
         nb = read(*fd, &info, sizeof(info));
         if (nb == (ssize_t)sizeof(info)) {
             printf("Interrupt #%u!\n", info);
-            return 1;
+            clear_interrupt(acq);
+            return 0;
         }
     } else {
         perror("poll() error");
-        close(*fd);
     }
 
-    close(*fd);
-    return 0;
+    return 1;
+}
+
+void clear_interrupt(Acq *acq) {
+    set_reg(&(acq->reg->ctrl_reg), 0x00000001);
 }

@@ -43,5 +43,6 @@ void stop_acq(Acq *);
 void *memory_map(int fd, size_t size, size_t number);
 Acq *create_acq(Uio);
 int wait(Acq *);
+void clear_interrupt(Acq *);
 
 #endif

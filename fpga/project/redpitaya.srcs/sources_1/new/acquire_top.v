@@ -74,7 +74,7 @@ module acquire_top#
     output wire                                   m_axi_bready,
     output wire                                   cnt_out,
     output wire [7:0]                             succ,
-    output wire trig_out,
+    output wire                                   trig_out,
     output wire                                   intr);
 
     // PARAMETERS
@@ -94,7 +94,6 @@ module acquire_top#
     reg  [3:0]                                          fifo_min_thresh;
     reg  [31:0]                                         dec_cnt;
     reg  [31:0]                                         cfg_dec;
-    reg  [31:0]                                         ctrl_reg;
     wire                                                reg_clk;
     wire                                                reg_rst;
     wire [S_AXI_REG_ADDR_BITS-1:0]                      reg_addr;
@@ -236,7 +235,10 @@ module acquire_top#
         .fifo_min_thresh        (fifo_min_thresh),
         .transfer_in_progress   (transfer_in_progress),
         .intr                   (intr),
-        .resp                   (resp)
+        .resp                   (resp),
+        .reg_addr               (reg_addr),
+        .reg_wr_data            (reg_wr_data),
+        .reg_wr_we              (reg_wr_we)
     );    
         
     // DECIMATION
@@ -331,7 +333,6 @@ begin
     FIFO_MIN_THRESH_ADDR:   reg_rd_data <= {28'b0, fifo_min_thresh}; 
     FIFO_DOUT_ADDR_1:       reg_rd_data <= axi_data[31:0];
     FIFO_DOUT_ADDR_2:       reg_rd_data <= axi_data[63:32];
-    CTRL_REG_ADDR:          reg_rd_data <= ctrl_reg;      
     default                 reg_rd_data <= 32'd0;                  
   endcase
 end

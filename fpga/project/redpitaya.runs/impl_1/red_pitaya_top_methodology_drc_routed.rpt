@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date         : Wed Dec 21 18:33:05 2022
+| Date         : Sat Dec 24 14:02:07 2022
 | Host         : martin-desktop running 64-bit ArcoLinux
 | Command      : report_methodology -file red_pitaya_top_methodology_drc_routed.rpt -pb red_pitaya_top_methodology_drc_routed.pb -rpx red_pitaya_top_methodology_drc_routed.rpx
 | Design       : red_pitaya_top
@@ -23,17 +23,18 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 55
-+-----------+------------------+----------------------------------------------------+------------+
-| Rule      | Severity         | Description                                        | Violations |
-+-----------+------------------+----------------------------------------------------+------------+
-| TIMING-4  | Critical Warning | Invalid primary clock redefinition on a clock tree | 1          |
-| TIMING-27 | Critical Warning | Invalid primary clock on hierarchical pin          | 1          |
-| PDRC-190  | Warning          | Suboptimally placed synchronized register chain    | 1          |
-| TIMING-18 | Warning          | Missing input or output delay                      | 16         |
-| XDCC-5    | Warning          | User Non-Timing constraint/property overwritten    | 4          |
-| XDCH-2    | Warning          | Same min and max delay values on IO port           | 32         |
-+-----------+------------------+----------------------------------------------------+------------+
+             Violations found: 56
++-----------+------------------+------------------------------------------------------------------+------------+
+| Rule      | Severity         | Description                                                      | Violations |
++-----------+------------------+------------------------------------------------------------------+------------+
+| TIMING-4  | Critical Warning | Invalid primary clock redefinition on a clock tree               | 1          |
+| TIMING-27 | Critical Warning | Invalid primary clock on hierarchical pin                        | 1          |
+| CKLD-2    | Warning          | Clock Net has IO Driver, not a Clock Buf, and/or non-Clock loads | 1          |
+| PDRC-190  | Warning          | Suboptimally placed synchronized register chain                  | 1          |
+| TIMING-18 | Warning          | Missing input or output delay                                    | 16         |
+| XDCC-5    | Warning          | User Non-Timing constraint/property overwritten                  | 4          |
+| XDCH-2    | Warning          | Same min and max delay values on IO port                         | 32         |
++-----------+------------------+------------------------------------------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
@@ -47,9 +48,14 @@ Invalid primary clock on hierarchical pin
 A primary clock system_wrapper_i/clk_wiz_0/inst/clk_in1 is created on an inappropriate internal pin system_wrapper_i/clk_wiz_0/inst/clk_in1. It is not recommended to create a primary clock on a hierarchical pin when its driver pin has a fanout connected to multiple clock pins
 Related violations: <none>
 
+CKLD-2#1 Warning
+Clock Net has IO Driver, not a Clock Buf, and/or non-Clock loads  
+Clock net system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[1]/O is directly driven by an IO rather than a Clock Buffer or may be an IO driving a mix of Clock Buffer and non-Clock loads. This connectivity should be reviewed and corrected as appropriate. Driver(s): system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[1]/IO
+Related violations: <none>
+
 PDRC-190#1 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell system_wrapper_i/acquire_top_0/inst/axi_control/FIFO/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d2_reg in site SLICE_X7Y4 is part of a synchronized register chain that is suboptimally placed as the load FDSE cell system_wrapper_i/acquire_top_0/inst/axi_control/FIFO/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d3_reg is not placed in the same (SLICE) site.
+The FDRE cell system_wrapper_i/acquire_top_0/inst/axi_control/FIFO/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d2_reg in site SLICE_X10Y5 is part of a synchronized register chain that is suboptimally placed as the load FDSE cell system_wrapper_i/acquire_top_0/inst/axi_control/FIFO/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/grstd1.grst_full.grst_f.rst_d3_reg is not placed in the same (SLICE) site.
 Related violations: <none>
 
 TIMING-18#1 Warning

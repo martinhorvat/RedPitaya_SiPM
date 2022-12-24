@@ -1,7 +1,7 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
--- Date        : Tue Dec 20 19:50:33 2022
+-- Date        : Sat Dec 24 14:00:01 2022
 -- Host        : martin-desktop running 64-bit ArcoLinux
 -- Command     : write_vhdl -force -mode synth_stub
 --               /home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_acquire_top_0_2/system_acquire_top_0_2_stub.vhdl

@@ -19,7 +19,9 @@ int main() {
     set_reg(&(acq->reg->dec_factor), 125000000);
     start_acq(acq);
 
-    wait(acq);
+    for (int i=0; i<5; i++) {
+        wait(acq);
+    }   
 
     stop_acq(acq);
 

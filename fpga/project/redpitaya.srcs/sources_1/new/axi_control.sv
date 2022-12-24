@@ -35,7 +35,6 @@ module axi_control#(
     input wire                     rst_n,
     input wire [3:0]               fifo_min_thresh,
     input wire                     transfer,
-    output reg [31:0]              ctrl_reg,                      
     
     output reg                     transfer_in_progress,
     output wire                    last,
@@ -56,7 +55,6 @@ module axi_control#(
     localparam SELECT_LAST  = 3'b100;
     
     localparam INTR_ADDR    = 0;
-    localparam START_ADDR   = 0;
     
     reg [2:0]               selector;
     reg [ACQ_DATA_WID-1:0]  sel_data;
@@ -64,17 +62,16 @@ module axi_control#(
     reg [ACQ_DATA_WID-1:0]  osc2_fifo_data;
     reg [ACQ_DATA_WID-1:0]  cnt_fifo_data;
     reg [3:0]               cnt;
-    //reg                     transfer_in_progress;
+    reg [31:0]              ctrl_reg;
     
     wire                    activate;
     wire                    fifo_wr_en;
     wire                    fifo_rst;
     wire                    fifo_empty;
-    reg [3:0]               i = 0;
     wire [63:0]             data_swap;
     wire                    initiate_transfer;
     
-    assign initiate_transfer = (fifo_rd_cnt > fifo_min_thresh) && ctrl_reg[INTR_ADDR] == 0;
+    assign initiate_transfer = (fifo_rd_cnt > fifo_min_thresh) && (intr == 0);
     
     assign axi_data[15:0] = data_swap[63:48];
     assign axi_data[31:16] = data_swap[47:32];
@@ -110,7 +107,6 @@ module axi_control#(
     always @(posedge clk)
     begin
         if (activate) begin
-            i <= i + 1;
             osc1_fifo_data <= osc1_data;
             osc2_fifo_data <= osc2_data;
             cnt_fifo_data  <= cnt_data;
@@ -129,9 +125,9 @@ module axi_control#(
     always @(posedge clk)
     begin
         case (selector)
-            SELECT_OSC1 : sel_data <= 16'd10 + i;//osc1_fifo_data;
-            SELECT_OSC2 : sel_data <= 16'd20 + i;//osc2_fifo_data;
-            SELECT_CNT  : sel_data <= 16'd30 + i;//cnt_fifo_data;
+            SELECT_OSC1 : sel_data <= osc1_fifo_data;
+            SELECT_OSC2 : sel_data <= osc2_fifo_data;
+            SELECT_CNT  : sel_data <= cnt_fifo_data;
             default     : sel_data <= {16{1'b1}};
         endcase
     end
@@ -158,7 +154,7 @@ module axi_control#(
             intr <= 0;
         end else if (resp) begin
             intr <= 1;
-        end else if (ctrl_reg[INTR_ADDR] == 0) begin
+        end else if (ctrl_reg[INTR_ADDR]) begin
             intr <= 0;
         end
     end
@@ -168,14 +164,16 @@ module axi_control#(
     always @(posedge clk)
     begin
       if (~rst_n) begin
-        ctrl_reg[INTR_ADDR] <= 0;
-      end  else if (initiate_transfer) begin
-        ctrl_reg[INTR_ADDR] <= 1;
+        ctrl_reg <= 0;
+      end else if((reg_addr[8-1:0] == CTRL_REG_ADDR) && (reg_wr_we == 1)) begin
+        ctrl_reg <= reg_wr_data;
       end else begin
-        if ((reg_addr[8-1:0] == CTRL_REG_ADDR) && (reg_wr_we == 1)) begin
-          ctrl_reg[INTR_ADDR] <= reg_wr_data[INTR_ADDR];
+            
+        if (ctrl_reg[INTR_ADDR]) begin
+            ctrl_reg[INTR_ADDR] <= 1'b0;
         end
-      end
+            
+      end        
     end
     
 endmodule
