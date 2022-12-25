@@ -47,10 +47,12 @@ void print_buffer(Acq *acq, uint8_t N) {
 
 void start_acq(Acq *acq) {
     set_reg(&(acq->reg->start_acq), 1);
+    acq->active = 1;
 }
 
 void stop_acq(Acq *acq) {
     set_reg(&(acq->reg->start_acq), 0);
+    acq->active = 0;
 }
 
 void set_decimation(Acq *acq, uint32_t dec) {
@@ -87,7 +89,6 @@ int wait(Acq *acq) {
         printf("reading\n");
         nb = read(*fd, &info, sizeof(info));
         if (nb == (ssize_t)sizeof(info)) {
-            printf("Interrupt #%u!\n", info);
             clear_interrupt(acq);
             return 0;
         }

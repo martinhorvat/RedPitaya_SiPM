@@ -25,14 +25,12 @@ typedef volatile struct {
     uint32_t ctrl_reg;
 } Reg_map;
 
-typedef volatile struct {
-    uint32_t placeholder;
-} Buffer;
-
 typedef struct {
     Reg_map *reg;
     uint16_t *buff;
+    uint16_t *data;
     int *fd;
+    volatile int active;
 } Acq;
 
 void set_reg(volatile uint32_t *, int32_t);
