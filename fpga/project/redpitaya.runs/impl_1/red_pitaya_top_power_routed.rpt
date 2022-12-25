@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date             : Sat Dec 24 14:02:08 2022
+| Date             : Sun Dec 25 22:31:44 2022
 | Host             : martin-desktop running 64-bit ArcoLinux
 | Command          : report_power -file red_pitaya_top_power_routed.rpt -pb red_pitaya_top_power_summary_routed.pb -rpx red_pitaya_top_power_routed.rpx
 | Design           : red_pitaya_top
@@ -53,13 +53,13 @@ Table of Contents
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
 | Clocks                  |     0.009 |       11 |       --- |             --- |
-| Slice Logic             |     0.003 |     2300 |       --- |             --- |
+| Slice Logic             |     0.003 |     2301 |       --- |             --- |
 |   LUT as Logic          |     0.003 |      621 |     17600 |            3.53 |
 |   Register              |    <0.001 |     1164 |     35200 |            3.31 |
 |   CARRY4                |    <0.001 |       30 |      4400 |            0.68 |
 |   LUT as Shift Register |    <0.001 |       63 |      6000 |            1.05 |
 |   Others                |     0.000 |      239 |       --- |             --- |
-| Signals                 |     0.004 |     1735 |       --- |             --- |
+| Signals                 |     0.004 |     1737 |       --- |             --- |
 | Block RAM               |     0.002 |        1 |        60 |            1.67 |
 | MMCM                    |     0.106 |        1 |         2 |           50.00 |
 | PLL                     |     0.000 |        1 |         2 |           50.00 |
@@ -76,7 +76,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.028 |       0.022 |      0.007 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.029 |       0.022 |      0.007 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.070 |       0.062 |      0.008 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.022 |       0.021 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -166,8 +166,8 @@ Table of Contents
 |   system_wrapper_i     |     1.404 |
 |     acquire_top_0      |     0.008 |
 |       inst             |     0.008 |
-|     axi_interconnect_0 |     0.008 |
-|       s00_couplers     |     0.008 |
+|     axi_interconnect_0 |     0.007 |
+|       s00_couplers     |     0.007 |
 |     clk_wiz_0          |     0.107 |
 |       inst             |     0.107 |
 |     processing_system7 |     1.281 |

@@ -5,6 +5,6 @@
 #include "oscilloscope.h"
 
 void *do_work(void *);
-void transfer(Acq *);
+void transfer(Acq *, uint16_t);
 
 #endif

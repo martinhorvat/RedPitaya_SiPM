@@ -9,6 +9,10 @@
 #define TIMEOUT_MS 10000
 #endif
 
+#ifndef DATA_LEN
+#define DATA_LEN 49152
+#endif
+
 #include <stddef.h>
 #include <stdint.h>
 #include "uio_parser.h"
@@ -28,8 +32,9 @@ typedef volatile struct {
 typedef struct {
     Reg_map *reg;
     uint16_t *buff;
-    uint16_t *data;
-    int *fd;
+    uint16_t *data_end;
+    uint16_t *data_start;
+    int fd;
     volatile int active;
 } Acq;
 

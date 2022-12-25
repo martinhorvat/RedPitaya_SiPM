@@ -1,7 +1,7 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-// Date        : Sat Dec 24 14:00:01 2022
+// Date        : Sun Dec 25 22:29:42 2022
 // Host        : martin-desktop running 64-bit ArcoLinux
 // Command     : write_verilog -force -mode funcsim
 //               /home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_acquire_top_0_2/system_acquire_top_0_2_sim_netlist.v
@@ -1078,7 +1078,6 @@ module system_acquire_top_0_2_acquire_top
   wire fifo_min_thresh0;
   wire \fifo_min_thresh[3]_i_2_n_0 ;
   wire fifo_rst;
-  wire gpio_pulse;
   wire intr;
   wire m_axi_aclk;
   wire m_axi_aresetn;
@@ -1246,10 +1245,12 @@ module system_acquire_top_0_2_acquire_top
         .wvalid_reg_0(m_axi_wvalid),
         .wvalid_reg_1(axi_control_n_67));
   system_acquire_top_0_2_counter U_cnt
-       (.Q({cnt,cnt_out}),
+       (.CO(trig0),
+        .Q({cnt,cnt_out}),
         .SR(fifo_rst),
-        .gpio_pulse(gpio_pulse),
-        .rst_n(rst_n));
+        .rst_n(rst_n),
+        .start_acq(start_acq),
+        .trig_out(trig_out));
   (* CHECK_LICENSE_TYPE = "reg_ctrl,axi_bram_ctrl,{}" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   (* x_core_info = "axi_bram_ctrl,Vivado 2020.1" *) 
@@ -1799,7 +1800,6 @@ module system_acquire_top_0_2_acquire_top
         .D(reg_wr_data[9]),
         .Q(cfg_dec[9]),
         .R(fifo_rst));
-  (* SOFT_HLUTNM = "soft_lutpair33" *) 
   LUT4 #(
     .INIT(16'hD500)) 
     \dec_cnt[0]_i_1 
@@ -2310,20 +2310,20 @@ module system_acquire_top_0_2_acquire_top
         .D(reg_wr_data[3]),
         .Q(fifo_min_thresh[3]),
         .R(fifo_rst));
-  (* SOFT_HLUTNM = "soft_lutpair36" *) 
+  (* SOFT_HLUTNM = "soft_lutpair35" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \m_axi_awlen[0]_INST_0 
        (.I0(fifo_min_thresh[0]),
         .O(m_axi_awlen[0]));
-  (* SOFT_HLUTNM = "soft_lutpair36" *) 
+  (* SOFT_HLUTNM = "soft_lutpair35" *) 
   LUT2 #(
     .INIT(4'h9)) 
     \m_axi_awlen[1]_INST_0 
        (.I0(fifo_min_thresh[0]),
         .I1(fifo_min_thresh[1]),
         .O(m_axi_awlen[1]));
-  (* SOFT_HLUTNM = "soft_lutpair34" *) 
+  (* SOFT_HLUTNM = "soft_lutpair33" *) 
   LUT3 #(
     .INIT(8'hE1)) 
     \m_axi_awlen[2]_INST_0 
@@ -2331,7 +2331,7 @@ module system_acquire_top_0_2_acquire_top
         .I1(fifo_min_thresh[0]),
         .I2(fifo_min_thresh[2]),
         .O(m_axi_awlen[2]));
-  (* SOFT_HLUTNM = "soft_lutpair34" *) 
+  (* SOFT_HLUTNM = "soft_lutpair33" *) 
   LUT4 #(
     .INIT(16'hFE01)) 
     \m_axi_awlen[3]_INST_0 
@@ -2617,7 +2617,7 @@ module system_acquire_top_0_2_acquire_top
         .I4(cfg_dec[31]),
         .I5(\reg_rd_data[31]_i_9_n_0 ),
         .O(\reg_rd_data[31]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair35" *) 
+  (* SOFT_HLUTNM = "soft_lutpair34" *) 
   LUT3 #(
     .INIT(8'h02)) 
     \reg_rd_data[31]_i_7 
@@ -2625,7 +2625,7 @@ module system_acquire_top_0_2_acquire_top
         .I1(reg_addr[0]),
         .I2(reg_addr[1]),
         .O(\reg_rd_data[31]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair35" *) 
+  (* SOFT_HLUTNM = "soft_lutpair34" *) 
   LUT3 #(
     .INIT(8'h02)) 
     \reg_rd_data[31]_i_8 
@@ -2918,13 +2918,6 @@ module system_acquire_top_0_2_acquire_top
         .D(start_acq_i_1_n_0),
         .Q(start_acq),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair33" *) 
-  LUT2 #(
-    .INIT(4'h8)) 
-    trig_out_INST_0
-       (.I0(trig0),
-        .I1(start_acq),
-        .O(trig_out));
 endmodule
 
 (* ORIG_REF_NAME = "axi_bram_ctrl" *) 
@@ -5300,15 +5293,20 @@ endmodule
 
 (* ORIG_REF_NAME = "counter" *) 
 module system_acquire_top_0_2_counter
-   (SR,
+   (trig_out,
+    SR,
     Q,
-    rst_n,
-    gpio_pulse);
+    CO,
+    start_acq,
+    rst_n);
+  output trig_out;
   output [0:0]SR;
   output [15:0]Q;
+  input [0:0]CO;
+  input start_acq;
   input rst_n;
-  input gpio_pulse;
 
+  wire [0:0]CO;
   wire [15:0]Q;
   wire [0:0]SR;
   wire \cnt_reg[0]_i_1_n_0 ;
@@ -5341,8 +5339,9 @@ module system_acquire_top_0_2_counter
   wire \cnt_reg[8]_i_1_n_5 ;
   wire \cnt_reg[8]_i_1_n_6 ;
   wire \cnt_reg[8]_i_1_n_7 ;
-  wire gpio_pulse;
   wire rst_n;
+  wire start_acq;
+  wire trig_out;
   wire [3:2]\NLW_cnt_reg[15]_i_1_CO_UNCONNECTED ;
   wire [3:3]\NLW_cnt_reg[15]_i_1_O_UNCONNECTED ;
 
@@ -5357,7 +5356,7 @@ module system_acquire_top_0_2_counter
     \cnt_reg[0] 
        (.CLR(SR),
         .D(\cnt_reg[0]_i_1_n_0 ),
-        .G(gpio_pulse),
+        .G(trig_out),
         .GE(1'b1),
         .Q(Q[0]));
   LUT1 #(
@@ -5371,7 +5370,7 @@ module system_acquire_top_0_2_counter
     \cnt_reg[10] 
        (.CLR(SR),
         .D(\cnt_reg[12]_i_1_n_6 ),
-        .G(gpio_pulse),
+        .G(trig_out),
         .GE(1'b1),
         .Q(Q[10]));
   (* XILINX_LEGACY_PRIM = "LDC" *) 
@@ -5380,7 +5379,7 @@ module system_acquire_top_0_2_counter
     \cnt_reg[11] 
        (.CLR(SR),
         .D(\cnt_reg[12]_i_1_n_5 ),
-        .G(gpio_pulse),
+        .G(trig_out),
         .GE(1'b1),
         .Q(Q[11]));
   (* XILINX_LEGACY_PRIM = "LDC" *) 
@@ -5389,7 +5388,7 @@ module system_acquire_top_0_2_counter
     \cnt_reg[12] 
        (.CLR(SR),
         .D(\cnt_reg[12]_i_1_n_4 ),
-        .G(gpio_pulse),
+        .G(trig_out),
         .GE(1'b1),
         .Q(Q[12]));
   (* ADDER_THRESHOLD = "35" *) 
@@ -5406,7 +5405,7 @@ module system_acquire_top_0_2_counter
     \cnt_reg[13] 
        (.CLR(SR),
         .D(\cnt_reg[15]_i_1_n_7 ),
-        .G(gpio_pulse),
+        .G(trig_out),
         .GE(1'b1),
         .Q(Q[13]));
   (* XILINX_LEGACY_PRIM = "LDC" *) 
@@ -5415,7 +5414,7 @@ module system_acquire_top_0_2_counter
     \cnt_reg[14] 
        (.CLR(SR),
         .D(\cnt_reg[15]_i_1_n_6 ),
-        .G(gpio_pulse),
+        .G(trig_out),
         .GE(1'b1),
         .Q(Q[14]));
   (* XILINX_LEGACY_PRIM = "LDC" *) 
@@ -5424,7 +5423,7 @@ module system_acquire_top_0_2_counter
     \cnt_reg[15] 
        (.CLR(SR),
         .D(\cnt_reg[15]_i_1_n_5 ),
-        .G(gpio_pulse),
+        .G(trig_out),
         .GE(1'b1),
         .Q(Q[15]));
   (* ADDER_THRESHOLD = "35" *) 
@@ -5441,7 +5440,7 @@ module system_acquire_top_0_2_counter
     \cnt_reg[1] 
        (.CLR(SR),
         .D(\cnt_reg[4]_i_1_n_7 ),
-        .G(gpio_pulse),
+        .G(trig_out),
         .GE(1'b1),
         .Q(Q[1]));
   (* XILINX_LEGACY_PRIM = "LDC" *) 
@@ -5450,7 +5449,7 @@ module system_acquire_top_0_2_counter
     \cnt_reg[2] 
        (.CLR(SR),
         .D(\cnt_reg[4]_i_1_n_6 ),
-        .G(gpio_pulse),
+        .G(trig_out),
         .GE(1'b1),
         .Q(Q[2]));
   (* XILINX_LEGACY_PRIM = "LDC" *) 
@@ -5459,7 +5458,7 @@ module system_acquire_top_0_2_counter
     \cnt_reg[3] 
        (.CLR(SR),
         .D(\cnt_reg[4]_i_1_n_5 ),
-        .G(gpio_pulse),
+        .G(trig_out),
         .GE(1'b1),
         .Q(Q[3]));
   (* XILINX_LEGACY_PRIM = "LDC" *) 
@@ -5468,7 +5467,7 @@ module system_acquire_top_0_2_counter
     \cnt_reg[4] 
        (.CLR(SR),
         .D(\cnt_reg[4]_i_1_n_4 ),
-        .G(gpio_pulse),
+        .G(trig_out),
         .GE(1'b1),
         .Q(Q[4]));
   (* ADDER_THRESHOLD = "35" *) 
@@ -5485,7 +5484,7 @@ module system_acquire_top_0_2_counter
     \cnt_reg[5] 
        (.CLR(SR),
         .D(\cnt_reg[8]_i_1_n_7 ),
-        .G(gpio_pulse),
+        .G(trig_out),
         .GE(1'b1),
         .Q(Q[5]));
   (* XILINX_LEGACY_PRIM = "LDC" *) 
@@ -5494,7 +5493,7 @@ module system_acquire_top_0_2_counter
     \cnt_reg[6] 
        (.CLR(SR),
         .D(\cnt_reg[8]_i_1_n_6 ),
-        .G(gpio_pulse),
+        .G(trig_out),
         .GE(1'b1),
         .Q(Q[6]));
   (* XILINX_LEGACY_PRIM = "LDC" *) 
@@ -5503,7 +5502,7 @@ module system_acquire_top_0_2_counter
     \cnt_reg[7] 
        (.CLR(SR),
         .D(\cnt_reg[8]_i_1_n_5 ),
-        .G(gpio_pulse),
+        .G(trig_out),
         .GE(1'b1),
         .Q(Q[7]));
   (* XILINX_LEGACY_PRIM = "LDC" *) 
@@ -5512,7 +5511,7 @@ module system_acquire_top_0_2_counter
     \cnt_reg[8] 
        (.CLR(SR),
         .D(\cnt_reg[8]_i_1_n_4 ),
-        .G(gpio_pulse),
+        .G(trig_out),
         .GE(1'b1),
         .Q(Q[8]));
   (* ADDER_THRESHOLD = "35" *) 
@@ -5529,9 +5528,15 @@ module system_acquire_top_0_2_counter
     \cnt_reg[9] 
        (.CLR(SR),
         .D(\cnt_reg[12]_i_1_n_7 ),
-        .G(gpio_pulse),
+        .G(trig_out),
         .GE(1'b1),
         .Q(Q[9]));
+  LUT2 #(
+    .INIT(4'h8)) 
+    trig_out_INST_0
+       (.I0(CO),
+        .I1(start_acq),
+        .O(trig_out));
 endmodule
 
 (* CHECK_LICENSE_TYPE = "reg_ctrl,axi_bram_ctrl,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "reg_ctrl" *) 

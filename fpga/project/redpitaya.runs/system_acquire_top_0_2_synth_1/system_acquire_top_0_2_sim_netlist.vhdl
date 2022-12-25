@@ -1,7 +1,7 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
--- Date        : Sat Dec 24 14:00:01 2022
+-- Date        : Sun Dec 25 22:29:41 2022
 -- Host        : martin-desktop running 64-bit ArcoLinux
 -- Command     : write_vhdl -force -mode funcsim -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix
 --               decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ system_acquire_top_0_2_sim_netlist.vhdl
@@ -693,10 +693,12 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_counter is
   port (
+    trig_out : out STD_LOGIC;
     SR : out STD_LOGIC_VECTOR ( 0 to 0 );
     Q : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    rst_n : in STD_LOGIC;
-    gpio_pulse : in STD_LOGIC
+    CO : in STD_LOGIC_VECTOR ( 0 to 0 );
+    start_acq : in STD_LOGIC;
+    rst_n : in STD_LOGIC
   );
 end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_counter;
 
@@ -733,6 +735,7 @@ architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_counter is
   signal \cnt_reg[8]_i_1_n_5\ : STD_LOGIC;
   signal \cnt_reg[8]_i_1_n_6\ : STD_LOGIC;
   signal \cnt_reg[8]_i_1_n_7\ : STD_LOGIC;
+  signal \^trig_out\ : STD_LOGIC;
   signal \NLW_cnt_reg[15]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
   signal \NLW_cnt_reg[15]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
   attribute XILINX_LEGACY_PRIM : string;
@@ -760,6 +763,7 @@ architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_counter is
 begin
   Q(15 downto 0) <= \^q\(15 downto 0);
   SR(0) <= \^sr\(0);
+  trig_out <= \^trig_out\;
 FIFO_i_1: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
@@ -775,7 +779,7 @@ FIFO_i_1: unisim.vcomponents.LUT1
         port map (
       CLR => \^sr\(0),
       D => \cnt_reg[0]_i_1_n_0\,
-      G => gpio_pulse,
+      G => \^trig_out\,
       GE => '1',
       Q => \^q\(0)
     );
@@ -794,7 +798,7 @@ FIFO_i_1: unisim.vcomponents.LUT1
         port map (
       CLR => \^sr\(0),
       D => \cnt_reg[12]_i_1_n_6\,
-      G => gpio_pulse,
+      G => \^trig_out\,
       GE => '1',
       Q => \^q\(10)
     );
@@ -805,7 +809,7 @@ FIFO_i_1: unisim.vcomponents.LUT1
         port map (
       CLR => \^sr\(0),
       D => \cnt_reg[12]_i_1_n_5\,
-      G => gpio_pulse,
+      G => \^trig_out\,
       GE => '1',
       Q => \^q\(11)
     );
@@ -816,7 +820,7 @@ FIFO_i_1: unisim.vcomponents.LUT1
         port map (
       CLR => \^sr\(0),
       D => \cnt_reg[12]_i_1_n_4\,
-      G => gpio_pulse,
+      G => \^trig_out\,
       GE => '1',
       Q => \^q\(12)
     );
@@ -842,7 +846,7 @@ FIFO_i_1: unisim.vcomponents.LUT1
         port map (
       CLR => \^sr\(0),
       D => \cnt_reg[15]_i_1_n_7\,
-      G => gpio_pulse,
+      G => \^trig_out\,
       GE => '1',
       Q => \^q\(13)
     );
@@ -853,7 +857,7 @@ FIFO_i_1: unisim.vcomponents.LUT1
         port map (
       CLR => \^sr\(0),
       D => \cnt_reg[15]_i_1_n_6\,
-      G => gpio_pulse,
+      G => \^trig_out\,
       GE => '1',
       Q => \^q\(14)
     );
@@ -864,7 +868,7 @@ FIFO_i_1: unisim.vcomponents.LUT1
         port map (
       CLR => \^sr\(0),
       D => \cnt_reg[15]_i_1_n_5\,
-      G => gpio_pulse,
+      G => \^trig_out\,
       GE => '1',
       Q => \^q\(15)
     );
@@ -890,7 +894,7 @@ FIFO_i_1: unisim.vcomponents.LUT1
         port map (
       CLR => \^sr\(0),
       D => \cnt_reg[4]_i_1_n_7\,
-      G => gpio_pulse,
+      G => \^trig_out\,
       GE => '1',
       Q => \^q\(1)
     );
@@ -901,7 +905,7 @@ FIFO_i_1: unisim.vcomponents.LUT1
         port map (
       CLR => \^sr\(0),
       D => \cnt_reg[4]_i_1_n_6\,
-      G => gpio_pulse,
+      G => \^trig_out\,
       GE => '1',
       Q => \^q\(2)
     );
@@ -912,7 +916,7 @@ FIFO_i_1: unisim.vcomponents.LUT1
         port map (
       CLR => \^sr\(0),
       D => \cnt_reg[4]_i_1_n_5\,
-      G => gpio_pulse,
+      G => \^trig_out\,
       GE => '1',
       Q => \^q\(3)
     );
@@ -923,7 +927,7 @@ FIFO_i_1: unisim.vcomponents.LUT1
         port map (
       CLR => \^sr\(0),
       D => \cnt_reg[4]_i_1_n_4\,
-      G => gpio_pulse,
+      G => \^trig_out\,
       GE => '1',
       Q => \^q\(4)
     );
@@ -949,7 +953,7 @@ FIFO_i_1: unisim.vcomponents.LUT1
         port map (
       CLR => \^sr\(0),
       D => \cnt_reg[8]_i_1_n_7\,
-      G => gpio_pulse,
+      G => \^trig_out\,
       GE => '1',
       Q => \^q\(5)
     );
@@ -960,7 +964,7 @@ FIFO_i_1: unisim.vcomponents.LUT1
         port map (
       CLR => \^sr\(0),
       D => \cnt_reg[8]_i_1_n_6\,
-      G => gpio_pulse,
+      G => \^trig_out\,
       GE => '1',
       Q => \^q\(6)
     );
@@ -971,7 +975,7 @@ FIFO_i_1: unisim.vcomponents.LUT1
         port map (
       CLR => \^sr\(0),
       D => \cnt_reg[8]_i_1_n_5\,
-      G => gpio_pulse,
+      G => \^trig_out\,
       GE => '1',
       Q => \^q\(7)
     );
@@ -982,7 +986,7 @@ FIFO_i_1: unisim.vcomponents.LUT1
         port map (
       CLR => \^sr\(0),
       D => \cnt_reg[8]_i_1_n_4\,
-      G => gpio_pulse,
+      G => \^trig_out\,
       GE => '1',
       Q => \^q\(8)
     );
@@ -1008,9 +1012,18 @@ FIFO_i_1: unisim.vcomponents.LUT1
         port map (
       CLR => \^sr\(0),
       D => \cnt_reg[12]_i_1_n_7\,
-      G => gpio_pulse,
+      G => \^trig_out\,
       GE => '1',
       Q => \^q\(9)
+    );
+trig_out_INST_0: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => CO(0),
+      I1 => start_acq,
+      O => \^trig_out\
     );
 end STRUCTURE;
 library IEEE;
@@ -10880,8 +10893,6 @@ architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_acquire_top 
   attribute downgradeipidentifiedwarnings of U_reg_ctrl : label is "yes";
   attribute x_core_info : string;
   attribute x_core_info of U_reg_ctrl : label is "axi_bram_ctrl,Vivado 2020.1";
-  attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \dec_cnt[0]_i_1\ : label is "soft_lutpair33";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \dec_cnt_reg[12]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \dec_cnt_reg[16]_i_1\ : label is 35;
@@ -10891,15 +10902,15 @@ architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_acquire_top 
   attribute ADDER_THRESHOLD of \dec_cnt_reg[31]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \dec_cnt_reg[4]_i_1\ : label is 35;
   attribute ADDER_THRESHOLD of \dec_cnt_reg[8]_i_1\ : label is 35;
-  attribute SOFT_HLUTNM of \m_axi_awlen[0]_INST_0\ : label is "soft_lutpair36";
-  attribute SOFT_HLUTNM of \m_axi_awlen[1]_INST_0\ : label is "soft_lutpair36";
-  attribute SOFT_HLUTNM of \m_axi_awlen[2]_INST_0\ : label is "soft_lutpair34";
-  attribute SOFT_HLUTNM of \m_axi_awlen[3]_INST_0\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM : string;
+  attribute SOFT_HLUTNM of \m_axi_awlen[0]_INST_0\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \m_axi_awlen[1]_INST_0\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \m_axi_awlen[2]_INST_0\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \m_axi_awlen[3]_INST_0\ : label is "soft_lutpair33";
   attribute SOFT_HLUTNM of \reg_rd_data[31]_i_4\ : label is "soft_lutpair32";
   attribute SOFT_HLUTNM of \reg_rd_data[31]_i_5\ : label is "soft_lutpair32";
-  attribute SOFT_HLUTNM of \reg_rd_data[31]_i_7\ : label is "soft_lutpair35";
-  attribute SOFT_HLUTNM of \reg_rd_data[31]_i_8\ : label is "soft_lutpair35";
-  attribute SOFT_HLUTNM of trig_out_INST_0 : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \reg_rd_data[31]_i_7\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \reg_rd_data[31]_i_8\ : label is "soft_lutpair34";
 begin
   cnt_out <= \^cnt_out\;
   m_axi_awaddr(31) <= \<const0>\;
@@ -10988,11 +10999,13 @@ U_axi_s2mm: entity work.decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_axi_s2mm
     );
 U_cnt: entity work.decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_counter
      port map (
+      CO(0) => trig0,
       Q(15 downto 1) => cnt(15 downto 1),
       Q(0) => \^cnt_out\,
       SR(0) => fifo_rst,
-      gpio_pulse => gpio_pulse,
-      rst_n => rst_n
+      rst_n => rst_n,
+      start_acq => start_acq,
+      trig_out => trig_out
     );
 U_reg_ctrl: entity work.decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_reg_ctrl
      port map (
@@ -13251,15 +13264,6 @@ start_acq_reg: unisim.vcomponents.FDRE
       D => start_acq_i_1_n_0,
       Q => start_acq,
       R => '0'
-    );
-trig_out_INST_0: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"8"
-    )
-        port map (
-      I0 => trig0,
-      I1 => start_acq,
-      O => trig_out
     );
 end STRUCTURE;
 library IEEE;

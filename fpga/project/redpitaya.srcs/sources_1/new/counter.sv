@@ -38,7 +38,7 @@ module counter#
     always @ (clk) begin
         if (~rst_n)
             cnt <= 0;
-        else if (gpio_pulse)
+        else if (trig)
             cnt <= cnt + 1;
     end
    

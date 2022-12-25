@@ -1,5 +1,5 @@
 CC = gcc
-CCFLAGS = -g -Wall
+CCFLAGS = -g -Wall -pthread
 
 SOURCEDIR = src/app
 TESTDIR = src/test
@@ -80,6 +80,11 @@ $(BIN)/test/buffer_read: $(OBJ)/test/buffer_read.o \
 
 $(BIN)/test/interrupt: $(OBJ)/test/interrupt.o \
 	$(OBJ)/oscilloscope.o $(OBJ)/uio_parser.o
+
+	$(CC) $(CCFLAGS) $^ -o $@
+
+$(BIN)/test/DMA_transfer: $(OBJ)/test/DMA_transfer.o \
+	$(OBJ)/oscilloscope.o $(OBJ)/uio_parser.o $(OBJ)/transfer.o
 
 	$(CC) $(CCFLAGS) $^ -o $@
 

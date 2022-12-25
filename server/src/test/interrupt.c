@@ -9,6 +9,7 @@ int main() {
     uio_list = get_uios();
 
     Acq *acq;
+    int ret;
     acq = create_acq(*find_uio_by_name(uio_list, "rp_acquire"));
 
     if(acq == NULL) {
@@ -20,7 +21,11 @@ int main() {
     start_acq(acq);
 
     for (int i=0; i<5; i++) {
-        wait(acq);
+        ret = wait(acq);
+        if (ret == 0) {
+            printf("Interrupt!\n");
+            clear_interrupt(acq);
+        }
     }   
 
     stop_acq(acq);

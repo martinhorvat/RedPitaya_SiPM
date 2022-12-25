@@ -12,7 +12,6 @@ source red_pitaya_top.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2020.1/data/ip'.
-add_files: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2093.598 ; gain = 6.035 ; free physical = 1470 ; free virtual = 13417
 Command: synth_design -top red_pitaya_top -part xc7z010clg400-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
@@ -20,11 +19,11 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010
 INFO: [Device 21-403] Loading part xc7z010clg400-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 385327
+INFO: [Synth 8-7075] Helper process launched with PID 62278
 WARNING: [Synth 8-992] dac_dat_a_o is already implicitly declared earlier [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/imports/classic/prj/classic/rtl/red_pitaya_top.sv:177]
 WARNING: [Synth 8-992] dac_dat_b_o is already implicitly declared earlier [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/imports/classic/prj/classic/rtl/red_pitaya_top.sv:177]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 2093.715 ; gain = 0.000 ; free physical = 854 ; free virtual = 12804
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2093.715 ; gain = 0.000 ; free physical = 717 ; free virtual = 15670
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'red_pitaya_top' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/imports/classic/prj/classic/rtl/red_pitaya_top.sv:12]
 	Parameter GITH bound to: 160'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
@@ -80,30 +79,30 @@ WARNING: [Synth 8-7023] instance 'pll' of module 'red_pitaya_pll' has 9 connecti
 INFO: [Synth 8-6157] synthesizing module 'BUFG' [/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:1083]
 INFO: [Synth 8-6155] done synthesizing module 'BUFG' (4#1) [/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:1083]
 INFO: [Synth 8-6157] synthesizing module 'system' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/synth/system.v:441]
-INFO: [Synth 8-6157] synthesizing module 'system_acquire_top_0_2' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-383620-martin-desktop/realtime/system_acquire_top_0_2_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'system_acquire_top_0_2' (5#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-383620-martin-desktop/realtime/system_acquire_top_0_2_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'system_acquire_top_0_2' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-62211-martin-desktop/realtime/system_acquire_top_0_2_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_acquire_top_0_2' (5#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-62211-martin-desktop/realtime/system_acquire_top_0_2_stub.v:6]
 WARNING: [Synth 8-7071] port 'cnt_out' of module 'system_acquire_top_0_2' is unconnected for instance 'acquire_top_0' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/synth/system.v:622]
 WARNING: [Synth 8-7023] instance 'acquire_top_0' of module 'system_acquire_top_0_2' has 48 connections declared, but only 47 given [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/synth/system.v:622]
 INFO: [Synth 8-6157] synthesizing module 'system_axi_interconnect_0_0' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/synth/system.v:877]
 INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_Y9JEWS' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/synth/system.v:12]
-INFO: [Synth 8-6157] synthesizing module 'system_auto_cc_0' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-383620-martin-desktop/realtime/system_auto_cc_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'system_auto_cc_0' (6#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-383620-martin-desktop/realtime/system_auto_cc_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'system_auto_pc_0' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-383620-martin-desktop/realtime/system_auto_pc_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'system_auto_pc_0' (7#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-383620-martin-desktop/realtime/system_auto_pc_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'system_auto_cc_0' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-62211-martin-desktop/realtime/system_auto_cc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_auto_cc_0' (6#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-62211-martin-desktop/realtime/system_auto_cc_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'system_auto_pc_0' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-62211-martin-desktop/realtime/system_auto_pc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_auto_pc_0' (7#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-62211-martin-desktop/realtime/system_auto_pc_0_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_Y9JEWS' (8#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/synth/system.v:12]
 INFO: [Synth 8-6155] done synthesizing module 'system_axi_interconnect_0_0' (9#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/synth/system.v:877]
-INFO: [Synth 8-6157] synthesizing module 'system_clk_wiz_0_0' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-383620-martin-desktop/realtime/system_clk_wiz_0_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'system_clk_wiz_0_0' (10#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-383620-martin-desktop/realtime/system_clk_wiz_0_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'system_clk_wiz_0_0' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-62211-martin-desktop/realtime/system_clk_wiz_0_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'system_clk_wiz_0_0' (10#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-62211-martin-desktop/realtime/system_clk_wiz_0_0_stub.v:5]
 WARNING: [Synth 8-7071] port 'locked' of module 'system_clk_wiz_0_0' is unconnected for instance 'clk_wiz_0' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/synth/system.v:734]
 WARNING: [Synth 8-7023] instance 'clk_wiz_0' of module 'system_clk_wiz_0_0' has 5 connections declared, but only 4 given [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/synth/system.v:734]
-INFO: [Synth 8-6157] synthesizing module 'system_proc_sys_reset_0' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-383620-martin-desktop/realtime/system_proc_sys_reset_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'system_proc_sys_reset_0' (11#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-383620-martin-desktop/realtime/system_proc_sys_reset_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'system_proc_sys_reset_0' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-62211-martin-desktop/realtime/system_proc_sys_reset_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_proc_sys_reset_0' (11#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-62211-martin-desktop/realtime/system_proc_sys_reset_0_stub.v:6]
 WARNING: [Synth 8-7071] port 'mb_reset' of module 'system_proc_sys_reset_0' is unconnected for instance 'proc_sys_reset' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/synth/system.v:739]
 WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'system_proc_sys_reset_0' is unconnected for instance 'proc_sys_reset' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/synth/system.v:739]
 WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'system_proc_sys_reset_0' is unconnected for instance 'proc_sys_reset' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/synth/system.v:739]
 WARNING: [Synth 8-7023] instance 'proc_sys_reset' of module 'system_proc_sys_reset_0' has 10 connections declared, but only 7 given [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/synth/system.v:739]
-INFO: [Synth 8-6157] synthesizing module 'system_processing_system7_0' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-383620-martin-desktop/realtime/system_processing_system7_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'system_processing_system7_0' (12#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-383620-martin-desktop/realtime/system_processing_system7_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'system_processing_system7_0' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-62211-martin-desktop/realtime/system_processing_system7_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_processing_system7_0' (12#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-62211-martin-desktop/realtime/system_processing_system7_0_stub.v:6]
 WARNING: [Synth 8-7071] port 'GPIO_O' of module 'system_processing_system7_0' is unconnected for instance 'processing_system7' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/synth/system.v:747]
 WARNING: [Synth 8-7071] port 'GPIO_T' of module 'system_processing_system7_0' is unconnected for instance 'processing_system7' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/synth/system.v:747]
 WARNING: [Synth 8-7071] port 'SPI0_SCLK_O' of module 'system_processing_system7_0' is unconnected for instance 'processing_system7' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/synth/system.v:747]
@@ -133,8 +132,8 @@ WARNING: [Synth 8-7071] port 'S_AXI_HP0_WCOUNT' of module 'system_processing_sys
 WARNING: [Synth 8-7071] port 'S_AXI_HP0_RACOUNT' of module 'system_processing_system7_0' is unconnected for instance 'processing_system7' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/synth/system.v:747]
 WARNING: [Synth 8-7071] port 'S_AXI_HP0_WACOUNT' of module 'system_processing_system7_0' is unconnected for instance 'processing_system7' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/synth/system.v:747]
 WARNING: [Synth 8-7023] instance 'processing_system7' of module 'system_processing_system7_0' has 130 connections declared, but only 102 given [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/synth/system.v:747]
-INFO: [Synth 8-6157] synthesizing module 'system_rp_expansion_to_in_0_0' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-383620-martin-desktop/realtime/system_rp_expansion_to_in_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'system_rp_expansion_to_in_0_0' (13#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-383620-martin-desktop/realtime/system_rp_expansion_to_in_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'system_rp_expansion_to_in_0_0' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-62211-martin-desktop/realtime/system_rp_expansion_to_in_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_rp_expansion_to_in_0_0' (13#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/.Xil/Vivado-62211-martin-desktop/realtime/system_rp_expansion_to_in_0_0_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'system_xlconcat_0_0' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_xlconcat_0_0/synth/system_xlconcat_0_0.v:58]
 INFO: [Synth 8-6157] synthesizing module 'xlconcat_v2_1_3_xlconcat' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/ipshared/442e/hdl/xlconcat_v2_1_vl_rfs.v:14]
 	Parameter IN0_WIDTH bound to: 1 - type: integer 
@@ -202,18 +201,18 @@ INFO: [Synth 8-6157] synthesizing module 'IBUFDS' [/opt/Xilinx/Vivado/2020.1/scr
 INFO: [Synth 8-6155] done synthesizing module 'IBUFDS' (21#1) [/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:32992]
 INFO: [Synth 8-6155] done synthesizing module 'red_pitaya_top' (22#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/imports/classic/prj/classic/rtl/red_pitaya_top.sv:12]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 2093.715 ; gain = 0.000 ; free physical = 916 ; free virtual = 12870
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2093.715 ; gain = 0.000 ; free physical = 785 ; free virtual = 15739
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2093.715 ; gain = 0.000 ; free physical = 916 ; free virtual = 12871
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2093.715 ; gain = 0.000 ; free physical = 784 ; free virtual = 15738
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2093.715 ; gain = 0.000 ; free physical = 916 ; free virtual = 12871
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2093.715 ; gain = 0.000 ; free physical = 784 ; free virtual = 15738
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2093.715 ; gain = 0.000 ; free physical = 914 ; free virtual = 12868
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2093.715 ; gain = 0.000 ; free physical = 778 ; free virtual = 15732
 INFO: [Netlist 29-17] Analyzing 25 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -470,21 +469,21 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/red_pitaya_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2139.414 ; gain = 0.000 ; free physical = 841 ; free virtual = 12798
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2139.414 ; gain = 0.000 ; free physical = 689 ; free virtual = 15645
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 2 instances were transformed.
   OBUFDS => OBUFDS_DUAL_BUF (INV, OBUFDS(x2)): 2 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2139.414 ; gain = 0.000 ; free physical = 841 ; free virtual = 12798
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2139.414 ; gain = 0.000 ; free physical = 689 ; free virtual = 15645
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 884 ; free virtual = 12844
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 741 ; free virtual = 15697
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z010clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 884 ; free virtual = 12844
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 741 ; free virtual = 15697
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -778,10 +777,10 @@ Applied set_property DONT_TOUCH = true for system_wrapper_i/xlconstant_0. (const
 Applied set_property DONT_TOUCH = true for system_wrapper_i/axi_interconnect_0/s00_couplers/auto_cc. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for system_wrapper_i/axi_interconnect_0/s00_couplers/auto_pc. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:14 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 884 ; free virtual = 12844
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 741 ; free virtual = 15697
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 885 ; free virtual = 12846
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 741 ; free virtual = 15698
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -808,25 +807,25 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:15 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 872 ; free virtual = 12837
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 730 ; free virtual = 15690
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:21 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 754 ; free virtual = 12725
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 613 ; free virtual = 15573
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:21 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 754 ; free virtual = 12724
+Finished Timing Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 613 ; free virtual = 15573
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:21 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 750 ; free virtual = 12720
+Finished Technology Mapping : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 608 ; free virtual = 15568
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -844,37 +843,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:20 ; elapsed = 00:00:24 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 751 ; free virtual = 12722
+Finished IO Insertion : Time (s): cpu = 00:00:18 ; elapsed = 00:00:22 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 608 ; free virtual = 15568
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:20 ; elapsed = 00:00:24 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 751 ; free virtual = 12722
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:18 ; elapsed = 00:00:22 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 608 ; free virtual = 15568
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:20 ; elapsed = 00:00:24 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 751 ; free virtual = 12722
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:18 ; elapsed = 00:00:22 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 608 ; free virtual = 15568
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:20 ; elapsed = 00:00:24 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 751 ; free virtual = 12721
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:18 ; elapsed = 00:00:22 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 608 ; free virtual = 15568
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:24 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 751 ; free virtual = 12721
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:18 ; elapsed = 00:00:22 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 608 ; free virtual = 15568
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:20 ; elapsed = 00:00:24 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 751 ; free virtual = 12721
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:18 ; elapsed = 00:00:22 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 608 ; free virtual = 15568
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -916,20 +915,20 @@ Report Cell Usage:
 |17    |OBUFT                       |     4|
 +------+----------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:20 ; elapsed = 00:00:24 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 751 ; free virtual = 12721
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:18 ; elapsed = 00:00:22 . Memory (MB): peak = 2139.414 ; gain = 45.699 ; free physical = 608 ; free virtual = 15568
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:18 ; elapsed = 00:00:21 . Memory (MB): peak = 2139.414 ; gain = 0.000 ; free physical = 799 ; free virtual = 12769
-Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:24 . Memory (MB): peak = 2139.422 ; gain = 45.699 ; free physical = 799 ; free virtual = 12769
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 2139.414 ; gain = 0.000 ; free physical = 657 ; free virtual = 15618
+Synthesis Optimization Complete : Time (s): cpu = 00:00:18 ; elapsed = 00:00:22 . Memory (MB): peak = 2139.422 ; gain = 45.699 ; free physical = 657 ; free virtual = 15618
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2139.422 ; gain = 0.000 ; free physical = 798 ; free virtual = 12769
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2139.422 ; gain = 0.000 ; free physical = 657 ; free virtual = 15618
 INFO: [Netlist 29-17] Analyzing 25 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 WARNING: [Constraints 18-548] Could not create 'IOSTANDARD' constraint because invalid IOSTANDARD value 'DIFF_HSTL18_I' specified. The default IOSTANDARD will be used instead. 'IOSTANDARD' is ignored by Vivado but preserved for implementation tool.
 WARNING: [Constraints 18-548] Could not create 'IOSTANDARD' constraint because invalid IOSTANDARD value 'DIFF_HSTL18_I' specified. The default IOSTANDARD will be used instead. 'IOSTANDARD' is ignored by Vivado but preserved for implementation tool.
 INFO: [Opt 31-138] Pushed 26 inverter(s) to 26 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2148.320 ; gain = 0.000 ; free physical = 812 ; free virtual = 12786
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2148.320 ; gain = 0.000 ; free physical = 674 ; free virtual = 15634
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 2 instances were transformed.
   OBUFDS => OBUFDS_DUAL_BUF (INV, OBUFDS(x2)): 2 instances
@@ -937,9 +936,9 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 INFO: [Common 17-83] Releasing license: Synthesis
 116 Infos, 100 Warnings, 60 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 2148.320 ; gain = 54.723 ; free physical = 935 ; free virtual = 12910
+synth_design: Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 2148.320 ; gain = 54.723 ; free physical = 797 ; free virtual = 15758
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint '/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/synth_1/red_pitaya_top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file red_pitaya_top_utilization_synth.rpt -pb red_pitaya_top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sat Dec 24 14:00:56 2022...
+INFO: [Common 17-206] Exiting Vivado at Sun Dec 25 22:30:33 2022...

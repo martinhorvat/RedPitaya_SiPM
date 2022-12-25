@@ -29,7 +29,9 @@ Acq *create_acq(Uio uio) {
 
     acq -> reg = reg;
     acq -> buff = buff;
-    acq -> fd = &fd;
+    acq -> fd = fd;
+    acq -> data_start = malloc(DATA_LEN * sizeof(uint16_t));
+    acq -> data_end = acq -> data_start; 
 
     return acq;
 }
@@ -72,25 +74,21 @@ void print_reg(Acq *acq) {
 
 int wait(Acq *acq) {
     uint32_t info = 1;
-    int *fd;
-    fd = acq -> fd;
-    ssize_t nb = write(*fd, &info, sizeof(info));
+    ssize_t nb = write(acq->fd, &info, sizeof(info));
 
     struct pollfd fds = {
-            .fd = *fd,
+            .fd = acq->fd,
             .events = POLLIN,
         };
 
     int ret = poll(&fds, 1, TIMEOUT_MS);
 
-    printf("poll returned\n");
-
     if (ret >= 1) {
-        printf("reading\n");
-        nb = read(*fd, &info, sizeof(info));
+        nb = read(acq->fd, &info, sizeof(info));
         if (nb == (ssize_t)sizeof(info)) {
-            clear_interrupt(acq);
             return 0;
+        } else {
+            perror("read() error");
         }
     } else {
         perror("poll() error");
