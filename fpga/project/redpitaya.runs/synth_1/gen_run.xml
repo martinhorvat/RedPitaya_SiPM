@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z010clg400-1" LaunchTime="1672003710">
+<GenRun Id="synth_1" LaunchPart="xc7z010clg400-1" LaunchTime="1672166889">
   <File Type="VDS-TIMING-PB" Name="red_pitaya_top_timing_summary_synth.pb"/>
   <File Type="VDS-TIMINGSUMMARY" Name="red_pitaya_top_timing_summary_synth.rpt"/>
   <File Type="RDS-DCP" Name="red_pitaya_top.dcp"/>
@@ -243,6 +243,6 @@
     <Step Id="synth_design"/>
   </Strategy>
   <BlockFileSet Type="BlockSrcs" Name="system_acquire_top_0_2"/>
-  <BlockFileSet Type="BlockSrcs" Name="system_processing_system7_0"/>
   <BlockFileSet Type="BlockSrcs" Name="system_rp_expansion_to_in_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="system_processing_system7_0"/>
 </GenRun>

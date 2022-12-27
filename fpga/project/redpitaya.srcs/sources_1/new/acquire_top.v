@@ -121,7 +121,7 @@ module acquire_top#
     assign trig_out = trig;
     assign cnt_out = cnt;
     
-    assign trig = ((dec_cnt >= cfg_dec) && start_acq) ? 1 : 0;
+    assign trig = (dec_cnt >= cfg_dec) ? 1 : 0;
     assign reg_wr_we = reg_en & (reg_we == 4'hF);
     
     // REG CTRL
@@ -183,7 +183,8 @@ module acquire_top#
         .gpio_pulse   (gpio_pulse),
         .rst_n        (rst_n),
         .trig         (trig),
-        .cnt          (cnt));
+        .cnt          (cnt),
+        .start_acq    (start_acq));
     
     // AXI S2MM
     
@@ -244,7 +245,7 @@ module acquire_top#
     // DECIMATION
     
     always @ (posedge clk) begin
-        if (~rst_n) 
+        if (~rst_n || ~start_acq) 
             dec_cnt <= 0;
         else if (trig)
             dec_cnt <= 1;

@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date         : Sun Dec 25 22:31:24 2022
+| Date         : Tue Dec 27 19:51:00 2022
 | Host         : martin-desktop running 64-bit ArcoLinux
 | Command      : report_drc -file red_pitaya_top_drc_opted.rpt -pb red_pitaya_top_drc_opted.pb -rpx red_pitaya_top_drc_opted.rpx
 | Design       : red_pitaya_top
@@ -24,11 +24,11 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 23
+             Violations found: 22
 +----------+----------+------------------------------------------------+------------+
 | Rule     | Severity | Description                                    | Violations |
 +----------+----------+------------------------------------------------+------------+
-| BUFC-1   | Warning  | Input Buffer Connections                       | 8          |
+| BUFC-1   | Warning  | Input Buffer Connections                       | 7          |
 | PLIO-3   | Warning  | Placement Constraints Check for IO constraints | 2          |
 | PLIO-8   | Warning  | Placement Constraints Check for IO constraints | 4          |
 | RPBF-3   | Warning  | IO port buffering is incomplete                | 8          |
@@ -44,35 +44,30 @@ Related violations: <none>
 
 BUFC-1#2 Warning
 Input Buffer Connections  
-Input buffer system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[1]/IBUF (in system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[1] macro) has no loads. It is recommended to have an input buffer drive an internal load.
+Input buffer system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[2]/IBUF (in system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[2] macro) has no loads. It is recommended to have an input buffer drive an internal load.
 Related violations: <none>
 
 BUFC-1#3 Warning
 Input Buffer Connections  
-Input buffer system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[2]/IBUF (in system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[2] macro) has no loads. It is recommended to have an input buffer drive an internal load.
+Input buffer system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[3]/IBUF (in system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[3] macro) has no loads. It is recommended to have an input buffer drive an internal load.
 Related violations: <none>
 
 BUFC-1#4 Warning
 Input Buffer Connections  
-Input buffer system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[3]/IBUF (in system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[3] macro) has no loads. It is recommended to have an input buffer drive an internal load.
+Input buffer system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[4]/IBUF (in system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[4] macro) has no loads. It is recommended to have an input buffer drive an internal load.
 Related violations: <none>
 
 BUFC-1#5 Warning
 Input Buffer Connections  
-Input buffer system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[4]/IBUF (in system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[4] macro) has no loads. It is recommended to have an input buffer drive an internal load.
+Input buffer system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[5]/IBUF (in system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[5] macro) has no loads. It is recommended to have an input buffer drive an internal load.
 Related violations: <none>
 
 BUFC-1#6 Warning
 Input Buffer Connections  
-Input buffer system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[5]/IBUF (in system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[5] macro) has no loads. It is recommended to have an input buffer drive an internal load.
-Related violations: <none>
-
-BUFC-1#7 Warning
-Input Buffer Connections  
 Input buffer system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[6]/IBUF (in system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[6] macro) has no loads. It is recommended to have an input buffer drive an internal load.
 Related violations: <none>
 
-BUFC-1#8 Warning
+BUFC-1#7 Warning
 Input Buffer Connections  
 Input buffer system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[7]/IBUF (in system_wrapper_i/rp_expansion_to_in_0/inst/exp_buf[7] macro) has no loads. It is recommended to have an input buffer drive an internal load.
 Related violations: <none>

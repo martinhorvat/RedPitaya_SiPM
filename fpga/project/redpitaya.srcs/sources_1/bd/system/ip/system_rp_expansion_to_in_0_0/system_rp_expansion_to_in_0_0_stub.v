@@ -1,7 +1,7 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-// Date        : Thu Dec 15 19:14:23 2022
+// Date        : Tue Dec 27 19:01:03 2022
 // Host        : martin-desktop running 64-bit ArcoLinux
 // Command     : write_verilog -force -mode synth_stub
 //               /home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_rp_expansion_to_in_0_0/system_rp_expansion_to_in_0_0_stub.v

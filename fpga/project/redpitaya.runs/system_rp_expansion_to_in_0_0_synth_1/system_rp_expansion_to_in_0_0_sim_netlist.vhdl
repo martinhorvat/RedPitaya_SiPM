@@ -1,7 +1,7 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
--- Date        : Thu Dec 15 19:14:23 2022
+-- Date        : Tue Dec 27 19:01:03 2022
 -- Host        : martin-desktop running 64-bit ArcoLinux
 -- Command     : write_vhdl -force -mode funcsim -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix
 --               decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ system_rp_expansion_to_in_0_0_sim_netlist.vhdl
@@ -57,7 +57,7 @@ begin
       I => '0',
       IO => exp_in(1),
       O => gpio_out,
-      T => '0'
+      T => '1'
     );
 \exp_buf[2]\: unisim.vcomponents.IOBUF
     generic map(
@@ -67,7 +67,7 @@ begin
       I => '0',
       IO => exp_in(2),
       O => \exp_buf_n_0_[2]\,
-      T => '0'
+      T => '1'
     );
 \exp_buf[3]\: unisim.vcomponents.IOBUF
     generic map(
@@ -77,7 +77,7 @@ begin
       I => '0',
       IO => exp_in(3),
       O => \exp_buf_n_0_[3]\,
-      T => '0'
+      T => '1'
     );
 \exp_buf[4]\: unisim.vcomponents.IOBUF
     generic map(
@@ -87,7 +87,7 @@ begin
       I => '0',
       IO => exp_in(4),
       O => \exp_buf_n_0_[4]\,
-      T => '0'
+      T => '1'
     );
 \exp_buf[5]\: unisim.vcomponents.IOBUF
     generic map(
@@ -97,7 +97,7 @@ begin
       I => '0',
       IO => exp_in(5),
       O => \exp_buf_n_0_[5]\,
-      T => '0'
+      T => '1'
     );
 \exp_buf[6]\: unisim.vcomponents.IOBUF
     generic map(
@@ -107,7 +107,7 @@ begin
       I => '0',
       IO => exp_in(6),
       O => \exp_buf_n_0_[6]\,
-      T => '0'
+      T => '1'
     );
 \exp_buf[7]\: unisim.vcomponents.IOBUF
     generic map(
@@ -117,7 +117,7 @@ begin
       I => '0',
       IO => exp_in(7),
       O => \exp_buf_n_0_[7]\,
-      T => '0'
+      T => '1'
     );
 end STRUCTURE;
 library IEEE;

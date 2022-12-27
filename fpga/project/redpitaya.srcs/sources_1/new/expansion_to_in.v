@@ -33,7 +33,7 @@ module rp_expansion_to_in#(
         (.O(exp),
          .IO(exp_in),
          .I(8'b0),
-         .T(8'b1));
+         .T(8'b11111111));
          
     assign gpio_out = exp[N_CON];
     

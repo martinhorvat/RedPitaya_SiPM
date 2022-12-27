@@ -20,12 +20,12 @@ int main() {
         return 1;
     }
 
-    set_reg(&(acq->reg->dec_factor), 12500000);
+    set_reg(&(acq->reg->dec_factor), 125000000);
     pthread_create(&thread_id, NULL, do_work, (void *)acq);
 
     start_acq(acq);
 
-    sleep(2);
+    sleep(10);
 
     stop_acq(acq);
 
@@ -38,7 +38,7 @@ int main() {
     printf("Data length: %d\n", N);
 
     for (int i=0; i<N; i++) {
-        printf("data[%d]: 0x%.8X\n", i, acq->data_start[i]);
+        printf("data[%d]: %d\n", i, acq->data_start[i]);
     }
 
     return 0;

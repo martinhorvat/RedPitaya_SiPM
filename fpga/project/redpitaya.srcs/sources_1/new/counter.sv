@@ -26,7 +26,8 @@ module counter#
     input wire gpio_pulse,
     input wire rst_n,
     input wire trig,
-    output reg [COUNTER_BITS-1:0] cnt);
+    output reg [COUNTER_BITS-1:0] cnt,
+    input wire start_acq);
     
 //    always @ (posedge gpio_pulse or posedge trig or negedge rst_n) begin
 //        if (~rst_n || trig)
@@ -35,11 +36,20 @@ module counter#
 //            cnt <= cnt + 1;
 //    end
 
-    always @ (clk) begin
-        if (~rst_n)
+    reg old_pulse;
+
+    always @ (posedge clk) begin
+        if (~rst_n || trig || (start_acq == 0)) begin
             cnt <= 0;
-        else if (trig)
-            cnt <= cnt + 1;
+            old_pulse <= 0;
+        end else if (gpio_pulse) begin
+            if (old_pulse == 0) begin
+                cnt <= cnt + 1;
+            end
+            old_pulse <= 1;
+        end else begin
+            old_pulse <= 0;
+        end            
     end
    
 endmodule

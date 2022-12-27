@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Sun Dec 25 22:28:24 2022
+//Date        : Tue Dec 27 19:48:04 2022
 //Host        : martin-desktop running 64-bit ArcoLinux
 //Command     : generate_target system_wrapper.bd
 //Design      : system_wrapper

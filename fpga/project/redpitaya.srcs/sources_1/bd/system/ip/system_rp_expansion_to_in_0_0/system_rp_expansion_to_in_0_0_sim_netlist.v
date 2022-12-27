@@ -1,7 +1,7 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-// Date        : Thu Dec 15 19:14:23 2022
+// Date        : Tue Dec 27 19:01:03 2022
 // Host        : martin-desktop running 64-bit ArcoLinux
 // Command     : write_verilog -force -mode funcsim
 //               /home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_rp_expansion_to_in_0_0/system_rp_expansion_to_in_0_0_sim_netlist.v
@@ -61,7 +61,7 @@ module system_rp_expansion_to_in_0_0_rp_expansion_to_in
        (.I(1'b0),
         .IO(exp_in[1]),
         .O(gpio_out),
-        .T(1'b0));
+        .T(1'b1));
   (* BOX_TYPE = "PRIMITIVE" *) 
   IOBUF #(
     .IOSTANDARD("DEFAULT")) 
@@ -69,7 +69,7 @@ module system_rp_expansion_to_in_0_0_rp_expansion_to_in
        (.I(1'b0),
         .IO(exp_in[2]),
         .O(\exp_buf_n_0_[2] ),
-        .T(1'b0));
+        .T(1'b1));
   (* BOX_TYPE = "PRIMITIVE" *) 
   IOBUF #(
     .IOSTANDARD("DEFAULT")) 
@@ -77,7 +77,7 @@ module system_rp_expansion_to_in_0_0_rp_expansion_to_in
        (.I(1'b0),
         .IO(exp_in[3]),
         .O(\exp_buf_n_0_[3] ),
-        .T(1'b0));
+        .T(1'b1));
   (* BOX_TYPE = "PRIMITIVE" *) 
   IOBUF #(
     .IOSTANDARD("DEFAULT")) 
@@ -85,7 +85,7 @@ module system_rp_expansion_to_in_0_0_rp_expansion_to_in
        (.I(1'b0),
         .IO(exp_in[4]),
         .O(\exp_buf_n_0_[4] ),
-        .T(1'b0));
+        .T(1'b1));
   (* BOX_TYPE = "PRIMITIVE" *) 
   IOBUF #(
     .IOSTANDARD("DEFAULT")) 
@@ -93,7 +93,7 @@ module system_rp_expansion_to_in_0_0_rp_expansion_to_in
        (.I(1'b0),
         .IO(exp_in[5]),
         .O(\exp_buf_n_0_[5] ),
-        .T(1'b0));
+        .T(1'b1));
   (* BOX_TYPE = "PRIMITIVE" *) 
   IOBUF #(
     .IOSTANDARD("DEFAULT")) 
@@ -101,7 +101,7 @@ module system_rp_expansion_to_in_0_0_rp_expansion_to_in
        (.I(1'b0),
         .IO(exp_in[6]),
         .O(\exp_buf_n_0_[6] ),
-        .T(1'b0));
+        .T(1'b1));
   (* BOX_TYPE = "PRIMITIVE" *) 
   IOBUF #(
     .IOSTANDARD("DEFAULT")) 
@@ -109,7 +109,7 @@ module system_rp_expansion_to_in_0_0_rp_expansion_to_in
        (.I(1'b0),
         .IO(exp_in[7]),
         .O(\exp_buf_n_0_[7] ),
-        .T(1'b0));
+        .T(1'b1));
 endmodule
 `ifndef GLBL
 `define GLBL
