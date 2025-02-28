@@ -26,6 +26,6 @@ module oscilloscope#
     input wire [ADC_DATA_BITS-1:0] adc_data,
     output wire [ADC_DATA_BITS-1:0] out_data);
     
-    assign out_data = 2;//adc_data;
+    assign out_data = adc_data;
     
 endmodule

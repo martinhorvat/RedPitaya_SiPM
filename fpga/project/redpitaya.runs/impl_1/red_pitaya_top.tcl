@@ -141,6 +141,8 @@ OPTRACE "add files" START { }
   set_param project.isImplRun true
   read_ip -quiet /home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/FIFO_16_64/FIFO_16_64.xci
   read_ip -quiet /home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/reg_ctrl/reg_ctrl.xci
+  read_ip -quiet /home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci
+  read_ip -quiet /home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/axi_bram_ctrl_0.xci
   add_files /home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/system.bd
   set_param project.isImplRun false
 OPTRACE "read constraints: implementation" START { }

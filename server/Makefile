@@ -15,6 +15,8 @@ EXECUTABLES = $(patsubst $(SOURCEDIR)/%.c, $(BIN)/%, $(SOURCES))
 TEST_SOURCES = $(wildcard src/test/*.c)
 TEST_EXECUTABLES = $(patsubst src/test/%.c,$(BIN)/test/%, $(TEST_SOURCES))
 
+.PHONY: server
+server: $(BIN)/server
 
 .PHONY: rebuild
 rebuild:
@@ -93,3 +95,14 @@ $(OBJ)/test/%.o: $(TESTDIR)/%.c
 
 $(OBJ)/test/%.o: $(TESTDIR)/%.c
 	$(CC) $^ -o $@ -c
+
+$(BIN)/server: $(OBJ)/server.o \
+	$(OBJ)/parser.o $(OBJ)/device_interface.o $(OBJ)/parser.o \
+	$(OBJ)/generator.o  $(OBJ)/oscilloscope.o $(OBJ)/uio_parser.o \
+	$(OBJ)/device_helper.o
+	$(CC) $^ -o $@
+
+# $(OBJ)/device_interface.o: \
+# 	$(SOURCEDIR)/device_interface.c \
+	 
+# 	$(CC) $^ -o $@ -c

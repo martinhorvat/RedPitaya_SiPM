@@ -6,14 +6,8 @@
 #include <string.h>
 #include <stdio.h>
 #include "oscilloscope.h"
+#include "device_helper.h"
 #include <poll.h>
-
-void *memory_map(int fd, size_t size, size_t number) {
-    const size_t offset = number * getpagesize();
-    
-    return mmap(NULL, size, PROT_READ | PROT_WRITE, 
-            MAP_SHARED, fd, offset);
-}
 
 Acq *create_acq(Uio uio) {
     char *path = malloc(sizeof(char[100]));
@@ -23,7 +17,7 @@ Acq *create_acq(Uio uio) {
     
     int fd = open(path, O_RDWR);
 
-    Reg_map *reg = memory_map(fd, uio.maps->uio_map.size, 0);
+    Reg_map_osc *reg = memory_map(fd, uio.maps->uio_map.size, 0);
     uint16_t *buff = memory_map(fd, uio.maps->next->uio_map.size, 1);
     Acq *acq = malloc(sizeof(Acq));
 
@@ -34,10 +28,6 @@ Acq *create_acq(Uio uio) {
     acq -> data_end = acq -> data_start; 
 
     return acq;
-}
-
-void set_reg(volatile uint32_t *reg, int32_t value) {
-    *reg = value;
 }
 
 void print_buffer(Acq *acq, uint8_t N) {
@@ -57,7 +47,7 @@ void stop_acq(Acq *acq) {
     acq->active = 0;
 }
 
-void set_decimation(Acq *acq, uint32_t dec) {
+void set_decimation_osc(Acq *acq, uint32_t dec) {
     set_reg(&(acq->reg->dec_factor), dec);
 }
 

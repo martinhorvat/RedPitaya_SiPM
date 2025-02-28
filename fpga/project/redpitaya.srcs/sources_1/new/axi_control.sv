@@ -43,9 +43,7 @@ module axi_control#(
     output reg                     intr,
     input  wire                    resp,
     
-    input wire [S_AXI_REG_ADDR_BITS-1:0] reg_addr,
-    input wire [31:0]              reg_wr_data,
-    input wire                     reg_wr_we
+    input   wire    [31:0]          ctrl_reg
     );
     
     localparam SELECT_WAIT  = 3'b000;
@@ -62,7 +60,6 @@ module axi_control#(
     reg [ACQ_DATA_WID-1:0]  osc2_fifo_data;
     reg [ACQ_DATA_WID-1:0]  cnt_fifo_data;
     reg [3:0]               cnt;
-    reg [31:0]              ctrl_reg;
     
     wire                    activate;
     wire                    fifo_wr_en;
@@ -157,23 +154,6 @@ module axi_control#(
         end else if (ctrl_reg[INTR_ADDR]) begin
             intr <= 0;
         end
-    end
-    
-    // GET ctrl_reg 
-    
-    always @(posedge clk)
-    begin
-      if (~rst_n) begin
-        ctrl_reg <= 0;
-      end else if((reg_addr[8-1:0] == CTRL_REG_ADDR) && (reg_wr_we == 1)) begin
-        ctrl_reg <= reg_wr_data;
-      end else begin
-            
-        if (ctrl_reg[INTR_ADDR]) begin
-            ctrl_reg[INTR_ADDR] <= 1'b0;
-        end
-            
-      end        
     end
     
 endmodule

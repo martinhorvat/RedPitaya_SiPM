@@ -1,0 +1,1 @@
+vopt -64 +acc -l elaborate.log -L xilinx_vip -L xpm -L axi_bram_ctrl_v4_1_3 -L xil_defaultlib -L axi_vip_v1_1_7 -L processing_system7_vip_v1_0_9 -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -work xil_defaultlib xil_defaultlib.axi_bram_ctrl_0 xil_defaultlib.glbl -o axi_bram_ctrl_0_opt

@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# acquire_top, rp_expansion_to_in
+# AXI_HP_top, acquire_top, generate_top, integrator_top, reg_ctrl_top, rp_expansion_to_in, waveform_top
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -182,6 +182,17 @@ proc create_root_design { parentCell } {
   set succ [ create_bd_port -dir O -from 7 -to 0 -type data succ ]
   set trig [ create_bd_port -dir O -type data trig ]
 
+  # Create instance: AXI_HP_top_0, and set properties
+  set block_name AXI_HP_top
+  set block_cell_name AXI_HP_top_0
+  if { [catch {set AXI_HP_top_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $AXI_HP_top_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
   # Create instance: acquire_top_0, and set properties
   set block_name acquire_top
   set block_cell_name acquire_top_0
@@ -198,6 +209,12 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.NUM_MI {1} \
  ] $axi_interconnect_0
+
+  # Create instance: axi_interconnect_1, and set properties
+  set axi_interconnect_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi_interconnect_1 ]
+  set_property -dict [ list \
+   CONFIG.NUM_MI {1} \
+ ] $axi_interconnect_1
 
   # Create instance: clk_wiz_0, and set properties
   set clk_wiz_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_wiz_0 ]
@@ -220,6 +237,28 @@ proc create_root_design { parentCell } {
    CONFIG.PRIM_IN_FREQ {125} \
  ] $clk_wiz_0
 
+  # Create instance: generate_top_0, and set properties
+  set block_name generate_top
+  set block_cell_name generate_top_0
+  if { [catch {set generate_top_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $generate_top_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: integrator_top_0, and set properties
+  set block_name integrator_top
+  set block_cell_name integrator_top_0
+  if { [catch {set integrator_top_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $integrator_top_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
   # Create instance: proc_sys_reset, and set properties
   set proc_sys_reset [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 proc_sys_reset ]
   set_property -dict [ list \
@@ -651,12 +690,23 @@ proc create_root_design { parentCell } {
    CONFIG.PCW_USB_RESET_SELECT {Share reset pin} \
    CONFIG.PCW_USE_FABRIC_INTERRUPT {1} \
    CONFIG.PCW_USE_M_AXI_GP0 {1} \
-   CONFIG.PCW_USE_M_AXI_GP1 {0} \
+   CONFIG.PCW_USE_M_AXI_GP1 {1} \
    CONFIG.PCW_USE_S_AXI_GP0 {0} \
    CONFIG.PCW_USE_S_AXI_HP0 {1} \
    CONFIG.PCW_USE_S_AXI_HP1 {0} \
  ] $processing_system7
 
+  # Create instance: reg_ctrl_top_0, and set properties
+  set block_name reg_ctrl_top
+  set block_cell_name reg_ctrl_top_0
+  if { [catch {set reg_ctrl_top_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $reg_ctrl_top_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
   # Create instance: rp_expansion_to_in_0, and set properties
   set block_name rp_expansion_to_in
   set block_cell_name rp_expansion_to_in_0
@@ -664,6 +714,17 @@ proc create_root_design { parentCell } {
      catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    } elseif { $rp_expansion_to_in_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: waveform_top_0, and set properties
+  set block_name waveform_top
+  set block_cell_name waveform_top_0
+  if { [catch {set waveform_top_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $waveform_top_0 eq "" } {
      catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
@@ -684,33 +745,56 @@ proc create_root_design { parentCell } {
  ] $xlconstant_0
 
   # Create interface connections
-  connect_bd_intf_net -intf_net acquire_top_0_m_axi [get_bd_intf_pins acquire_top_0/m_axi] [get_bd_intf_pins processing_system7/S_AXI_HP0]
-  connect_bd_intf_net -intf_net axi_interconnect_0_M00_AXI [get_bd_intf_pins acquire_top_0/s_axi_reg] [get_bd_intf_pins axi_interconnect_0/M00_AXI]
+  connect_bd_intf_net -intf_net AXI_HP_top_0_m_axi [get_bd_intf_pins AXI_HP_top_0/m_axi] [get_bd_intf_pins processing_system7/S_AXI_HP0]
+  connect_bd_intf_net -intf_net axi_interconnect_0_M00_AXI [get_bd_intf_pins axi_interconnect_0/M00_AXI] [get_bd_intf_pins reg_ctrl_top_0/s_axi_reg]
+  connect_bd_intf_net -intf_net axi_interconnect_1_M00_AXI [get_bd_intf_pins axi_interconnect_1/M00_AXI] [get_bd_intf_pins waveform_top_0/S_AXI]
   connect_bd_intf_net -intf_net processing_system7_DDR [get_bd_intf_ports DDR] [get_bd_intf_pins processing_system7/DDR]
   connect_bd_intf_net -intf_net processing_system7_FIXED_IO [get_bd_intf_ports FIXED_IO] [get_bd_intf_pins processing_system7/FIXED_IO]
   connect_bd_intf_net -intf_net processing_system7_M_AXI_GP0 [get_bd_intf_pins axi_interconnect_0/S00_AXI] [get_bd_intf_pins processing_system7/M_AXI_GP0]
+  connect_bd_intf_net -intf_net processing_system7_M_AXI_GP1 [get_bd_intf_pins axi_interconnect_1/S00_AXI] [get_bd_intf_pins processing_system7/M_AXI_GP1]
 
   # Create port connections
-  connect_bd_net -net ACLK_1 [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins clk_wiz_0/clk_62_5] [get_bd_pins proc_sys_reset/slowest_sync_clk] [get_bd_pins processing_system7/M_AXI_GP0_ACLK]
-  connect_bd_net -net M00_ARESETN_1 [get_bd_pins acquire_top_0/m_axi_aresetn] [get_bd_pins acquire_top_0/rst_n] [get_bd_pins acquire_top_0/s_axi_reg_aresetn] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins proc_sys_reset/peripheral_aresetn]
+  connect_bd_net -net ACLK_1 [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins axi_interconnect_1/ACLK] [get_bd_pins axi_interconnect_1/S00_ACLK] [get_bd_pins clk_wiz_0/clk_62_5] [get_bd_pins proc_sys_reset/slowest_sync_clk] [get_bd_pins processing_system7/M_AXI_GP0_ACLK] [get_bd_pins processing_system7/M_AXI_GP1_ACLK]
+  connect_bd_net -net AXI_HP_top_0_fifo_rd_cnt [get_bd_pins AXI_HP_top_0/fifo_rd_cnt] [get_bd_pins reg_ctrl_top_0/fifo_rd_cnt]
+  connect_bd_net -net AXI_HP_top_0_intr [get_bd_pins AXI_HP_top_0/intr] [get_bd_pins xlconcat_0/In1]
+  connect_bd_net -net M00_ARESETN_1 [get_bd_pins AXI_HP_top_0/m_axi_aresetn] [get_bd_pins AXI_HP_top_0/rst_n] [get_bd_pins acquire_top_0/rst_n] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins axi_interconnect_1/M00_ARESETN] [get_bd_pins axi_interconnect_1/S00_ARESETN] [get_bd_pins generate_top_0/rst_n] [get_bd_pins integrator_top_0/rst_n] [get_bd_pins proc_sys_reset/peripheral_aresetn] [get_bd_pins reg_ctrl_top_0/rst_n] [get_bd_pins reg_ctrl_top_0/s_axi_reg_aresetn] [get_bd_pins waveform_top_0/S_AXI_ARESETN] [get_bd_pins waveform_top_0/rst_n]
   connect_bd_net -net Net [get_bd_ports gpio_p] [get_bd_pins rp_expansion_to_in_0/exp_in]
   connect_bd_net -net Net1 [get_bd_pins xlconcat_0/In0] [get_bd_pins xlconcat_0/In2] [get_bd_pins xlconcat_0/In3] [get_bd_pins xlconcat_0/In4] [get_bd_pins xlconcat_0/In5] [get_bd_pins xlconcat_0/In6] [get_bd_pins xlconcat_0/In7] [get_bd_pins xlconcat_0/In8] [get_bd_pins xlconcat_0/In9] [get_bd_pins xlconcat_0/In10] [get_bd_pins xlconcat_0/In11] [get_bd_pins xlconcat_0/In12] [get_bd_pins xlconcat_0/In13] [get_bd_pins xlconcat_0/In14] [get_bd_pins xlconcat_0/In15] [get_bd_pins xlconstant_0/dout]
-  connect_bd_net -net acquire_top_0_intr [get_bd_pins acquire_top_0/intr] [get_bd_pins xlconcat_0/In1]
-  connect_bd_net -net acquire_top_0_succ [get_bd_ports succ] [get_bd_pins acquire_top_0/succ]
-  connect_bd_net -net acquire_top_0_trig_out [get_bd_ports trig] [get_bd_pins acquire_top_0/trig_out]
+  connect_bd_net -net acquire_top_0_data_detector [get_bd_pins AXI_HP_top_0/data_detector] [get_bd_pins acquire_top_0/data_detector]
+  connect_bd_net -net acquire_top_0_data_osc1 [get_bd_pins AXI_HP_top_0/data_osc1] [get_bd_pins acquire_top_0/data_osc1]
+  connect_bd_net -net acquire_top_0_data_osc2 [get_bd_pins AXI_HP_top_0/data_osc2] [get_bd_pins acquire_top_0/data_osc2]
+  connect_bd_net -net acquire_top_0_succ [get_bd_ports succ] [get_bd_pins AXI_HP_top_0/succ]
+  connect_bd_net -net acquire_top_0_trig [get_bd_pins AXI_HP_top_0/trig] [get_bd_pins acquire_top_0/trig] [get_bd_pins integrator_top_0/trig]
   connect_bd_net -net adc_clk_1 [get_bd_ports adc_clk] [get_bd_pins clk_wiz_0/clk_in1]
-  connect_bd_net -net adc_data_ch1_1 [get_bd_ports adc_data_ch1] [get_bd_pins acquire_top_0/adc_data_ch1]
-  connect_bd_net -net adc_data_ch2_1 [get_bd_ports adc_data_ch2] [get_bd_pins acquire_top_0/adc_data_ch2]
-  connect_bd_net -net clk_gen_locked [get_bd_ports clk_out] [get_bd_pins acquire_top_0/clk] [get_bd_pins acquire_top_0/m_axi_aclk] [get_bd_pins acquire_top_0/s_axi_reg_aclk] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins clk_wiz_0/clk_125] [get_bd_pins processing_system7/S_AXI_HP0_ACLK]
-  connect_bd_net -net proc_sys_reset_interconnect_aresetn [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins proc_sys_reset/interconnect_aresetn]
+  connect_bd_net -net adc_data_ch1_1 [get_bd_ports adc_data_ch1] [get_bd_pins integrator_top_0/signal_in]
+  connect_bd_net -net clk_gen_locked [get_bd_ports clk_out] [get_bd_pins AXI_HP_top_0/clk] [get_bd_pins AXI_HP_top_0/m_axi_aclk] [get_bd_pins acquire_top_0/clk] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_1/M00_ACLK] [get_bd_pins clk_wiz_0/clk_125] [get_bd_pins generate_top_0/clk] [get_bd_pins integrator_top_0/clk] [get_bd_pins processing_system7/S_AXI_HP0_ACLK] [get_bd_pins reg_ctrl_top_0/clk] [get_bd_pins reg_ctrl_top_0/s_axi_reg_aclk] [get_bd_pins waveform_top_0/S_AXI_ACLK] [get_bd_pins waveform_top_0/clk]
+  connect_bd_net -net generate_top_0_bram_read_addr_1 [get_bd_pins generate_top_0/bram_read_addr_1] [get_bd_pins waveform_top_0/bram_read_addr_1]
+  connect_bd_net -net generate_top_0_bram_read_addr_2 [get_bd_pins generate_top_0/bram_read_addr_2] [get_bd_pins waveform_top_0/bram_read_addr_2]
+  connect_bd_net -net generate_top_0_dac_val_1 [get_bd_ports dac_dat_a] [get_bd_pins acquire_top_0/adc_data_ch1] [get_bd_pins generate_top_0/dac_val_1]
+  connect_bd_net -net generate_top_0_dac_val_2 [get_bd_ports dac_dat_b] [get_bd_pins acquire_top_0/adc_data_ch2] [get_bd_pins generate_top_0/dac_val_2]
+  connect_bd_net -net integrator_top_0_integrated_signal [get_bd_pins acquire_top_0/integrated_signal] [get_bd_pins integrator_top_0/integrated_signal]
+  connect_bd_net -net proc_sys_reset_interconnect_aresetn [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins axi_interconnect_1/ARESETN] [get_bd_pins proc_sys_reset/interconnect_aresetn]
   connect_bd_net -net processing_system7_FCLK_RESET0_N [get_bd_pins proc_sys_reset/ext_reset_in] [get_bd_pins processing_system7/FCLK_RESET0_N]
-  connect_bd_net -net rp_expansion_to_in_0_gpio_out [get_bd_pins acquire_top_0/gpio_pulse] [get_bd_pins rp_expansion_to_in_0/gpio_out]
+  connect_bd_net -net reg_ctrl_top_0_cfg_dec [get_bd_pins acquire_top_0/cfg_dec] [get_bd_pins reg_ctrl_top_0/cfg_dec]
+  connect_bd_net -net reg_ctrl_top_0_ctrl_reg [get_bd_pins AXI_HP_top_0/ctrl_reg] [get_bd_pins reg_ctrl_top_0/ctrl_reg]
+  connect_bd_net -net reg_ctrl_top_0_decimation_1 [get_bd_pins generate_top_0/decimation_1] [get_bd_pins reg_ctrl_top_0/decimation_1]
+  connect_bd_net -net reg_ctrl_top_0_decimation_2 [get_bd_pins generate_top_0/decimation_2] [get_bd_pins reg_ctrl_top_0/decimation_2]
+  connect_bd_net -net reg_ctrl_top_0_fifo_min_thresh [get_bd_pins AXI_HP_top_0/fifo_min_thresh] [get_bd_pins reg_ctrl_top_0/fifo_min_thresh]
+  connect_bd_net -net reg_ctrl_top_0_start_acq [get_bd_pins acquire_top_0/start_acq] [get_bd_pins reg_ctrl_top_0/start_acq]
+  connect_bd_net -net reg_ctrl_top_0_start_gen [get_bd_pins generate_top_0/start_gen] [get_bd_pins reg_ctrl_top_0/start_gen]
+  connect_bd_net -net reg_ctrl_top_0_waveform_len_1 [get_bd_pins generate_top_0/waveform_len_1] [get_bd_pins reg_ctrl_top_0/waveform_len_1]
+  connect_bd_net -net reg_ctrl_top_0_waveform_len_2 [get_bd_pins generate_top_0/waveform_len_2] [get_bd_pins reg_ctrl_top_0/waveform_len_2]
+  connect_bd_net -net rp_expansion_to_in_0_gpio_out [get_bd_pins rp_expansion_to_in_0/gpio_out]
+  connect_bd_net -net waveform_top_0_bram_dout_1 [get_bd_pins generate_top_0/waveform_val_1] [get_bd_pins waveform_top_0/bram_dout_1]
+  connect_bd_net -net waveform_top_0_bram_dout_2 [get_bd_pins generate_top_0/waveform_val_2] [get_bd_pins waveform_top_0/bram_dout_2]
+  connect_bd_net -net waveform_top_0_bram_dout_valid [get_bd_pins generate_top_0/bram_dout_valid] [get_bd_pins waveform_top_0/bram_dout_valid]
   connect_bd_net -net xlconcat_0_dout [get_bd_pins processing_system7/IRQ_F2P] [get_bd_pins xlconcat_0/dout]
   connect_bd_net -net xlconstant_dout [get_bd_pins proc_sys_reset/aux_reset_in] [get_bd_pins xlconstant/dout]
 
   # Create address segments
-  assign_bd_address -offset 0x00000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces acquire_top_0/m_axi] [get_bd_addr_segs processing_system7/S_AXI_HP0/HP0_DDR_LOWOCM] -force
-  assign_bd_address -offset 0x40000000 -range 0x10000000 -target_address_space [get_bd_addr_spaces processing_system7/Data] [get_bd_addr_segs acquire_top_0/s_axi_reg/reg0] -force
+  assign_bd_address -offset 0x00000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces AXI_HP_top_0/m_axi] [get_bd_addr_segs processing_system7/S_AXI_HP0/HP0_DDR_LOWOCM] -force
+  assign_bd_address -offset 0x40000000 -range 0x10000000 -target_address_space [get_bd_addr_spaces processing_system7/Data] [get_bd_addr_segs reg_ctrl_top_0/s_axi_reg/reg0] -force
+  assign_bd_address -offset 0x80000000 -range 0x10000000 -target_address_space [get_bd_addr_spaces processing_system7/Data] [get_bd_addr_segs waveform_top_0/S_AXI/reg0] -force
 
 
   # Restore current instance

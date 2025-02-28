@@ -1,0 +1,651 @@
+
+*** Running vivado
+    with args -log system_waveform_top_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source system_waveform_top_0_0.tcl
+
+
+****** Vivado v2020.1 (64-bit)
+  **** SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+  **** IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source system_waveform_top_0_0.tcl -notrace
+Command: synth_design -top system_waveform_top_0_0 -part xc7z010clg400-1 -mode out_of_context
+Starting synth_design
+WARNING: [IP_Flow 19-3571] IP 'system_waveform_top_0_0' is restricted:
+* Module reference is stale and needs refreshing.
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Device 21-403] Loading part xc7z010clg400-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 74543
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:15 . Memory (MB): peak = 2078.660 ; gain = 0.000 ; free physical = 1622 ; free virtual = 9865
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'system_waveform_top_0_0' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_waveform_top_0_0/synth/system_waveform_top_0_0.v:58]
+INFO: [Synth 8-6157] synthesizing module 'waveform_top' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:3]
+	Parameter DATA_WIDTH_IN bound to: 32 - type: integer 
+	Parameter DATA_WIDTH_OUT bound to: 16 - type: integer 
+	Parameter ADDR_WIDTH bound to: 14 - type: integer 
+	Parameter DECIMATION_WIDTH bound to: 16 - type: integer 
+	Parameter waveform_border bound to: 160000 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'axi_bram_ctrl_0' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/synth/axi_bram_ctrl_0.vhd:104]
+WARNING: [Synth 8-3819] Generic 'C_S_AXI_DATA_WIDTH' not present in instantiated entity will be ignored [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:63]
+WARNING: [Synth 8-3819] Generic 'C_S_AXI_ADDR_WIDTH' not present in instantiated entity will be ignored [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:64]
+	Parameter C_BRAM_INST_MODE bound to: EXTERNAL - type: string 
+	Parameter C_MEMORY_DEPTH bound to: 32768 - type: integer 
+	Parameter C_BRAM_ADDR_WIDTH bound to: 15 - type: integer 
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 17 - type: integer 
+	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXI_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXI_PROTOCOL bound to: AXI4 - type: string 
+	Parameter C_S_AXI_SUPPORTS_NARROW_BURST bound to: 1 - type: integer 
+	Parameter C_SINGLE_PORT_BRAM bound to: 1 - type: integer 
+	Parameter C_FAMILY bound to: zynq - type: string 
+	Parameter C_READ_LATENCY bound to: 1 - type: integer 
+	Parameter C_RD_CMD_OPTIMIZATION bound to: 0 - type: integer 
+	Parameter C_S_AXI_CTRL_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXI_CTRL_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_ECC bound to: 0 - type: integer 
+	Parameter C_ECC_TYPE bound to: 0 - type: integer 
+	Parameter C_FAULT_INJECT bound to: 0 - type: integer 
+	Parameter C_ECC_ONOFF_RESET_VALUE bound to: 0 - type: integer 
+INFO: [Synth 8-3491] module 'axi_bram_ctrl' declared at '/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:31357' bound to instance 'U0' of component 'axi_bram_ctrl' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/synth/axi_bram_ctrl_0.vhd:255]
+INFO: [Synth 8-638] synthesizing module 'axi_bram_ctrl' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:31528]
+	Parameter C_BRAM_INST_MODE bound to: EXTERNAL - type: string 
+	Parameter C_MEMORY_DEPTH bound to: 32768 - type: integer 
+	Parameter C_BRAM_ADDR_WIDTH bound to: 15 - type: integer 
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 17 - type: integer 
+	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXI_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXI_PROTOCOL bound to: AXI4 - type: string 
+	Parameter C_S_AXI_SUPPORTS_NARROW_BURST bound to: 1 - type: integer 
+	Parameter C_SINGLE_PORT_BRAM bound to: 1 - type: integer 
+	Parameter C_FAMILY bound to: zynq - type: string 
+	Parameter C_READ_LATENCY bound to: 1 - type: integer 
+	Parameter C_RD_CMD_OPTIMIZATION bound to: 0 - type: integer 
+	Parameter C_S_AXI_CTRL_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXI_CTRL_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_ECC bound to: 0 - type: integer 
+	Parameter C_ECC_TYPE bound to: 0 - type: integer 
+	Parameter C_FAULT_INJECT bound to: 0 - type: integer 
+	Parameter C_ECC_ONOFF_RESET_VALUE bound to: 0 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'axi_bram_ctrl_top' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:30527]
+	Parameter C_BRAM_ADDR_WIDTH bound to: 15 - type: integer 
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 17 - type: integer 
+	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXI_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXI_PROTOCOL bound to: AXI4 - type: string 
+	Parameter C_S_AXI_SUPPORTS_NARROW_BURST bound to: 1 - type: integer 
+	Parameter C_SINGLE_PORT_BRAM bound to: 1 - type: integer 
+	Parameter C_FAMILY bound to: zynq - type: string 
+	Parameter C_S_AXI_CTRL_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXI_CTRL_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_READ_LATENCY bound to: 1 - type: integer 
+	Parameter C_RD_CMD_OPTIMIZATION bound to: 0 - type: integer 
+	Parameter C_ECC bound to: 0 - type: integer 
+	Parameter C_ECC_TYPE bound to: 0 - type: integer 
+	Parameter C_FAULT_INJECT bound to: 0 - type: integer 
+	Parameter C_ECC_ONOFF_RESET_VALUE bound to: 0 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'full_axi' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:29280]
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 17 - type: integer 
+	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXI_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXI_PROTOCOL bound to: AXI4 - type: string 
+	Parameter C_S_AXI_SUPPORTS_NARROW_BURST bound to: 1 - type: integer 
+	Parameter C_SINGLE_PORT_BRAM bound to: 1 - type: integer 
+	Parameter C_READ_LATENCY bound to: 1 - type: integer 
+	Parameter C_RD_CMD_OPTIMIZATION bound to: 0 - type: integer 
+	Parameter C_S_AXI_CTRL_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXI_CTRL_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_ECC bound to: 0 - type: integer 
+	Parameter C_ECC_WIDTH bound to: 0 - type: integer 
+	Parameter C_ECC_TYPE bound to: 0 - type: integer 
+	Parameter C_FAULT_INJECT bound to: 0 - type: integer 
+	Parameter C_ECC_ONOFF_RESET_VALUE bound to: 0 - type: integer 
+	Parameter C_ENABLE_AXI_CTRL_REG_IF bound to: 0 - type: integer 
+	Parameter C_CE_FAILING_REGISTERS bound to: 0 - type: integer 
+	Parameter C_UE_FAILING_REGISTERS bound to: 0 - type: integer 
+	Parameter C_ECC_STATUS_REGISTERS bound to: 0 - type: integer 
+	Parameter C_ECC_ONOFF_REGISTER bound to: 0 - type: integer 
+	Parameter C_CE_COUNTER_WIDTH bound to: 0 - type: integer 
+WARNING: [Synth 8-6774] Null subtype or type declaration found [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:29350]
+INFO: [Synth 8-3919] null assignment ignored [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:29350]
+INFO: [Synth 8-638] synthesizing module 'sng_port_arb' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:11456]
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 17 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'sng_port_arb' (1#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:11456]
+INFO: [Synth 8-638] synthesizing module 'wr_chnl' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:24159]
+	Parameter C_AXI_ADDR_WIDTH bound to: 17 - type: integer 
+	Parameter C_BRAM_ADDR_ADJUST_FACTOR bound to: 2 - type: integer 
+	Parameter C_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_AXI_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXI_SUPPORTS_NARROW bound to: 1 - type: integer 
+	Parameter C_READ_LATENCY bound to: 1 - type: integer 
+	Parameter C_S_AXI_PROTOCOL bound to: AXI4 - type: string 
+	Parameter C_SINGLE_PORT_BRAM bound to: 1 - type: integer 
+	Parameter C_ECC bound to: 0 - type: integer 
+	Parameter C_ECC_WIDTH bound to: 0 - type: integer 
+	Parameter C_ECC_TYPE bound to: 0 - type: integer 
+INFO: [Synth 8-506] null port 'FaultInjectECC' ignored [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:24126]
+INFO: [Synth 8-638] synthesizing module 'wrap_brst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:12455]
+	Parameter C_AXI_ADDR_WIDTH bound to: 17 - type: integer 
+	Parameter C_BRAM_ADDR_ADJUST_FACTOR bound to: 2 - type: integer 
+	Parameter C_AXI_DATA_WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'wrap_brst' (2#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:12455]
+INFO: [Synth 8-226] default block is never used [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:25502]
+INFO: [Synth 8-638] synthesizing module 'ua_narrow' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:11989]
+	Parameter C_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_BRAM_ADDR_ADJUST_FACTOR bound to: 2 - type: integer 
+	Parameter C_NARROW_BURST_CNT_LEN bound to: 2 - type: integer 
+INFO: [Synth 8-226] default block is never used [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:12168]
+INFO: [Synth 8-226] default block is never used [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:12207]
+INFO: [Synth 8-256] done synthesizing module 'ua_narrow' (3#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:11989]
+INFO: [Synth 8-638] synthesizing module 'SRL_FIFO' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:133]
+	Parameter C_DATA_BITS bound to: 1 - type: integer 
+	Parameter C_DEPTH bound to: 8 - type: integer 
+	Parameter C_XON bound to: 0 - type: bool 
+INFO: [Synth 8-3491] module 'FDR' declared at '/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:13711' bound to instance 'Data_Exists_DFF' of component 'FDR' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:230]
+INFO: [Synth 8-6157] synthesizing module 'FDR' [/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:13711]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'FDR' (4#1) [/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:13711]
+INFO: [Synth 8-3491] module 'MUXCY_L' declared at '/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:42957' bound to instance 'MUXCY_L_I' of component 'MUXCY_L' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:247]
+INFO: [Synth 8-6157] synthesizing module 'MUXCY_L' [/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:42957]
+INFO: [Synth 8-6155] done synthesizing module 'MUXCY_L' (5#1) [/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:42957]
+INFO: [Synth 8-3491] module 'XORCY' declared at '/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:82397' bound to instance 'XORCY_I' of component 'XORCY' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:254]
+INFO: [Synth 8-6157] synthesizing module 'XORCY' [/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:82397]
+INFO: [Synth 8-6155] done synthesizing module 'XORCY' (6#1) [/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:82397]
+INFO: [Synth 8-3491] module 'FDRE' declared at '/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:13724' bound to instance 'FDRE_I' of component 'FDRE' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:260]
+INFO: [Synth 8-6157] synthesizing module 'FDRE' [/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:13724]
+	Parameter INIT bound to: 1'b0 
+	Parameter IS_C_INVERTED bound to: 1'b0 
+	Parameter IS_D_INVERTED bound to: 1'b0 
+	Parameter IS_R_INVERTED bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'FDRE' (7#1) [/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:13724]
+INFO: [Synth 8-3491] module 'MUXCY_L' declared at '/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:42957' bound to instance 'MUXCY_L_I' of component 'MUXCY_L' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:247]
+INFO: [Synth 8-3491] module 'XORCY' declared at '/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:82397' bound to instance 'XORCY_I' of component 'XORCY' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:254]
+INFO: [Synth 8-3491] module 'FDRE' declared at '/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:13724' bound to instance 'FDRE_I' of component 'FDRE' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:260]
+INFO: [Synth 8-3491] module 'MUXCY_L' declared at '/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:42957' bound to instance 'MUXCY_L_I' of component 'MUXCY_L' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:247]
+INFO: [Synth 8-3491] module 'XORCY' declared at '/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:82397' bound to instance 'XORCY_I' of component 'XORCY' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:254]
+INFO: [Synth 8-3491] module 'FDRE' declared at '/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:13724' bound to instance 'FDRE_I' of component 'FDRE' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:260]
+INFO: [Synth 8-3491] module 'MUXCY_L' declared at '/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:42957' bound to instance 'MUXCY_L_I' of component 'MUXCY_L' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:247]
+INFO: [Synth 8-3491] module 'XORCY' declared at '/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:82397' bound to instance 'XORCY_I' of component 'XORCY' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:254]
+INFO: [Synth 8-3491] module 'FDRE' declared at '/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:13724' bound to instance 'FDRE_I' of component 'FDRE' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:260]
+INFO: [Synth 8-3491] module 'SRL16E' declared at '/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:78059' bound to instance 'SRL16E_I' of component 'SRL16E' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:271]
+INFO: [Synth 8-6157] synthesizing module 'SRL16E' [/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:78059]
+	Parameter INIT bound to: 16'b0000000000000000 
+	Parameter IS_CLK_INVERTED bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'SRL16E' (8#1) [/opt/Xilinx/Vivado/2020.1/scripts/rt/data/unisim_comp.v:78059]
+INFO: [Synth 8-256] done synthesizing module 'SRL_FIFO' (9#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:133]
+INFO: [Synth 8-256] done synthesizing module 'wr_chnl' (10#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:24159]
+WARNING: [Synth 8-6778] Component port with null array found, Will be ignored [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:30020]
+INFO: [Synth 8-638] synthesizing module 'rd_chnl' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:14746]
+	Parameter C_AXI_ADDR_WIDTH bound to: 17 - type: integer 
+	Parameter C_BRAM_ADDR_ADJUST_FACTOR bound to: 2 - type: integer 
+	Parameter C_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_AXI_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXI_SUPPORTS_NARROW bound to: 1 - type: integer 
+	Parameter C_READ_LATENCY bound to: 1 - type: integer 
+	Parameter C_RD_CMD_OPTIMIZATION bound to: 0 - type: integer 
+	Parameter C_S_AXI_PROTOCOL bound to: AXI4 - type: string 
+	Parameter C_SINGLE_PORT_BRAM bound to: 1 - type: integer 
+	Parameter C_ECC bound to: 0 - type: integer 
+	Parameter C_ECC_WIDTH bound to: 0 - type: integer 
+	Parameter C_ECC_TYPE bound to: 0 - type: integer 
+INFO: [Synth 8-226] default block is never used [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:16131]
+INFO: [Synth 8-256] done synthesizing module 'rd_chnl' (11#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:14746]
+INFO: [Synth 8-256] done synthesizing module 'full_axi' (12#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:29280]
+INFO: [Synth 8-256] done synthesizing module 'axi_bram_ctrl_top' (13#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:30527]
+INFO: [Synth 8-256] done synthesizing module 'axi_bram_ctrl' (14#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/hdl/axi_bram_ctrl_v4_1_rfs.vhd:31528]
+INFO: [Synth 8-256] done synthesizing module 'axi_bram_ctrl_0' (15#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/axi_bram_ctrl_0/synth/axi_bram_ctrl_0.vhd:104]
+WARNING: [Synth 8-689] width (32) of port connection 's_axi_awaddr' does not match port width (17) of module 'axi_bram_ctrl_0' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:68]
+WARNING: [Synth 8-689] width (1) of port connection 'bram_we_a' does not match port width (4) of module 'axi_bram_ctrl_0' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:79]
+WARNING: [Synth 8-689] width (14) of port connection 'bram_addr_a' does not match port width (17) of module 'axi_bram_ctrl_0' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:80]
+WARNING: [Synth 8-7071] port 's_axi_aclk' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_aresetn' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_awaddr' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_awlen' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_awsize' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_awburst' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_awlock' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_awcache' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_awprot' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_awvalid' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_awready' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_wdata' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_wstrb' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_wlast' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_wvalid' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_wready' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_bresp' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_bvalid' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_bready' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_araddr' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_arlen' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_arsize' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_arburst' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_arlock' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_arcache' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_arprot' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_arvalid' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_arready' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_rdata' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_rresp' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_rlast' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_rvalid' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 's_axi_rready' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 'bram_rst_a' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7071] port 'bram_en_a' of module 'axi_bram_ctrl_0' is unconnected for instance 'axi_bram_ctrl_inst' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+WARNING: [Synth 8-7023] instance 'axi_bram_ctrl_inst' of module 'axi_bram_ctrl_0' has 40 connections declared, but only 17 given [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:65]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_0' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/blk_mem_gen_0/synth/blk_mem_gen_0.vhd:70]
+	Parameter C_FAMILY bound to: zynq - type: string 
+	Parameter C_XDEVICEFAMILY bound to: zynq - type: string 
+	Parameter C_ELABORATION_DIR bound to: ./ - type: string 
+	Parameter C_INTERFACE_TYPE bound to: 0 - type: integer 
+	Parameter C_AXI_TYPE bound to: 1 - type: integer 
+	Parameter C_AXI_SLAVE_TYPE bound to: 0 - type: integer 
+	Parameter C_USE_BRAM_BLOCK bound to: 0 - type: integer 
+	Parameter C_ENABLE_32BIT_ADDRESS bound to: 0 - type: integer 
+	Parameter C_CTRL_ECC_ALGO bound to: NONE - type: string 
+	Parameter C_HAS_AXI_ID bound to: 0 - type: integer 
+	Parameter C_AXI_ID_WIDTH bound to: 4 - type: integer 
+	Parameter C_MEM_TYPE bound to: 0 - type: integer 
+	Parameter C_BYTE_SIZE bound to: 9 - type: integer 
+	Parameter C_ALGORITHM bound to: 1 - type: integer 
+	Parameter C_PRIM_TYPE bound to: 1 - type: integer 
+	Parameter C_LOAD_INIT_FILE bound to: 0 - type: integer 
+	Parameter C_INIT_FILE_NAME bound to: no_coe_file_loaded - type: string 
+	Parameter C_INIT_FILE bound to: blk_mem_gen_0.mem - type: string 
+	Parameter C_USE_DEFAULT_DATA bound to: 0 - type: integer 
+	Parameter C_DEFAULT_DATA bound to: 0 - type: string 
+	Parameter C_HAS_RSTA bound to: 0 - type: integer 
+	Parameter C_RST_PRIORITY_A bound to: CE - type: string 
+	Parameter C_RSTRAM_A bound to: 0 - type: integer 
+	Parameter C_INITA_VAL bound to: 0 - type: string 
+	Parameter C_HAS_ENA bound to: 1 - type: integer 
+	Parameter C_HAS_REGCEA bound to: 0 - type: integer 
+	Parameter C_USE_BYTE_WEA bound to: 0 - type: integer 
+	Parameter C_WEA_WIDTH bound to: 1 - type: integer 
+	Parameter C_WRITE_MODE_A bound to: WRITE_FIRST - type: string 
+	Parameter C_WRITE_WIDTH_A bound to: 32 - type: integer 
+	Parameter C_READ_WIDTH_A bound to: 16 - type: integer 
+	Parameter C_WRITE_DEPTH_A bound to: 5000 - type: integer 
+	Parameter C_READ_DEPTH_A bound to: 10000 - type: integer 
+	Parameter C_ADDRA_WIDTH bound to: 14 - type: integer 
+	Parameter C_HAS_RSTB bound to: 0 - type: integer 
+	Parameter C_RST_PRIORITY_B bound to: CE - type: string 
+	Parameter C_RSTRAM_B bound to: 0 - type: integer 
+	Parameter C_INITB_VAL bound to: 0 - type: string 
+	Parameter C_HAS_ENB bound to: 0 - type: integer 
+	Parameter C_HAS_REGCEB bound to: 0 - type: integer 
+	Parameter C_USE_BYTE_WEB bound to: 0 - type: integer 
+	Parameter C_WEB_WIDTH bound to: 1 - type: integer 
+	Parameter C_WRITE_MODE_B bound to: WRITE_FIRST - type: string 
+	Parameter C_WRITE_WIDTH_B bound to: 32 - type: integer 
+	Parameter C_READ_WIDTH_B bound to: 32 - type: integer 
+	Parameter C_WRITE_DEPTH_B bound to: 5000 - type: integer 
+	Parameter C_READ_DEPTH_B bound to: 5000 - type: integer 
+	Parameter C_ADDRB_WIDTH bound to: 13 - type: integer 
+	Parameter C_HAS_MEM_OUTPUT_REGS_A bound to: 1 - type: integer 
+	Parameter C_HAS_MEM_OUTPUT_REGS_B bound to: 0 - type: integer 
+	Parameter C_HAS_MUX_OUTPUT_REGS_A bound to: 0 - type: integer 
+	Parameter C_HAS_MUX_OUTPUT_REGS_B bound to: 0 - type: integer 
+	Parameter C_MUX_PIPELINE_STAGES bound to: 0 - type: integer 
+	Parameter C_HAS_SOFTECC_INPUT_REGS_A bound to: 0 - type: integer 
+	Parameter C_HAS_SOFTECC_OUTPUT_REGS_B bound to: 0 - type: integer 
+	Parameter C_USE_SOFTECC bound to: 0 - type: integer 
+	Parameter C_USE_ECC bound to: 0 - type: integer 
+	Parameter C_EN_ECC_PIPE bound to: 0 - type: integer 
+	Parameter C_READ_LATENCY_A bound to: 1 - type: integer 
+	Parameter C_READ_LATENCY_B bound to: 1 - type: integer 
+	Parameter C_HAS_INJECTERR bound to: 0 - type: integer 
+	Parameter C_SIM_COLLISION_CHECK bound to: ALL - type: string 
+	Parameter C_COMMON_CLK bound to: 0 - type: integer 
+	Parameter C_DISABLE_WARN_BHV_COLL bound to: 0 - type: integer 
+	Parameter C_EN_SLEEP_PIN bound to: 0 - type: integer 
+	Parameter C_USE_URAM bound to: 0 - type: integer 
+	Parameter C_EN_RDADDRA_CHG bound to: 0 - type: integer 
+	Parameter C_EN_RDADDRB_CHG bound to: 0 - type: integer 
+	Parameter C_EN_DEEPSLEEP_PIN bound to: 0 - type: integer 
+	Parameter C_EN_SHUTDOWN_PIN bound to: 0 - type: integer 
+	Parameter C_EN_SAFETY_CKT bound to: 0 - type: integer 
+	Parameter C_DISABLE_WARN_BHV_RANGE bound to: 0 - type: integer 
+	Parameter C_COUNT_36K_BRAM bound to: 5 - type: string 
+	Parameter C_COUNT_18K_BRAM bound to: 0 - type: string 
+	Parameter C_EST_POWER_SUMMARY bound to: Estimated Power for IP     :     4.528425 mW - type: string 
+INFO: [Synth 8-3491] module 'blk_mem_gen_v8_4_4' declared at '/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/blk_mem_gen_0/hdl/blk_mem_gen_v8_4_vhsyn_rfs.vhd:195321' bound to instance 'U0' of component 'blk_mem_gen_v8_4_4' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/blk_mem_gen_0/synth/blk_mem_gen_0.vhd:236]
+INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_0' (26#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/ip/blk_mem_gen_0/synth/blk_mem_gen_0.vhd:70]
+WARNING: [Synth 8-7071] port 'ena' of module 'blk_mem_gen_0' is unconnected for instance 'blk_mem_inst_1' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:87]
+WARNING: [Synth 8-7023] instance 'blk_mem_inst_1' of module 'blk_mem_gen_0' has 6 connections declared, but only 5 given [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:87]
+WARNING: [Synth 8-7071] port 'ena' of module 'blk_mem_gen_0' is unconnected for instance 'blk_mem_inst_2' [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:97]
+WARNING: [Synth 8-7023] instance 'blk_mem_inst_2' of module 'blk_mem_gen_0' has 6 connections declared, but only 5 given [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:97]
+INFO: [Synth 8-6155] done synthesizing module 'waveform_top' (27#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/new/waveform_top.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'system_waveform_top_0_0' (28#1) [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_waveform_top_0_0/synth/system_waveform_top_0_0.v:58]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:19 ; elapsed = 00:00:34 . Memory (MB): peak = 2172.723 ; gain = 94.062 ; free physical = 1957 ; free virtual = 10349
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:35 . Memory (MB): peak = 2181.629 ; gain = 102.969 ; free physical = 1964 ; free virtual = 10357
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:35 . Memory (MB): peak = 2181.629 ; gain = 102.969 ; free physical = 1964 ; free virtual = 10357
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2184.598 ; gain = 0.000 ; free physical = 1971 ; free virtual = 10366
+INFO: [Netlist 29-17] Analyzing 19 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_waveform_top_0_0/system_waveform_top_0_0_ooc.xdc] for cell 'inst'
+Finished Parsing XDC File [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.srcs/sources_1/bd/system/ip/system_waveform_top_0_0/system_waveform_top_0_0_ooc.xdc] for cell 'inst'
+Parsing XDC File [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/system_waveform_top_0_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/system_waveform_top_0_0_synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2281.426 ; gain = 0.000 ; free physical = 2027 ; free virtual = 10444
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 5 instances were transformed.
+  FDR => FDRE: 1 instance 
+  MUXCY_L => MUXCY: 4 instances
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.06 . Memory (MB): peak = 2281.426 ; gain = 0.000 ; free physical = 2023 ; free virtual = 10440
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:26 ; elapsed = 00:00:42 . Memory (MB): peak = 2281.426 ; gain = 202.766 ; free physical = 2078 ; free virtual = 10503
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z010clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:26 ; elapsed = 00:00:42 . Memory (MB): peak = 2281.426 ; gain = 202.766 ; free physical = 2078 ; free virtual = 10503
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property DONT_TOUCH = true for inst. (constraint file  /home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/system_waveform_top_0_0_synth_1/dont_touch.xdc, line 17).
+Applied set_property DONT_TOUCH = true for inst/blk_mem_inst_1. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for inst/blk_mem_inst_2. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for inst/axi_bram_ctrl_inst. (constraint file  auto generated constraint, line ).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:42 . Memory (MB): peak = 2281.426 ; gain = 202.766 ; free physical = 2078 ; free virtual = 10503
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'arb_sm_cs_reg' in module 'sng_port_arb'
+INFO: [Synth 8-802] inferred FSM for state register 'GEN_WDATA_SM_NO_ECC_SNG_REG_WREADY.wr_data_sng_sm_cs_reg' in module 'wr_chnl'
+INFO: [Synth 8-802] inferred FSM for state register 'GEN_NO_RD_CMD_OPT.rd_data_sm_cs_reg' in module 'rd_chnl'
+INFO: [Synth 8-802] inferred FSM for state register 'GEN_NO_RD_CMD_OPT.rlast_sm_cs_reg' in module 'rd_chnl'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                               00 |                               00
+                 wr_data |                               01 |                               10
+                 rd_data |                               10 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'arb_sm_cs_reg' using encoding 'sequential' in module 'sng_port_arb'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                              001 |                               00
+            brst_wr_data |                              010 |                               10
+             sng_wr_data |                              100 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'GEN_WDATA_SM_NO_ECC_SNG_REG_WREADY.wr_data_sng_sm_cs_reg' using encoding 'one-hot' in module 'wr_chnl'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                             0000 |                             0000
+                sng_addr |                             0001 |                             0011
+                sec_addr |                             0010 |                             0100
+               full_pipe |                             0011 |                             0101
+           full_throttle |                             0100 |                             0110
+               last_addr |                             0101 |                             0111
+           last_throttle |                             0110 |                             1000
+               last_data |                             0111 |                             1001
+       last_data_ar_pend |                             1000 |                             1010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'GEN_NO_RD_CMD_OPT.rd_data_sm_cs_reg' using encoding 'sequential' in module 'rd_chnl'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                              000 |                              000
+          w8_throttle_b2 |                              001 |                              101
+             w8_throttle |                              010 |                              010
+        w8_2nd_last_data |                              011 |                              011
+            w8_last_data |                              100 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'GEN_NO_RD_CMD_OPT.rlast_sm_cs_reg' using encoding 'sequential' in module 'rd_chnl'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:27 ; elapsed = 00:00:43 . Memory (MB): peak = 2281.426 ; gain = 202.766 ; free physical = 2017 ; free virtual = 10455
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   14 Bit       Adders := 1     
+	   2 Input   10 Bit       Adders := 1     
+	   2 Input    9 Bit       Adders := 2     
+	   2 Input    8 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 8     
+	   2 Input    4 Bit       Adders := 14    
+	   2 Input    3 Bit       Adders := 1     
+	   3 Input    2 Bit       Adders := 2     
+	   2 Input    2 Bit       Adders := 4     
++---XORs : 
+	   2 Input      1 Bit         XORs := 4     
++---Registers : 
+	               32 Bit    Registers := 1     
+	               15 Bit    Registers := 1     
+	               14 Bit    Registers := 4     
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 9     
+	                2 Bit    Registers := 6     
+	                1 Bit    Registers := 112   
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 1     
+	   5 Input   15 Bit        Muxes := 2     
+	   2 Input   15 Bit        Muxes := 5     
+	   2 Input   14 Bit        Muxes := 2     
+	   2 Input    8 Bit        Muxes := 2     
+	   8 Input    4 Bit        Muxes := 4     
+	   9 Input    4 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 10    
+	   8 Input    3 Bit        Muxes := 2     
+	   3 Input    3 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 4     
+	   5 Input    3 Bit        Muxes := 1     
+	   3 Input    2 Bit        Muxes := 3     
+	   2 Input    2 Bit        Muxes := 17    
+	   4 Input    2 Bit        Muxes := 2     
+	   2 Input    1 Bit        Muxes := 95    
+	   3 Input    1 Bit        Muxes := 16    
+	   9 Input    1 Bit        Muxes := 19    
+	   5 Input    1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 80 (col length:40)
+BRAMs: 120 (col length: RAMB18 40 RAMB36 20)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:46 . Memory (MB): peak = 2281.426 ; gain = 202.766 ; free physical = 1965 ; free virtual = 10433
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:34 ; elapsed = 00:00:52 . Memory (MB): peak = 2281.426 ; gain = 202.766 ; free physical = 1698 ; free virtual = 10191
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:35 ; elapsed = 00:00:52 . Memory (MB): peak = 2281.426 ; gain = 202.766 ; free physical = 1689 ; free virtual = 10182
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:35 ; elapsed = 00:00:52 . Memory (MB): peak = 2281.426 ; gain = 202.766 ; free physical = 1686 ; free virtual = 10181
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_awlen[7] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_awlen[6] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_awlen[5] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_awlen[4] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_awlen[3] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_awlen[2] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_awlen[1] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_awlen[0] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_awsize[2] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_awsize[1] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_awsize[0] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_awburst[1] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_awburst[0] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_wlast to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_araddr[16] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_araddr[15] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_araddr[14] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_araddr[13] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_araddr[12] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_araddr[11] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_araddr[10] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_araddr[9] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_araddr[8] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_araddr[7] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_araddr[6] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_araddr[5] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_araddr[4] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_araddr[3] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_araddr[2] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_araddr[1] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_araddr[0] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_arlen[7] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_arlen[6] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_arlen[5] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_arlen[4] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_arlen[3] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_arlen[2] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_arlen[1] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_arlen[0] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_arsize[2] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_arsize[1] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_arsize[0] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_arburst[1] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_arburst[0] to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_arvalid to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:s_axi_rready to constant 0
+INFO: [Synth 8-3295] tying undriven pin axi_bram_ctrl_inst:bram_rddata_a[0] to constant 0
+INFO: [Synth 8-3295] tying undriven pin blk_mem_inst_1:ena to constant 0
+INFO: [Synth 8-3295] tying undriven pin blk_mem_inst_2:ena to constant 0
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:37 ; elapsed = 00:00:55 . Memory (MB): peak = 2281.426 ; gain = 202.766 ; free physical = 1762 ; free virtual = 10257
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:37 ; elapsed = 00:00:55 . Memory (MB): peak = 2281.426 ; gain = 202.766 ; free physical = 1761 ; free virtual = 10257
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:38 ; elapsed = 00:00:55 . Memory (MB): peak = 2281.426 ; gain = 202.766 ; free physical = 1777 ; free virtual = 10274
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:38 ; elapsed = 00:00:55 . Memory (MB): peak = 2281.426 ; gain = 202.766 ; free physical = 1775 ; free virtual = 10272
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:38 ; elapsed = 00:00:55 . Memory (MB): peak = 2281.426 ; gain = 202.766 ; free physical = 1772 ; free virtual = 10269
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:38 ; elapsed = 00:00:55 . Memory (MB): peak = 2281.426 ; gain = 202.766 ; free physical = 1772 ; free virtual = 10268
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |CARRY4   |     4|
+|2     |LUT1     |     7|
+|3     |LUT2     |    30|
+|4     |LUT3     |   113|
+|5     |LUT4     |    42|
+|6     |LUT5     |    46|
+|7     |LUT6     |   179|
+|8     |MUXF7    |     1|
+|9     |RAMB36E1 |    10|
+|11    |FDRE     |   234|
+|12    |FDSE     |     1|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:38 ; elapsed = 00:00:55 . Memory (MB): peak = 2281.426 ; gain = 202.766 ; free physical = 1771 ; free virtual = 10268
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:35 ; elapsed = 00:00:53 . Memory (MB): peak = 2281.426 ; gain = 102.969 ; free physical = 1835 ; free virtual = 10332
+Synthesis Optimization Complete : Time (s): cpu = 00:00:38 ; elapsed = 00:00:55 . Memory (MB): peak = 2281.434 ; gain = 202.766 ; free physical = 1835 ; free virtual = 10332
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2281.434 ; gain = 0.000 ; free physical = 1937 ; free virtual = 10434
+INFO: [Netlist 29-17] Analyzing 15 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2281.434 ; gain = 0.000 ; free physical = 1984 ; free virtual = 10487
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+131 Infos, 48 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:46 ; elapsed = 00:01:01 . Memory (MB): peak = 2281.434 ; gain = 202.773 ; free physical = 2073 ; free virtual = 10576
+INFO: [Common 17-1381] The checkpoint '/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/system_waveform_top_0_0_synth_1/system_waveform_top_0_0.dcp' has been generated.
+WARNING: [Common 17-576] 'use_project_ipc' is deprecated. This option is deprecated and no longer used.
+INFO: [Coretcl 2-1174] Renamed 46 cell refs.
+INFO: [Common 17-1381] The checkpoint '/home/martin/projects/RedPitaya_SiPM/fpga/project/redpitaya.runs/system_waveform_top_0_0_synth_1/system_waveform_top_0_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file system_waveform_top_0_0_utilization_synth.rpt -pb system_waveform_top_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu Feb 27 15:23:32 2025...

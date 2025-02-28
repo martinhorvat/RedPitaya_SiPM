@@ -19,8 +19,8 @@
                      		#address-cells = <1>;
                 		#size-cells = <1>;
                                 compatible = "generic-uio";
-                                reg = <0x40100000 0x100000>,<0x1080000 0x80000>;
-                                       reg-names = "regset", "buffer";
+                                reg = <0x40100000 0x100000>,<0x80000000 0x80000>;
+                                       reg-names = "regset", "waveform";
                                 interrupt-parent = <&intc>;
 				interrupts = <0 31 1>;
                         };                    
