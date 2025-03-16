@@ -19,8 +19,8 @@ typedef volatile struct {
 } Reg_map_gen;
 
 typedef volatile struct {
-    uint32_t waveform_1[MAX_WAVEFORM_LEN];
-    uint32_t waveform_2[MAX_WAVEFORM_LEN];
+    int32_t waveform_1[MAX_WAVEFORM_LEN];
+    int32_t waveform_2[MAX_WAVEFORM_LEN];
 } Waveform_container;
 
 typedef struct {
@@ -33,6 +33,6 @@ Gen *create_gen(Uio);
 void start_gen(Gen *);
 void set_decimation_gen(Gen *, uint16_t, int);
 void set_waveform_len(Gen *, uint32_t, int);
-void set_waveform(Gen *, uint32_t *, int, int);
+void set_waveform(Gen *, int32_t *, int, int);
 
 #endif

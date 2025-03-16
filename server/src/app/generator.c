@@ -43,7 +43,7 @@ void set_waveform_len(Gen *gen, uint32_t waveform_len, int i_waveform) {
         set_reg(&(gen->reg->waveform_len_2), waveform_len);
 }
 
-void set_waveform(Gen *gen, uint32_t *waveform, int N, int i_waveform) {
+void set_waveform(Gen *gen, int32_t *waveform, int N, int i_waveform) {
     for (int i = 0; i < N; i++) {
         if (i_waveform == WAVEFORM_1)
             set_reg(&(gen->waveform_container->waveform_1[i]), waveform[i]);

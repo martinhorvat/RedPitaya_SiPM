@@ -12,3 +12,5 @@ void *memory_map(int fd, size_t size, size_t number) {
 void set_reg(volatile uint32_t *reg, int32_t value) {
     *reg = value;
 }
+
+// void set_reg_array(int32_t *reg, )

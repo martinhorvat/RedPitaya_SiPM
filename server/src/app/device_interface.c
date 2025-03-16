@@ -61,6 +61,10 @@ int execute_command(Device_interface *device_interface, int command, char **rest
     int i_waveform;
     uint32_t waveform_len;
     char *token;
+    int16_t *waveform;
+    int32_t *waveform_double;
+
+    uint16_t ui16;
     
     switch (command) {
         case COMMAND_SET_WAVEFORM:
@@ -83,9 +87,52 @@ int execute_command(Device_interface *device_interface, int command, char **rest
             bzero(buff, MAX);
             get_msg(connfd, buff);
 
+            waveform = convertBigEndianToSignedIntArray(buff, waveform_len);
+
+            for (int i = 0; i < waveform_len; i++) {
+                printf("%d\n", waveform[i]);
+            }
+
             bzero(buff, MAX); 
             strcpy(buff, "received waveform\n");   
             write(connfd, buff, 18);  
+
+            waveform_double = (int32_t*)waveform;
+            for (int i = 0; i < waveform_len/2; i++) {
+                printf("%d\n", waveform_double[i]);
+            }
+
+            printf("Setting waveform!\n");
+            // set_waveform(device_interface->gen, waveform_double, waveform_len/2, i_waveform);
+            memcpy(device_interface->gen->waveform_container->waveform_1, 
+                waveform, waveform_len*sizeof(int16_t));
+            printf("Waveform set!\n");
+
+            break;
+        case COMMAND_SET_GEN_DECIMATION:
+            token = strtok_r(*rest, " ", rest);
+            printf("token: %s\n", token);
+            i_waveform = atoi(token);
+
+            token = strtok_r(*rest, " ", rest);
+            printf("token: %s\n", token);
+            ui16 = atoi(token);
+
+            set_decimation_gen(device_interface->gen, ui16, i_waveform);
+
+            bzero(buff, MAX); 
+            strcpy(buff, "OK\n");
+            write(connfd, buff, 3);  
+
+            break;
+
+        case COMMAND_START_GEN:
+            start_gen(device_interface->gen);
+
+            bzero(buff, MAX); 
+            strcpy(buff, "OK\n");
+            write(connfd, buff, 3);  
+
             break;
     }
 }

@@ -9,6 +9,10 @@
 #define COMMAND_SET_GEN_DECIMATION 2
 #define COMMAND_START_GEN 3
 
+#include <stdint.h>
+
 int parse_msg(char **);
+int16_t convertBigEndianToSignedInt(const uint8_t *);
+int16_t* convertBigEndianToSignedIntArray(uint8_t *, int);
 
 #endif
